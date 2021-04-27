@@ -53,5 +53,33 @@
         </tr>
     </c:forEach>
 </table>
+
+
+<table border="1" cellpadding="5" cellspacing="1">
+    <h3>Users</h3>
+    <tr>
+        <th>id</th>
+        <th>Name</th>
+        <th>Mail</th>
+        <th>Password</th>
+    </tr>
+    <c:forEach var="user" items="${requestScope.users}">
+        <tr>
+            <td>${user.id}</td>
+            <td>${user.name}</td>
+            <td>${user.mail}</td>
+            <td>${user.password}</td>
+            <td>
+                <a href='<c:url value="user/edit?id=${user.id}" />'>Edit</a>
+            </td>
+            <td>
+                <form method="post" action='<c:url value="user/delete" />' style="display:inline;">
+                    <input type="hidden" name="id" value="${user.id}">
+                    <input type="submit" value="Delete">
+                </form>
+            </td>
+        </tr>
+    </c:forEach>
+</table>
 </body>
 </html>

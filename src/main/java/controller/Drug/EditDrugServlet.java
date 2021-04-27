@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+import static java.lang.Integer.parseInt;
+
 
 @WebServlet(urlPatterns = {"/drug/edit"})
 public class EditDrugServlet extends HttpServlet {
@@ -34,12 +36,12 @@ public class EditDrugServlet extends HttpServlet {
             getServletContext().getRequestDispatcher("/notfound.jsp").forward(request, response);
 
         }
+
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         try {
-            System.out.println("good");
             int id = Integer.parseInt(request.getParameter("id"));
             String drugName = request.getParameter("name");
             int count = Integer.parseInt(request.getParameter("count"));
@@ -49,7 +51,7 @@ public class EditDrugServlet extends HttpServlet {
             drugDao.updateById(drug);
             response.sendRedirect(request.getContextPath() + "/");
         } catch (Exception ex) {
-            getServletContext().getRequestDispatcher("/notfound.jsp").forward(request, response);
+            getServletContext().getRequestDispatcher(request.getContextPath() + "/notfound.jsp").forward(request, response);
             System.out.println("not success" + "  " + ex);
         }
     }

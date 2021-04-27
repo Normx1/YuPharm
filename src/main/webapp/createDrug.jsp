@@ -21,10 +21,10 @@
     Recipe: <input type="radio" name="recipe" value="1" checked />Yes
     <input type="radio" name="recipe" value="0" checked />No
 
-<%--//   <p> Recipe: <%= request.getParameter("recipe") %></p> - Для обработки данных--%>
+   <p> Recipe: <%= request.getParameter("recipe") %></p> - Для обработки данных
     <br><br>
-    <label>Description</label><br>
-    <input name="description"/><br><br>
+<%--    <label>Description</label><br>--%>
+<%--    <input name="description"/><br><br>--%>
     <input type="submit" value="Save"/>
 </form>
 </body>

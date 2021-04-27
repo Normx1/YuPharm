@@ -11,8 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DrugDao implements BasicDao<Drug> {
-
-    @Override
+     @Override
     public List<Drug> getAll() {
         List<Drug> drugList = new ArrayList<>();
         try (Connection conn = JDBCConnector.getConnection();
@@ -24,8 +23,8 @@ public class DrugDao implements BasicDao<Drug> {
                 String name = resultSet.getString(2);
                 int cost = resultSet.getInt(4);
                 int count = resultSet.getInt(3);
-                byte recipe =  resultSet.getByte(5);
-                Drug drug = new Drug(id, name, cost, count,recipe);
+                byte recipe = resultSet.getByte(5);
+                Drug drug = new Drug(id, name, cost, count, recipe);
                 drugList.add(drug);
             }
         } catch (Exception ex) {
@@ -44,11 +43,11 @@ public class DrugDao implements BasicDao<Drug> {
                 ResultSet resultSet = preparedStatement.executeQuery();
                 if (resultSet.next()) {
 
-                    drug.setId(resultSet.getInt(1));
                     drug.setName(resultSet.getString(2));
                     drug.setCount(resultSet.getInt(3));
                     drug.setCost(resultSet.getInt(4));
                     drug.setRecipe(resultSet.getByte(5));
+                    drug = new Drug(id, drug.getName(), drug.getCost(), drug.getCount(), drug.getRecipe());
                 }
             }
         } catch (Exception ex) {
@@ -76,17 +75,17 @@ public class DrugDao implements BasicDao<Drug> {
 
 
     @Override
-    public Drug updateById(Drug cure) {
-        System.out.println("good1");
-        Drug drug = getById(cure.getId());
-        System.out.println("good2");
-        try (Connection conn = JDBCConnector.getConnection()) {
-            String sql = "UPDATE drugs SET name = ?,  count = ?, cost = ?, recipe = ? WHERE id = ?";
+    public Drug updateById(Drug drug) {
+        System.out.println(drug.getId());
+         try (Connection conn = JDBCConnector.getConnection()) {
+            String sql = "UPDATE drugs SET name = ?,  count = ?, cost = ?, recipe = ? where id = ? ";
             try (PreparedStatement preparedStatement = conn.prepareStatement(sql)) {
-                preparedStatement.setString(1, cure.getName());
-                preparedStatement.setInt(2, cure.getCount());
-                preparedStatement.setInt(3, cure.getCost());
-                preparedStatement.setByte(4, cure.getRecipe());
+                preparedStatement.setString(1, drug.getName());
+                preparedStatement.setInt(2, drug.getCount());
+                preparedStatement.setInt(3, drug.getCost());
+                preparedStatement.setByte(4, drug.getRecipe());
+                preparedStatement.setInt(5, drug.getId());
+                preparedStatement.execute();
             }
         } catch (Exception ex) {
             ex.printStackTrace();

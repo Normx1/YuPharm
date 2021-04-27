@@ -25,24 +25,20 @@
 <table>
     <h3>Drugs</h3>
     <tr>
-        <%--        <th>id</th>--%>
+        <th>id</th>
         <th>Name</th>
-        <%--        <th>Count</th>--%>
-        <%--        <th>Cost</th>--%>
+        <th>Count</th>
+        <th>Cost</th>
+        <th>Recipe</th>
         <th></th>
     </tr>
-    <%--    <%! List<Drug> drugs = new DrugDao().getAll(); %>--%>
-    <%--    <% for (Drug drug : drugs) { %>--%>
-    <%--    <tr>--%>
-    <%--        <td><%= drug.getName() %>--%>
-    <%--        </td>--%>
-    <%--    </tr>--%>
-    <%--    <%} %>--%>
     <c:forEach var="drug" items="${requestScope.drugs}">
         <tr>
+            <td>${drug.id}</td>
             <td>${drug.name}</td>
             <td>${drug.count}</td>
             <td>${drug.cost}</td>
+            <td>${drug.recipe}</td>
             <td>
                 <a href='<c:url value="drug/edit?id=${drug.id}" />'>Edit</a> |
                 <form method="post" action='<c:url value="drug/delete" />' style="display:inline;">

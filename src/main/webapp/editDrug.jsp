@@ -7,7 +7,7 @@
 </head>
 <body>
 <h3>Edit drug</h3>
-<form method="post" >
+<form method="post"  action="/drug/edit" >
     <label>Name</label><br>
     <input name="name" value="${drug.name}"/>
     <br><br>
@@ -17,12 +17,13 @@
     <label>Count</label><br>
     <input name="count" value="${drug.count}" />
     <br><br>
-    Recipe: <input type="radio" name="recipe" value="1" checked />Yes
-    <input type="radio" name="recipe" value="0" checked />No
 
-    <%--//   <p> Recipe: <%= request.getParameter("recipe") %></p> - Для обработки данных--%>
+    <label>Recipe</label><br>
+    <input name="recipe" value="${drug.recipe}" />
     <br><br>
-    <label>Description</label><br>
+
+    <br><br>
+    <label>Description1</label><br>
     <input name="description"/><br><br>
     <input type="submit" value="Save"/>
 </form>

@@ -5,6 +5,7 @@ public class Drug {
     private String name;
     private int cost;
     private int count;
+    private byte recipe;
 
     public int getId() {
         return id;
@@ -38,11 +39,20 @@ public class Drug {
         this.count = count;
     }
 
-    public Drug(int id, String name, int cost, int count) {
+    public byte getRecipe() {
+        return recipe;
+    }
+
+    public void setRecipe(byte recipe) {
+        this.recipe = recipe;
+    }
+
+    public Drug(int id, String name, int cost, int count, byte recipe) {
         this.id = id;
         this.name = name;
         this.cost = cost;
         this.count = count;
+        this.recipe = recipe;
     }
 
     public Drug() {
@@ -53,9 +63,11 @@ public class Drug {
         this.name = name;
     }
 
-    public Drug(String name, int cost, int count) {
+    public Drug(String name, int cost, int count, byte recipe) {
         this.name = name;
         this.cost = cost;
         this.count = count;
+        this.recipe = recipe;
+
     }
 }

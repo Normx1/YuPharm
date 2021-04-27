@@ -16,10 +16,10 @@ import java.io.IOException;
 @WebServlet("/")
 public class MainPageServlet extends HttpServlet {
     BasicDao<Drug> drugsDao = new DrugDao();
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         request.setAttribute("drugs", drugsDao.getAll() );
-        getServletContext().getRequestDispatcher("/WEB-INF/mainPage.jsp").forward(request, response);
+         getServletContext().getRequestDispatcher("/WEB-INF/mainPage.jsp").forward(request, response);
     }
 
 }

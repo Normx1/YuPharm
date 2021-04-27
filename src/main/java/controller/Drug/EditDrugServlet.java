@@ -11,11 +11,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet("/drug/edit")
 
+@WebServlet(urlPatterns = {"/drug/edit"})
 public class EditDrugServlet extends HttpServlet {
     private BasicDao<Drug> drugDao = new DrugDao();
-        protected void doGet(HttpServletRequest request, HttpServletResponse response)
+
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         try {
             int id = Integer.parseInt(request.getParameter("id"));
@@ -37,19 +38,17 @@ public class EditDrugServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         try {
-            int id = Integer.parseInt(request.getParameter("id"));
-            System.out.println("success");
+            int id = Integer.parseInt(request.getParameter("1"));
             String drugName = request.getParameter("name");
             int count = Integer.parseInt(request.getParameter("count"));
             int cost = Integer.parseInt(request.getParameter("cost"));
             byte recipe = Byte.parseByte(request.getParameter("recipe"));
             Drug drug = new Drug(id, drugName, cost, count, recipe);
             drugDao.updateById(drug);
-            response.sendRedirect(request.getContextPath() + "/editDrug.jsp");
+            response.sendRedirect(request.getContextPath() + "/");
         } catch (Exception ex) {
             getServletContext().getRequestDispatcher("/notfound.jsp").forward(request, response);
-            System.out.println("not success"+ "  " + ex);
+            System.out.println("not success" + "  " + ex);
         }
-
     }
 }

@@ -37,7 +37,7 @@ public class UserDao implements BasicDao<User> {
     public User getById(int id) {
         User user = new User();
         try (Connection conn = JDBCConnector.getConnection()) {
-            String sql = "select * from users.table_name where id=?";
+            String sql = "select * from table_name where id=?";
             try (PreparedStatement preparedStatement = conn.prepareStatement(sql)) {
                 preparedStatement.setInt(1, id);
                 ResultSet resultSet = preparedStatement.executeQuery();
@@ -61,7 +61,7 @@ public class UserDao implements BasicDao<User> {
     public User deleteById(int id) {
         User user = getById(id);
         try (Connection conn = JDBCConnector.getConnection()) {
-            String sql = "DELETE FROM users.table_name WHERE id = ?";
+            String sql = "DELETE FROM table_name WHERE id = ?";
             try (PreparedStatement preparedStatement = conn.prepareStatement(sql)) {
                 preparedStatement.setInt(1, id);
                 preparedStatement.execute();
@@ -77,7 +77,7 @@ public class UserDao implements BasicDao<User> {
     public User updateById(User user1) {
         User user = getById(user1.getId());
         try (Connection conn = JDBCConnector.getConnection()) {
-            String sql = "UPDATE users.table_name SET name = ?, mail = ?, password = ? WHERE id = ?";
+            String sql = "UPDATE table_name SET name = ?, mail = ?, password = ? WHERE id = ?";
             try (PreparedStatement preparedStatement = conn.prepareStatement(sql)) {
                 preparedStatement.setString(1, user1.getName());
                 preparedStatement.setString(2, user1.getMail());

@@ -77,14 +77,16 @@ public class DrugDao implements BasicDao<Drug> {
 
     @Override
     public Drug updateById(Drug cure) {
+        System.out.println("good1");
         Drug drug = getById(cure.getId());
+        System.out.println("good2");
         try (Connection conn = JDBCConnector.getConnection()) {
             String sql = "UPDATE drugs SET name = ?,  count = ?, cost = ?, recipe = ? WHERE id = ?";
             try (PreparedStatement preparedStatement = conn.prepareStatement(sql)) {
-                preparedStatement.setString(2, cure.getName());
-                preparedStatement.setInt(3, cure.getCount());
-                preparedStatement.setInt(4, cure.getCost());
-                preparedStatement.setByte(5, cure.getRecipe());
+                preparedStatement.setString(1, cure.getName());
+                preparedStatement.setInt(2, cure.getCount());
+                preparedStatement.setInt(3, cure.getCost());
+                preparedStatement.setByte(4, cure.getRecipe());
             }
         } catch (Exception ex) {
             ex.printStackTrace();

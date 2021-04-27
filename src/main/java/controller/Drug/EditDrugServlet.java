@@ -21,11 +21,12 @@ public class EditDrugServlet extends HttpServlet {
         try {
             int id = Integer.parseInt(request.getParameter("id"));
             Drug drug = drugDao.getById(id);
-            if (drug.getId() != 0) {
+
+            if (drug != null) {
                 request.setAttribute("drug", drug);
                 getServletContext().getRequestDispatcher("/editDrug.jsp").forward(request, response);
             } else {
-                request.setAttribute("id", id);
+//                request.setAttribute("id", id);
                 getServletContext().getRequestDispatcher("/notfound.jsp").forward(request, response);
             }
 
@@ -38,7 +39,8 @@ public class EditDrugServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         try {
-            int id = Integer.parseInt(request.getParameter("1"));
+            System.out.println("good");
+            int id = Integer.parseInt(request.getParameter("id"));
             String drugName = request.getParameter("name");
             int count = Integer.parseInt(request.getParameter("count"));
             int cost = Integer.parseInt(request.getParameter("cost"));

@@ -8,6 +8,7 @@
 <body>
 <h3>Edit drug</h3>
 <form method="post"  action="/drug/edit" >
+    <input name="id" value="${drug.id}"/>
     <label>Name</label><br>
     <input name="name" value="${drug.name}"/>
     <br><br>

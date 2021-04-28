@@ -11,7 +11,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DrugDao implements BasicDao<Drug> {
-     @Override
+
+    @Override
     public List<Drug> getAll() {
         List<Drug> drugList = new ArrayList<>();
         try (Connection conn = JDBCConnector.getConnection();
@@ -42,12 +43,12 @@ public class DrugDao implements BasicDao<Drug> {
                 preparedStatement.setInt(1, id);
                 ResultSet resultSet = preparedStatement.executeQuery();
                 if (resultSet.next()) {
-
+                    drug.setId(resultSet.getInt(1));
                     drug.setName(resultSet.getString(2));
                     drug.setCount(resultSet.getInt(3));
                     drug.setCost(resultSet.getInt(4));
                     drug.setRecipe(resultSet.getByte(5));
-                    drug = new Drug(id, drug.getName(), drug.getCost(), drug.getCount(), drug.getRecipe());
+                    drug = new Drug(drug.getId(), drug.getName(), drug.getCost(), drug.getCount(), drug.getRecipe());
                 }
             }
         } catch (Exception ex) {
@@ -76,7 +77,6 @@ public class DrugDao implements BasicDao<Drug> {
 
     @Override
     public Drug updateById(Drug drug) {
-        System.out.println(drug.getId());
          try (Connection conn = JDBCConnector.getConnection()) {
             String sql = "UPDATE drugs SET name = ?,  count = ?, cost = ?, recipe = ? where id = ? ";
             try (PreparedStatement preparedStatement = conn.prepareStatement(sql)) {

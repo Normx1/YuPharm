@@ -17,11 +17,13 @@ import static java.lang.Integer.parseInt;
 @WebServlet(urlPatterns = {"/drug/edit"})
 public class EditDrugServlet extends HttpServlet {
     private BasicDao<Drug> drugDao = new DrugDao();
+//    private int id = 0;
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         try {
             int id = Integer.parseInt(request.getParameter("id"));
+            System.out.println(id);
             Drug drug = drugDao.getById(id);
 
             if (drug != null) {

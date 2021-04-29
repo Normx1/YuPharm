@@ -12,26 +12,27 @@
     <title>Drug Info</title>
 </head>
 <body>
-<jsp:include page="../otherElements/_header.jsp"></jsp:include>
+<jsp:include page=" /WEB-INF/otherElements/_header.jsp"></jsp:include>
 
-<h3> Cure: "${drug.name}"</h3>
+<h3> Cure: "${drugs.id}"</h3>
 <form>
+    <table border="1" cellpadding="5" cellspacing="1">
+        <h3>Users</h3>
+        <tr>
+            <th>${drugs.name}</th>
+            <br>
+            <th>${drugs.count}</th>
+            <br>
+            <th>${drugs.cost}</th>
+            <br>
+            <th>${drugs.recipe}</th>
+            <br>
+        </tr>
+        <td colspan ="2">
+            <a href="${pageContext.request.contextPath}/">Cancel</a>
+        </td>
 
-    <label>Description</label><br>
-    <textarea inputmode="text" name="description" style="width: 400px; height: 200px;"
-              required>${drugs_info.description}</textarea><br><br>
-    <input type="submit" value="Send"/>
-    <br>
-    <label>Main_action</label><br>
-    <textarea inputmode="text" name="Main_action" style="width: 400px; height: 200px;"
-              required>${drugs_info.Main_action}</textarea><br><br>
-    <input type="submit" value="Send"/>
-    <br>
-    <label>Aplication</label><br>
-    <textarea inputmode="text" name="Aplication" style="width: 400px; height: 200px;"
-              required>${drugs_info.Aplication}</textarea><br><br>
-    <input type="submit" value="Send"/>
-    <br>
+    </table>
     <jsp:include page="../otherElements/_footer.jsp"></jsp:include>
 </form>
 </body>

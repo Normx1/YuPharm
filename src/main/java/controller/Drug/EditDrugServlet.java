@@ -29,9 +29,9 @@ public class EditDrugServlet extends HttpServlet {
 
             if (drug != null) {
                 request.setAttribute("drug", drug);
-                getServletContext().getRequestDispatcher("/editDrug.jsp").forward(request, response);
+                request.getServletContext().getRequestDispatcher("/editDrug.jsp").forward(request, response);
             } else {
-//                request.setAttribute("id", id);
+                request.setAttribute("id", id);
                 getServletContext().getRequestDispatcher("/notfound.jsp").forward(request, response);
             }
 

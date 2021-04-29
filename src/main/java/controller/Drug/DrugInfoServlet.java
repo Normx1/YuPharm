@@ -1,4 +1,4 @@
-package controller.DrugInfo;
+package controller.Drug;
 
 import dao.BasicDao;
 import dao.DrugDao;
@@ -22,7 +22,7 @@ public class DrugInfoServlet extends HttpServlet {
 
             if (id != 0) {
                 request.setAttribute("id", id);
-                getServletContext().getRequestDispatcher("/drugInfo.jsp").forward(request, response);
+                getServletContext().getRequestDispatcher("../druginfoView/drugInfo.jsp").forward(request, response);
             } else {
 //                request.setAttribute("id", id);
                 getServletContext().getRequestDispatcher("/notfound.jsp").forward(request, response);
@@ -33,8 +33,8 @@ public class DrugInfoServlet extends HttpServlet {
 
         }
     }
-    protected void doPost(HttpServletRequest request, HttpServletResponse response){
 
-    }
+
 }
+
 

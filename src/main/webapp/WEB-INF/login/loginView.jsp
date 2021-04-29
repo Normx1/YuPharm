@@ -22,7 +22,7 @@
     <table border="0">
         <tr>
             <td>User Name</td>
-            <td><input type="text" name="userName" value= "${user.userName}" /> </td>
+            <td><input type="text" name="name" value= "${user.name}" /> </td>
         </tr>
         <tr>
             <td>Mail</td>

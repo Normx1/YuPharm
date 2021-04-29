@@ -31,7 +31,7 @@ public class UserInfoServlet extends HttpServlet {
         // Если еще не вошел в систему (login).
         if (loginedUser == null) {
             // Redirect (Перенаправить) к странице login.
-            response.sendRedirect(request.getContextPath() + "/login");
+            response.sendRedirect("/WEB-INF/login");
             return;
         }
         // Сохранить информацию в request attribute перед тем как forward (перенаправить).
@@ -40,7 +40,7 @@ public class UserInfoServlet extends HttpServlet {
         // Если пользователь уже вошел в систему (login), то forward (перенаправить) к странице
         // /WEB-INF/views/userInfoView.jsp
         RequestDispatcher dispatcher //
-                = this.getServletContext().getRequestDispatcher("/WEB-INF/views/userInfoView.jsp");
+                = this.getServletContext().getRequestDispatcher("/WEB-INF/login/userInfoView.jsp");
         dispatcher.forward(request, response);
 
     }

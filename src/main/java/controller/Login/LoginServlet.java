@@ -1,8 +1,8 @@
 package controller.Login;
 
- import controller.Utils.DBUtils;
- import controller.Utils.MyUtils;
- import dao.UserDao;
+import controller.Utils.DBUtils;
+import controller.Utils.MyUtils;
+import dao.UserDao;
 import model.User;
 import sql.JDBCConnector;
 
@@ -31,6 +31,7 @@ public class LoginServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
+
         // Forward (перенаправить) к странице /WEB-INF/views/loginView.jsp
         // (Пользователь не может прямо получить доступ
         // к страницам JSP расположенные в папке WEB-INF).
@@ -46,9 +47,12 @@ public class LoginServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String userName = request.getParameter("userName");
+        String name = request.getParameter("name");
+        System.out.println(name);
         String mail = request.getParameter("mail");
+        System.out.println(mail);
         String password = request.getParameter("password");
+        System.out.println(password);
         String rememberMeStr = request.getParameter("rememberMe");
         boolean remember = "Y".equals(rememberMeStr);
 
@@ -56,13 +60,13 @@ public class LoginServlet extends HttpServlet {
         boolean hasError = false;
         String errorString = null;
 
-        if (userName == null || password == null || mail == null || userName.length() == 0 || mail.length() == 0 || password.length() == 0) {
+        if (name == null || password == null || mail == null || name.length() == 0 || mail.length() == 0 || password.length() == 0) {
             hasError = true;
             errorString = "Required username and password!";
         } else {
             try (Connection conn = JDBCConnector.getConnection()) {
                 // Найти user в DB.
-                user = UserDao.findUser(conn, userName, mail, password);
+                user = DBUtils.findUser(conn, name, mail, password);
 
                 if (user == null) {
                     hasError = true;
@@ -79,7 +83,7 @@ public class LoginServlet extends HttpServlet {
         // forward (перенаправить) к /WEB-INF/views/login.jsp
         if (hasError) {
             user = new User();
-            user.setName(userName);
+            user.setName(name);
             user.setPassword(password);
 
             // Сохранить информацию в request attribute перед forward.
@@ -87,8 +91,7 @@ public class LoginServlet extends HttpServlet {
             request.setAttribute("user", user);
 
             // Forward (перенаправить) к странице /WEB-INF/views/login.jsp
-            RequestDispatcher dispatcher //
-                    = this.getServletContext().getRequestDispatcher("/WEB-INF/views/loginView.jsp");
+            RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/WEB-INF/login/loginView.jsp");
 
             dispatcher.forward(request, response);
         }

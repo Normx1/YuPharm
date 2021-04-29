@@ -24,7 +24,7 @@
 <div style=" align: left;">
     <br>
     <!-- User store in session with attribute: loginedUser -->
-    Hello <b>${loginedUser.userName} </b>
+    Hello <b>${loginedUser.name} </b>
     <br/>
     <a href="${pageContext.request.contextPath}/basket"> Basket </a>
 

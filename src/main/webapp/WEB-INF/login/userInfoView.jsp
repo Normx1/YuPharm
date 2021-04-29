@@ -16,11 +16,11 @@
 <jsp:include page="../otherElements/_header.jsp"></jsp:include>
 <jsp:include page="../otherElements/_menu.jsp"></jsp:include>
 
-<h3>Hello: ${user.userName}</h3>
+<h3>Hello: ${user.name}</h3>
 
-User Name: <b>${user.userName}</b>
+User Name: <b>${user.name}</b>
 <br />
-Gender: ${user.gender } <br />
+Mail: ${user.mail } <br />
 
 <jsp:include page="../otherElements/_footer.jsp"></jsp:include>
 

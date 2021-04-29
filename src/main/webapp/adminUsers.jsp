@@ -30,7 +30,7 @@
 
 
 <h2>Users List</h2>
-<p><a href='<c:url value="createUser.jsp" />'>Create new</a></p>
+<p><a href='<c:url value="WEB-INF/createUser.jsp" />'>Create new</a></p>
 <table>
     <tr>
         <th>Name</th>

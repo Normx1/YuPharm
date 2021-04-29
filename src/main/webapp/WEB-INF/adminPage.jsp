@@ -16,7 +16,7 @@
 
 <h2>Админ Лекарства</h2>
 <p><a href='<c:url value="../createDrug.jsp" />'>Create new cure</a></p>
-<p><a href='<c:url value="../createUser.jsp" />'>Create new user</a></p>
+<p><a href='<c:url value="createUser.jsp" />'>Create new user</a></p>
 
 <table border="1" cellpadding="5" cellspacing="1">
     <h2>Cures recipe</h2>

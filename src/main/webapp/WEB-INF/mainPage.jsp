@@ -49,8 +49,10 @@
         </tr>
     </c:forEach>
 </table>
-
-
+<table
+<jsp:include page="/adminListDrugs.jsp"></jsp:include>
+</table
+<table>
 <jsp:include page="otherElements/_footer.jsp"></jsp:include>
 </table>
 </body>

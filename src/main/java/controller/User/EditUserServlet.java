@@ -44,7 +44,7 @@ public class EditUserServlet extends HttpServlet {
             userBasicDao.updateById(user);
             response.sendRedirect(request.getContextPath() + "/");
         } catch (Exception ex) {
-
+            ex.printStackTrace();
             getServletContext().getRequestDispatcher("/notfound.jsp").forward(request, response);
         }
     }

@@ -37,7 +37,7 @@
             <td>${drug.cost}</td>
             <td>${drug.recipe}</td>
             <td>
-                <a href='<c:url value="drug/edit?id=${drug.id}" />'>Edit</a>
+                <a href='<c:url value="drug/edit?id=${drug.id}"/>'>Edit</a>
             </td>
             <td>
                 <form method="post" action='<c:url value="drug/delete" />' style="display:inline;">

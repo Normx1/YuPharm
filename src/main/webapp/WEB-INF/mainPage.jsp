@@ -41,10 +41,11 @@
             <td>${drug.cost} $</td>
             <td>
                 <div align="center"> ${drug.recipe}
-            </div>
+                </div>
             </td>
             <td>
-            <input type="submit" value="Details" />
+                <a href='<c:url value="drug/drugInfo?id=${drug.id}"/>'>Details</a>
+
             </td>
         </tr>
     </c:forEach>
@@ -53,7 +54,7 @@
 <jsp:include page="/adminListDrugs.jsp"></jsp:include>
 </table
 <table>
-<jsp:include page="otherElements/_footer.jsp"></jsp:include>
+    <jsp:include page="otherElements/_footer.jsp"></jsp:include>
 </table>
 </body>
 </html>

@@ -13,7 +13,6 @@
 </head>
 <body>
 <jsp:include page="../otherElements/_header.jsp"></jsp:include>
-<jsp:include page="../otherElements/_menu.jsp"></jsp:include>
 
 <h3>Login Page</h3>
 <p style="color: red;">${errorString}</p>
@@ -24,6 +23,10 @@
         <tr>
             <td>User Name</td>
             <td><input type="text" name="userName" value= "${user.userName}" /> </td>
+        </tr>
+        <tr>
+            <td>Mail</td>
+            <td><input type="text" name="mail" value= "${user.mail}" /> </td>
         </tr>
         <tr>
             <td>Password</td>
@@ -42,7 +45,6 @@
     </table>
 </form>
 
-<p style="color:blue;">User Name: tom, password: tom001 or jerry/jerry001</p>
 
 <jsp:include page="../otherElements/_footer.jsp"></jsp:include>
 </body>

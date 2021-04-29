@@ -43,6 +43,7 @@ public class DrugDao implements BasicDao<Drug> {
                 preparedStatement.setInt(1, id);
                 ResultSet resultSet = preparedStatement.executeQuery();
                 if (resultSet.next()) {
+
                     drug.setId(resultSet.getInt(1));
                     drug.setName(resultSet.getString(2));
                     drug.setCount(resultSet.getInt(3));
@@ -91,7 +92,7 @@ public class DrugDao implements BasicDao<Drug> {
             ex.printStackTrace();
             throw new RuntimeException(ex);
         }
-        return drug;
+        return null;
     }
 
     @Override

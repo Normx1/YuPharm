@@ -3,10 +3,7 @@ package dao;
 import model.User;
 import sql.JDBCConnector;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -47,7 +44,7 @@ public class UserDao implements BasicDao<User> {
                     String name = resultSet.getString(2);
                     String mail = resultSet.getString(3);
                     String password = resultSet.getString(4);
-                    User userById = new User( id, name, mail, password);
+                    User userById = new User(id, name, mail, password);
                 }
             }
         } catch (Exception ex) {
@@ -108,4 +105,25 @@ public class UserDao implements BasicDao<User> {
         }
         return model;
     }
+
+    public static User findUser(Connection conn,String userName, String mail, String password) throws SQLException {
+
+            String sql = "Select a.User_Name, a.Mail, a.Password  from table_name a " //
+                    + " where a.User_Name = ? and a.Mail = ? and a.passw  ord= ? ";
+
+            PreparedStatement pstm = conn.prepareStatement(sql);
+            pstm.setString(1, userName);
+            pstm.setString(2, mail);
+            pstm.setString(3, password);
+            ResultSet rs = pstm.executeQuery();
+
+            if (rs.next()) {
+                User user = new User();
+                user.setName(userName);
+                user.setPassword(password);
+                user.setMail(mail);
+                return user;
+            }
+            return null;
+          }
 }

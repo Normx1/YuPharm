@@ -10,11 +10,14 @@
 
     <a href="${pageContext.request.contextPath}/">News</a>
     |
+    <a href="${pageContext.request.contextPath}/">About as</a>
+    |
     <a href="${pageContext.request.contextPath}/productList">Product List</a>
     |
 <%--    <a href="${pageContext.request.contextPath}/userInfo">My Account Info</a>--%>
 <%--    |--%>
     <a href="${pageContext.request.contextPath}/login">Login</a>
+
 
 
 </div>
@@ -23,6 +26,8 @@
     <!-- User store in session with attribute: loginedUser -->
     Hello <b>${loginedUser.userName} </b>
     <br/>
+    <a href="${pageContext.request.contextPath}/basket"> Basket </a>
+
 
 </div>
 <br>

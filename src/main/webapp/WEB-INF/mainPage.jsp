@@ -39,9 +39,12 @@
             <td>${drug.name}</td>
             <td>${drug.count}</td>
             <td>${drug.cost} $</td>
-            <td>${drug.recipe}</td>
             <td>
-                <input type="checkbox" value="true">
+                <div align="center"> ${drug.recipe}
+            </div>
+            </td>
+            <td>
+            <input type="submit" value="Details" />
             </td>
         </tr>
     </c:forEach>

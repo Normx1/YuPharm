@@ -93,19 +93,19 @@ public class UserDao implements BasicDao<User> {
     }
 
     @Override
-    public User create(User model) {
+    public User create(User user) {
         try (Connection conn = JDBCConnector.getConnection()) {
-            String sql = "insert into users.table_name (name, mail, password) values (?, ?, ?)";
+            String sql = "insert into table_name (name, mail, password) values (?, ?, ?)";
             try (PreparedStatement preparedStatement = conn.prepareStatement(sql)) {
-                preparedStatement.setString(1, model.getName());
-                preparedStatement.setString(2, model.getMail());
-                preparedStatement.setString(3, model.getPassword());
+                preparedStatement.setString(1, user.getName());
+                preparedStatement.setString(2, user.getMail());
+                preparedStatement.setString(3, user.getPassword());
                 preparedStatement.execute();
             }
         } catch (Exception ex) {
             ex.printStackTrace();
             throw new RuntimeException(ex);
         }
-        return model;
+        return user;
     }
 }

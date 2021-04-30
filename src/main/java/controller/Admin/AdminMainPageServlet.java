@@ -1,4 +1,4 @@
-package controller;
+package controller.Admin;
 
 import dao.BasicDao;
 import dao.DrugDao;
@@ -13,14 +13,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet("/")
-public class MainPageServlet extends HttpServlet {
-    BasicDao<Drug> drugsDao = new DrugDao();
+@WebServlet("/adminPage")
+public class AdminMainPageServlet extends HttpServlet {
+    BasicDao<User> userDao = new UserDao();
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        // TODO: 30.04.2021 исправить путь к файлу
-        request.setAttribute("drugs", drugsDao.getAll());
-        getServletContext().getRequestDispatcher("/WEB-INF/mainPage.jsp").forward(request, response);
+        request.setAttribute("user", userDao.getAll());
+        getServletContext().getRequestDispatcher("/WEB-INF/adminPage.jsp").forward(request, response);
     }
 }

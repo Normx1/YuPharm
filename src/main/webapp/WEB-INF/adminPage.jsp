@@ -13,13 +13,24 @@
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
+<body>
 
+
+
+<div class="topnav">
+    <a class="active" href="#home">Home</a>
+    <a href="#news">News</a>
+    <a href="#contact">Contact</a>
+    <a href="#about">About</a>
+</div>
+<br>
+<br>
 <h2>Админ Лекарства</h2>
 <p><a href='<c:url value="../createDrug.jsp" />'>Create new cure</a></p>
 <p><a href='<c:url value="createUser.jsp" />'>Create new user</a></p>
 
 <table border="1" cellpadding="5" cellspacing="1">
-    <h2>Cures recipe</h2>
+    <h2>Medicine price</h2>
     <tr>
         <th>id</th>
         <th>Name</th>
@@ -37,10 +48,10 @@
             <td>${drug.cost}</td>
             <td>${drug.recipe}</td>
             <td>
-                <a href='<c:url value="drug/edit?id=${drug.id}"/>'>Edit</a>
+                <a href='<c:url value="/drug/edit?id=${drug.id}"/>'>Edit</a>
             </td>
             <td>
-                <form method="post" action='<c:url value="drug/delete" />' style="display:inline;">
+                <form method="post" action='<c:url value="/drug/delete" />' style="display:inline;">
                     <input type="hidden" name="id" value="${drug.id}">
                     <input type="submit" value="Delete">
                 </form>
@@ -61,7 +72,7 @@
     <c:forEach var="user" items="${requestScope.users}">
         <tr>
             <td>${user.id}</td>
-            <td>${user.name}</td>
+            <td>${user.name}</td>PASSWORD
             <td>${user.mail}</td>
             <td>${user.password}</td>
             <td>
@@ -76,5 +87,33 @@
         </tr>
     </c:forEach>
 </table>
-</body>
+    <table border="1" cellpadding="5" cellspacing="1">
+
+        <tr>
+            <th>№</th>
+            <th>Name</th>
+            <th>Count</th>
+            <th>Cost</th>
+            <th>Recipe</th>
+            <th>Select</th>
+        </tr>
+        <c:forEach var="drug" items="${requestScope.drugs}">
+            <tr>
+                <td>${drug.id}</td>
+                <td>${drug.name}</td>
+                <td>${drug.count}</td>
+                <td>${drug.cost} $</td>
+                <td>
+                    <div align="center"> ${drug.recipe}
+                    </div>
+                </td>
+                <td>
+                    <a href='<c:url value="drug/drugInfo?id=${drug.id}"/>'>Details</a>
+
+                </td>
+            </tr>
+        </c:forEach>
+    </table>
+
+ </body>
 </html>

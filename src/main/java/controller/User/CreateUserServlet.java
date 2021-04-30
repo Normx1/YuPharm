@@ -17,22 +17,23 @@ public class CreateUserServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
-        getServletContext().getRequestDispatcher("/createUser.jsp").forward(request, response);
+        getServletContext().getRequestDispatcher("/WEB-INF/Registration/registration.jsp").forward(request, response);
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+        System.out.println(1);
         try {
             String name = request.getParameter("name");
             String mail = request.getParameter("mail");
             String password = request.getParameter("password");
             User users = new User(name, password, mail);
             userDao.create(users);
-            response.sendRedirect(request.getContextPath() + "/createUser.jsp");
+            response.sendRedirect(request.getContextPath() + "../Registration/registration.jsp");
         } catch (Exception ex) {
-            getServletContext().getRequestDispatcher("/create").forward(request, response);
+            ex.printStackTrace();
+            getServletContext().getRequestDispatcher("/notfound.jsp").forward(request, response);
+//            getServletContext().getRequestDispatcher("/create").forward(request, response);
         }
     }
 }

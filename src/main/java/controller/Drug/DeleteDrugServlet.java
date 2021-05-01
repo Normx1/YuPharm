@@ -21,7 +21,7 @@ public class DeleteDrugServlet extends HttpServlet {
             throws ServletException, IOException {
 
         try {
-            int id = Integer.parseInt(getInitParameter(request.getParameter("id")));
+            int id = Integer.parseInt(request.getParameter("id"));
             //TODO Не приходит ID с JSP:(
             drugDao.deleteById(id);
             response.sendRedirect(request.getContextPath()+"/");

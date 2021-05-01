@@ -35,6 +35,7 @@
     <input name="Application" value="Application"/>
     </textarea>
     <br><br>
+    <input type="hidden" name="id" value="${drug.id}">
 
     <%--    <label>Description</label><br>--%>
     <%--    <input name="description"/><br><br>--%>

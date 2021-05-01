@@ -42,7 +42,6 @@ public class EditDrugServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         try {
-
             String drugName = request.getParameter("name");
             System.out.println(request.getParameter("name"));
             int count = Integer.parseInt(request.getParameter("count"));
@@ -51,12 +50,13 @@ public class EditDrugServlet extends HttpServlet {
             System.out.println("cost: "+ cost);
             byte recipe = Byte.parseByte(request.getParameter("recipe"));
             System.out.println("recipe: "+recipe);
-            int id = getInteger(request.getParameter("id"));
+            System.out.println(request.getParameterNames());
+            int id =  Integer.parseInt(request.getParameter("id"));
             //TODO Не приходит ID с JSP:(
             System.out.println("id: "+ id);
             Drug drug = new Drug(id, drugName, cost, count, recipe);
             drugDao.updateById(drug);
-            response.sendRedirect(request.getContextPath() + "/");
+            response.sendRedirect(request.getContextPath()+"/");
         } catch (Exception ex) {
 //            getServletContext().getRequestDispatcher(request.getContextPath() + "/notfound.jsp").forward(request, response);
             System.out.println("not success" + "  " + ex);

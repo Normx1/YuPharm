@@ -10,7 +10,7 @@
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
-
+<body>
 <h2>Админ Лекарства</h2>
 <p><a href='<c:url value="createDrug.jsp" />'>Create new cure</a></p>
 <p><a href='<c:url value="WEB-INF/createUser.jsp" />'>Create new user1</a></p>
@@ -32,15 +32,15 @@
     <%} %>
     <c:forEach var="drugs" items="${requestScope.drugs}">
         <tr>
+            <td>${drugs.id}</td>
             <td>${drugs.name}</td>
             <td>${drugs.count}</td>
             <td>${drugs.cost}</td>
-            <td>${drugs.description}</td>
             <td>
                 <a href='<c:url value="drug/edit?id=${drugs.id}" />'>Edit</a> |
-                <form method="post" action='<c:url value="drug/delete" />' style="display:inline;">
+                <form method="post" action='<c:url value="/drug/delete" />' style="display:inline;">
                     <input type="hidden" name="id" value="${drugs.id}">
-                    <input type="submit" value="Delete">
+                    <input type="submit" value="Delete+${drugs.id}">
                 </form>
         </tr>
     </c:forEach>

@@ -32,6 +32,7 @@
         <th>Cost</th>
         <th>Recipe</th>
         <th>Select</th>
+        <th>Delete</th>
     </tr>
     <c:forEach var="drug" items="${requestScope.drugs}">
         <tr>
@@ -46,6 +47,14 @@
             <td>
                 <a href='<c:url value="drug/drugInfo?id=${drug.id}"/>'>Details</a>
 
+            </td>
+            <td>
+                <a href='<c:url value="/drug/edit?id=${drug.id}" />'>Edit</a> |
+                <form method="post" action='<c:url value="/drug/delete" />' style="display:inline;">
+                    <input type="hidden" name="id" value="7">
+                    <input type="submit" value="Delete">
+                </form>
+<%--                <a href="/drug/delete?id=${drug.id}">Delete</a>--%>
             </td>
         </tr>
     </c:forEach>

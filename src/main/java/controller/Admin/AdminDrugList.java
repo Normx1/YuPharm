@@ -11,8 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet("/adminPage")
-public class AdminMainPageServlet extends HttpServlet {
+@WebServlet("/adminPage/drugs")
+public class AdminDrugList extends HttpServlet {
     BasicDao<Drug> drugDao = new DrugDao();
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response)

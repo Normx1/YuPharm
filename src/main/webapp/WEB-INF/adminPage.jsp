@@ -31,6 +31,7 @@
 <table border="1" cellpadding="5" cellspacing="1">
     <h2>Medicine price</h2>
     <tr>
+        <th>№</th>
         <th>id</th>
         <th>Name</th>
         <th>Count</th>
@@ -41,6 +42,8 @@
     </tr>
     <c:forEach var="drugs" items="${requestScope.drugs}">
         <tr>
+            <th> </th>
+            </td>
             <td>${drugs.id}</td>
             <td>${drugs.name}</td>
             <td>${drugs.count}</td>
@@ -51,7 +54,7 @@
             </td>
             <td>
                 <form method="post" action='<c:url value="/drug/delete" />' style="display:inline;">
-                    <input type="hidden" name="id" value="${drug.id}">
+                    <input type="hidden" name="id" value="${drugs.id}">
                     <input type="submit" value="Delete">
                 </form>
             </td>

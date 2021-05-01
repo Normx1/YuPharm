@@ -14,18 +14,21 @@ import java.io.IOException;
 @WebServlet("/drug/delete")
 
 public class DeleteDrugServlet extends HttpServlet {
+
     BasicDao<Drug> drugDao = new DrugDao();
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
         try {
-            int id = Integer.parseInt(request.getParameter("id"));
+            int id = Integer.parseInt(getInitParameter(request.getParameter("id")));
+            //TODO Не приходит ID с JSP:(
             drugDao.deleteById(id);
-            response.sendRedirect(request.getContextPath() + "/");
+            response.sendRedirect(request.getContextPath()+"/");
 //Полный путь
         } catch (Exception ex) {
-            getServletContext().getRequestDispatcher("/notfound.jsp").forward(request, response);
+            getServletContext().getRequestDispatcher("/notfound.jsp" ).forward(request, response);
+            System.out.println("not success" + "  " + ex);
 
         }
     }

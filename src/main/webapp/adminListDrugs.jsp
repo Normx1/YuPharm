@@ -13,7 +13,7 @@
 <body>
 <h2>Админ Лекарства</h2>
 <p><a href='<c:url value="createDrug.jsp" />'>Create new cure</a></p>
-<p><a href='<c:url value="WEB-INF/createUser.jsp" />'>Create new user1</a></p>
+<p><a href='<c:url value="createUser.jsp" />'>Create new user1</a></p>
 <table>
     <h3>Drugs</h3>
     <tr>

@@ -18,6 +18,6 @@ public class AdminDrugList extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         request.setAttribute("drugs", drugDao.getAll());
-        getServletContext().getRequestDispatcher("/WEB-INF/adminPage.jsp").forward(request, response);
+        getServletContext().getRequestDispatcher("/WEB-INF/adminDrugPage.jsp").forward(request, response);
     }
 }

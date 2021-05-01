@@ -17,7 +17,7 @@ public class CreateUserServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        getServletContext().getRequestDispatcher("/WEB-INF/Registration/registration.jsp").forward(request, response);
+        getServletContext().getRequestDispatcher("/WEB-INF/registration.jsp").forward(request, response);
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -29,7 +29,7 @@ public class CreateUserServlet extends HttpServlet {
             String password = request.getParameter("password");
             User users = new User(name, password, mail);
             userDao.create(users);
-            response.sendRedirect(request.getContextPath() + "../Registration/registration.jsp");
+            response.sendRedirect(request.getContextPath() + "/");
         } catch (Exception ex) {
             ex.printStackTrace();
             getServletContext().getRequestDispatcher("/notfound.jsp").forward(request, response);

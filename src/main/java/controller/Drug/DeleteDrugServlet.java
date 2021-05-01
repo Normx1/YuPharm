@@ -22,12 +22,11 @@ public class DeleteDrugServlet extends HttpServlet {
 
         try {
             int id = Integer.parseInt(request.getParameter("id"));
-            //TODO Не приходит ID с JSP:(
-            drugDao.deleteById(id);
-            response.sendRedirect(request.getContextPath()+"/");
+             drugDao.deleteById(id);
+            response.sendRedirect( "/adminPage/drugs");
 //Полный путь
         } catch (Exception ex) {
-            getServletContext().getRequestDispatcher("/notfound.jsp" ).forward(request, response);
+            getServletContext().getRequestDispatcher("notfound.jsp").forward(request, response);
             System.out.println("not success" + "  " + ex);
 
         }

@@ -14,19 +14,10 @@
     <title>Title</title>
 </head>
 <body>
-
-
-<div class="topnav">
-    <a class="active" href="#home">Home</a>
-    <a href="#news">News</a>
-    <a href="#contact">Contact</a>
-    <a href="#about">About</a>
-</div>
 <br>
 <br>
 <h2>Админ Лекарства</h2>
 <p><a href='<c:url value="../createDrug.jsp" />'>Create new cure</a></p>
-<p><a href='<c:url value="createUser.jsp" />'>Create new user</a></p>
 
 <table border="1" cellpadding="5" cellspacing="1">
     <h2>Medicine price</h2>

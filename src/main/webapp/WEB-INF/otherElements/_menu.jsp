@@ -19,7 +19,7 @@
     <a href="${pageContext.request.contextPath}/login">Login/Sign in</a>
 
     |
-    <a href="../adminPage/drugs">AdminPage</a>
+    <a href="${pageContext.request.contextPath}/AdminMainPage.jsp">AdminPage</a>
 
 
 

@@ -10,14 +10,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.PrintWriter;
 
-@WebServlet("/adminDrugList")
-public class AdminDrugList extends HttpServlet {
-    BasicDao<Drug> drugDao = new DrugDao();
+@WebServlet("/AdminMainPage")
+public class AdminMainList extends HttpServlet {
+    private String message;
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.setAttribute("drugs", drugDao.getAll());
-        getServletContext().getRequestDispatcher("/adminDrugList.jsp").forward(request, response);
+        try {
+            getServletContext().getRequestDispatcher("/AdminMainPage.jsp");
+
+        } catch (
+                Exception ex) {
+            System.out.println("not success" + "  " + ex);
+        }
     }
 }

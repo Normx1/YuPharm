@@ -31,8 +31,8 @@
         <th>Count</th>
         <th>Cost</th>
         <th>Recipe</th>
-        <th>Select</th>
-        <th>Delete</th>
+        <th>info</th>
+        <th>Buy</th>
     </tr>
     <c:forEach var="drug" items="${requestScope.drugs}">
         <tr>

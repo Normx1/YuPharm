@@ -16,26 +16,15 @@
 
 </head>
 <body>
-<%--<%@include file="nav_bar.jsp" %>--%>
-<%--<%@include file="lang_bar.jsp" %>--%>
-<%--<ul>
-    <li><a href="?lang=en"><fmt:message key="lang.en" /></a></li>
-    <li><a href="?lang=ru"><fmt:message key="lang.ru" /></a></li>
-</ul>--%>
-<%--<h2>--%>
-<%--    <fmt:message key="lang.en" />--%>
-<%--</h2>--%>
+<jsp:include page="/WEB-INF/otherElements/_header.jsp"></jsp:include>
 
-
-
-
-<h2>Users List</h2>
-<p><a href='<c:url value="../createUser.jsp" />'>Create new</a></p>
-<table>
+<p><h2>Users List</h2>
+<p><a href='<c:url value="../createUser.jsp" />'>Create new User</a></p>
+<table border="1" cellpadding="5" cellspacing="1">
     <tr>
         <th>Name</th>
         <th>Mail</th>
-        <th></th>
+        <th>Action</th>
     </tr>
     <c:forEach var="users" items="${requestScope.users}">
         <tr>
@@ -50,6 +39,9 @@
             </td>
         </tr>
     </c:forEach>
+</table>
+<table>
+    <jsp:include page="/WEB-INF/otherElements/_footer.jsp"></jsp:include>
 </table>
 </body>
 </html>

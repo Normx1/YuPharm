@@ -11,13 +11,13 @@
 <head>
     <title>Title</title>
 </head>
-<jsp:include page="WEB-INF/otherElements/_header.jsp"></jsp:include>
+<jsp:include page="../WEB-INF/otherElements/_header.jsp"></jsp:include>
 
 <body>
 <form>
-<p><a href='<c:url value="/adminDrugPage.jsp" />'>Drugs</a></p>
+<p><a href='<c:url value="/adminDrugList" />'>Drugs</a></p>
 <br>
-<p><a href='<c:url value="/adminUserList.jsp" />'>Users</a></p>
+<p><a href='<c:url value="/adminUserList" />'>Users</a></p>
 <br>
 <a href="${pageContext.request.contextPath}/">Orders</a>
 <br>

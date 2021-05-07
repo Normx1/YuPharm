@@ -19,7 +19,7 @@ public class AdminMainList extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         try {
-            getServletContext().getRequestDispatcher("/AdminMainPage.jsp");
+            getServletContext().getRequestDispatcher("/AdminPage/AdminMainPage.jsp");
 
         } catch (
                 Exception ex) {

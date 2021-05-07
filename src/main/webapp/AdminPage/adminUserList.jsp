@@ -30,21 +30,21 @@
 
 
 <h2>Users List</h2>
-<p><a href='<c:url value="createUser.jsp" />'>Create new</a></p>
+<p><a href='<c:url value="../createUser.jsp" />'>Create new</a></p>
 <table>
     <tr>
         <th>Name</th>
         <th>Mail</th>
         <th></th>
     </tr>
-    <c:forEach var="users" items="${requestScope.table_name}">
+    <c:forEach var="users" items="${requestScope.users}">
         <tr>
-            <td>${users.table_name.name}</td>
-            <td>${users.table_name.mail}</td>
+            <td>${users.name}</td>
+            <td>${users.mail}</td>
             <td>
-                <a href='<c:url value="user/edit?id=${table_name.id}" />'>Edit</a> |
+                <a href='<c:url value="user/edit?id=${users.id}" />'>Edit</a> |
                 <form method="post" action='<c:url value="user/delete" />' style="display:inline;">
-                    <input type="hidden" name="id" value="${users.table_name.id}">
+                    <input type="hidden" name="id" value="${users.id}">
                     <input type="submit" value="Delete">
                 </form>
             </td>

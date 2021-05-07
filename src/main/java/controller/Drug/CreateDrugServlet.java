@@ -35,7 +35,7 @@ public class CreateDrugServlet extends HttpServlet {
             String application = request.getParameter("application");
             Drug drugs = new Drug(name, cost, count ,recipe,main_action, description, application);
             drugDao.create(drugs);
-            response.sendRedirect(request.getContextPath() + "/");
+            response.sendRedirect(request.getContextPath() + "/adminDrugList");
         } catch (Exception ex) {
             getServletContext().getRequestDispatcher("/create").forward(request, response);
         }

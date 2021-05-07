@@ -29,7 +29,7 @@ public class CreateUserServlet extends HttpServlet {
             String password = request.getParameter("password");
             User users = new User(name, password, mail);
             userDao.create(users);
-            response.sendRedirect(request.getContextPath() + "/");
+            response.sendRedirect(request.getContextPath() + "/adminUserList");
         } catch (Exception ex) {
             ex.printStackTrace();
             getServletContext().getRequestDispatcher("/notfound.jsp").forward(request, response);

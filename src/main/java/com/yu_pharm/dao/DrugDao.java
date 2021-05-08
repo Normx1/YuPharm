@@ -113,4 +113,26 @@ public class DrugDao implements BasicDao<Drug> {
         return cure;
     }
 
+    @Override
+    public Drug getByName(String name) {
+        Drug drug = new Drug();
+        try (Connection conn = JDBCConnector.getConnection()) {
+            String sql = "select * from drugs where name=?";
+            try (PreparedStatement preparedStatement = conn.prepareStatement(sql)) {
+                preparedStatement.setString(1, name);
+                ResultSet resultSet = preparedStatement.executeQuery();
+                if (resultSet.next()) {
+                    drug.setId(resultSet.getInt(1));
+                    drug.setCount(resultSet.getInt(3));
+                    drug.setCost(resultSet.getInt(4));
+                    drug.setRecipe(resultSet.getByte(5));
+                    drug = new Drug(drug.getId(), drug.getName(), drug.getCost(), drug.getCount(), drug.getRecipe());
+                }
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            throw new RuntimeException(ex);
+        }
+        return drug;
+    }
 }

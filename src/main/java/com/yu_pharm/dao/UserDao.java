@@ -108,6 +108,27 @@ public class UserDao implements BasicDao<User> {
         }
         return user;
     }
-    // TODO: 09.05.2021 Сдеалать поиск по имени
 
+
+	@Override
+	public User getByName(String name) {
+		User user = new User();
+		try (Connection conn = JDBCConnector.getConnection()) {
+			String sql = "select * from table_name where name=?";
+			try (PreparedStatement preparedStatement = conn.prepareStatement(sql)) {
+				preparedStatement.setString(1, name);
+				ResultSet resultSet = preparedStatement.executeQuery();
+				if (resultSet.next()) {
+					int id = resultSet.getInt(1);
+ 					String mail = resultSet.getString(3);
+					String password = resultSet.getString(4);
+					User userById = new User( id, name, mail, password);
+				}
+			}
+		} catch (Exception ex) {
+			ex.printStackTrace();
+			throw new RuntimeException(ex);
+		}
+		return user;
+	}
 }

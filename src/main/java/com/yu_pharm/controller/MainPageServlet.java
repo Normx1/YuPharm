@@ -17,8 +17,7 @@ public class MainPageServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        // TODO: 30.04.2021 исправить путь к файлу
-        request.setAttribute("drugs", drugsDao.getAll());
+         request.setAttribute("drugs", drugsDao.getAll());
         getServletContext().getRequestDispatcher("/WEB-INF/mainPage.jsp").forward(request, response);
     }
 }

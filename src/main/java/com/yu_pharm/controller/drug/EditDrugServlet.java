@@ -52,8 +52,7 @@ public class EditDrugServlet extends HttpServlet {
             System.out.println("recipe: "+recipe);
             System.out.println(request.getParameterNames());
             int id =  Integer.parseInt(request.getParameter("id"));
-            //TODO Не приходит ID с JSP:(
-            System.out.println("id: "+ id);
+             System.out.println("id: "+ id);
             Drug drug = new Drug(id, drugName, cost, count, recipe);
             drugDao.updateById(drug);
             response.sendRedirect(request.getContextPath()+"/");

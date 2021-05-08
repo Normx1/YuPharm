@@ -12,5 +12,6 @@ public interface BasicDao<T> {
     T updateById(T model);
 
     T create(T model);
+    // TODO: 09.05.2021 Сдеалать поиск по имени
 
 }

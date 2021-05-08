@@ -1,14 +1,11 @@
 package com.yu_pharm.model;
 
-public class Order {
+public class Order<T, T1> {
     private int id_Order;
-    private int id_Drug;
-    private int id_User;
-    private String drugName;
-    private String userName;
+    private T drug;
+    private T1 user;
     private int cost;
     private int count;
-    private byte recipe;
 
     public int getId_Order() {
         return id_Order;
@@ -18,36 +15,20 @@ public class Order {
         this.id_Order = id_Order;
     }
 
-    public int getId_Drug() {
-        return id_Drug;
+    public T getDrug() {
+        return drug;
     }
 
-    public void setId_Drug(int id_Drug) {
-        this.id_Drug = id_Drug;
+    public void setDrug(T drug) {
+        this.drug = drug;
     }
 
-    public int getId_User() {
-        return id_User;
+    public T1 getUser() {
+        return user;
     }
 
-    public void setId_User(int id_User) {
-        this.id_User = id_User;
-    }
-
-    public String getDrugName() {
-        return drugName;
-    }
-
-    public void setDrugName(String drugName) {
-        this.drugName = drugName;
-    }
-
-    public String getUserName() {
-        return userName;
-    }
-
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setUser(T1 user) {
+        this.user = user;
     }
 
     public int getCost() {
@@ -66,35 +47,31 @@ public class Order {
         this.count = count;
     }
 
-    public byte getRecipe() {
-        return recipe;
+    public Order(int id_Order) {
+        this.id_Order = id_Order;
     }
 
-    public void setRecipe(byte recipe) {
-        this.recipe = recipe;
+    public Order(int id_Order, T drug, T1 user) {
+        this.id_Order = id_Order;
+        this.drug = drug;
+        this.user = user;
+    }
+
+    public Order(int id_Order, T drug, T1 user, int cost) {
+        this.id_Order = id_Order;
+        this.drug = drug;
+        this.user = user;
+        this.cost = cost;
     }
 
     public Order() {
     }
 
-    public Order(int id_Order, int id_Drug, int id_User, int cost, int count, byte recipe) {
+    public Order(int id_Order, T drug, T1 user, int cost, int count) {
         this.id_Order = id_Order;
-        this.id_Drug = id_Drug;
-        this.id_User = id_User;
+        this.drug = drug;
+        this.user = user;
         this.cost = cost;
         this.count = count;
-        this.recipe = recipe;
-    }
-
-    public Order(int id_Order, int id_Drug, int id_User, String drugName, String userName, int cost, int count, byte recipe) {
-        this.id_Order = id_Order;
-        this.id_Drug = id_Drug;
-        this.id_User = id_User;
-        this.drugName = drugName;
-        this.userName = userName;
-        this.cost = cost;
-        this.count = count;
-        this.recipe = recipe;
-
     }
 }

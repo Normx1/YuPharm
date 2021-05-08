@@ -108,4 +108,6 @@ public class UserDao implements BasicDao<User> {
         }
         return user;
     }
+    // TODO: 09.05.2021 Сдеалать поиск по имени
+
 }

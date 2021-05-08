@@ -1,5 +1,5 @@
-<%@ page import="dao.DrugDao" %>
-<%@ page import="model.Drug" %>
+<%@ page import="com.yu_pharm.dao.DrugDao" %>
+<%@ page import="com.yu_pharm.model.Drug" %>
 <%@ page import="java.util.List" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>

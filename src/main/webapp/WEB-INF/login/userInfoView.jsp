@@ -20,7 +20,7 @@
 
 User Name: <b>${user.name}</b>
 <br />
-Mail: ${user.mail } <br />
+Mail: ${user.mail } <br/>
 
 <jsp:include page="../otherElements/_footer.jsp"></jsp:include>
 

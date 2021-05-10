@@ -17,8 +17,11 @@
     <input name="count"/><br><br>
 	<label>Cost</label><br>
     <input name="cost"/><br><br>
-    <input type="submit" value="Save"/>
 </form>
+<input type="submit" value="Save"/>
+<td colspan="2">
+	<a href="/allOrders">Return</a>
+</td>
 <jsp:include page="/WEB-INF/otherElements/_footer.jsp"></jsp:include>
 
 </body>

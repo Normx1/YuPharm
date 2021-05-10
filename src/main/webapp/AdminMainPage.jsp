@@ -9,24 +9,24 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+	<title>Title</title>
 </head>
 <jsp:include page="/WEB-INF/otherElements/_header.jsp"></jsp:include>
 <jsp:include page="/WEB-INF/otherElements/_menu.jsp"></jsp:include>
 <body>
 <form>
-    <p><a href='<c:url value="/adminDrugList" />'>Drugs</a></p>
-    <p><a href='<c:url value="/adminUserList" />'>Users</a></p>
-    <p><a href='<c:url value="/allOrders" />'>Orders</a></p>
+	<p><a href='<c:url value="/adminDrugList" />'>Drugs</a></p>
+	<p><a href='<c:url value="/adminUserList" />'>Users</a></p>
+	<p><a href='<c:url value="/allOrders" />'>Orders</a></p>
 
-    <p><a href="${pageContext.request.contextPath}/">Recipes</a></p>
-        <%--<a href='<c:url value="/drug/edit?id=${drug.id}" />'>Edit</a> |--%>
+	<p><a href="${pageContext.request.contextPath}/">Recipes</a></p>
+	<%--<a href='<c:url value="/drug/edit?id=${drug.id}" />'>Edit</a> |--%>
 </form>
-
-	<jsp:include page="/WEB-INF/otherElements/_footer.jsp"></jsp:include>
-<td colspan ="2">
+<td colspan="2">
 
 	<a href="${pageContext.request.contextPath}/">Cancel</a>
 </td>
+<jsp:include page="/WEB-INF/otherElements/_footer.jsp"></jsp:include>
+
 </body>
 </html>

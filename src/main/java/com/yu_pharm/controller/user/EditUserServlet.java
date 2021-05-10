@@ -42,7 +42,7 @@ public class EditUserServlet extends HttpServlet {
             String password = request.getParameter("password");
             User user = new User(id, name, mail, password);
             userBasicDao.updateById(user);
-            response.sendRedirect(request.getContextPath() + "/");
+			response.sendRedirect(request.getContextPath() + "/adminUserList");
         } catch (Exception ex) {
             ex.printStackTrace();
             getServletContext().getRequestDispatcher("/notfound.jsp").forward(request, response);

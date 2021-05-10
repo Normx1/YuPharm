@@ -23,7 +23,7 @@ public class DeleteDrugServlet extends HttpServlet {
         try {
             int id = Integer.parseInt(request.getParameter("id"));
              drugDao.deleteById(id);
-            response.sendRedirect( "/adminPage/drugs");
+			response.sendRedirect(request.getContextPath() + "/adminDrugList");
 //Полный путь
         } catch (Exception ex) {
             getServletContext().getRequestDispatcher("notfound.jsp").forward(request, response);

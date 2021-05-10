@@ -46,7 +46,7 @@
          <br><br>
         <b3>I have no account</b3>
         <br><br>
-    <a href= "${pageContext.request.contextPath}/user/create"> Regisration</a>
+    <a href= "${pageContext.request.contextPath}/user/create"> Registration</a>
 
  </form>
 

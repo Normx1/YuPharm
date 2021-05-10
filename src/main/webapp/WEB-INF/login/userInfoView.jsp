@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: qa
@@ -21,6 +22,8 @@
 User Name: <b>${user.name}</b>
 <br />
 Mail: ${user.mail } <br/>
+
+<a href='<c:url value="/userOrders?name=${user.name}" />'>My Orders</a> |
 
 <jsp:include page="../otherElements/_footer.jsp"></jsp:include>
 

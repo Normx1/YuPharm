@@ -55,7 +55,7 @@ public class EditDrugServlet extends HttpServlet {
              System.out.println("id: "+ id);
             Drug drug = new Drug(id, drugName, cost, count, recipe);
             drugDao.updateById(drug);
-            response.sendRedirect(request.getContextPath()+"/");
+			response.sendRedirect(request.getContextPath() + "/adminDrugList");
         } catch (Exception ex) {
 //            getServletContext().getRequestDispatcher(request.getContextPath() + "/notfound.jsp").forward(request, response);
             System.out.println("not success" + "  " + ex);

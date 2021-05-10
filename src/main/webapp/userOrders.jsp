@@ -12,25 +12,20 @@
 </head>
 <body>
 <jsp:include page="/WEB-INF/otherElements/_header.jsp"></jsp:include>
-<h3>All${user.name}orders</h3>
+<h3>All ${user.name} orders</h3>
 <br>
-<form method="get" action='<c:url value="/createOrder" />' style="display:inline;">
-	<input type="submit" value="Create New">
-</form>
-<br><br>
 <table border="1" cellpadding="5" cellspacing="1">
 	<tr>
 		<th>ID Order</th>
 		<th>Drug</th>
-		<th>User</th>
 		<th>Count</th>
 		<th>Cost</th>
+		<th>Date of order</th>
 	</tr>
 	<c:forEach var="order" items="${requestScope.order}">
 		<tr>
 			<td>${order.id_Order}</td>
 			<td>${order.drug}</td>
-			<td>${order.user}</td>
 			<td>${order.count}</td>
 			<td>${order.cost}</td>
 		</tr>
@@ -38,7 +33,6 @@
 </table>
 <br>
 <td colspan="2">
-
 	<a href="${pageContext.request.contextPath}/">Return</a>
 </td>
 <br>

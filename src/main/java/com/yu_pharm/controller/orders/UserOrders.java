@@ -1,4 +1,4 @@
-package com.yu_pharm.controller.login;
+package com.yu_pharm.controller.orders;
 
 import com.yu_pharm.dao.OrderDao;
 import com.yu_pharm.dao.OrderDao_Imp;
@@ -19,7 +19,7 @@ public class UserOrders extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		try {
 
-			String userName =  req.getParameter("user.name");
+			String userName =  req.getParameter("name");
 			req.setAttribute("order", order.getByUserName(userName));
 			getServletContext().getRequestDispatcher("/userOrders.jsp").forward(req, resp);
 		} catch (

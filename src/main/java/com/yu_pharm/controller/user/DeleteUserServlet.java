@@ -23,7 +23,7 @@ public class DeleteUserServlet extends HttpServlet {
             //Отличие sendRedirect  и forward в том что 1 показывает url не полный а 2 полный путь, вроде так
             int id = Integer.parseInt(request.getParameter("id"));
             userBasicDao.deleteById(id);
-            response.sendRedirect(request.getContextPath() + "/");
+			response.sendRedirect(request.getContextPath() + "/adminUserList");
         } catch (Exception ex) {
             getServletContext().getRequestDispatcher("/notfound.jsp").forward(request, response);
         }

@@ -18,13 +18,13 @@ public class DeleteOrderServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		try {
-			int id = Integer.parseInt(req.getParameter("id_order"));
+			int id = Integer.parseInt(req.getParameter("id_Order"));
+			System.out.println(id);
 			orderDao.deleteById(id);
 			resp.sendRedirect("/allOrders");
-			// TODO: 10.05.2021 Добавить путь ?
-		} catch (Exception ex) {
-			getServletContext().getRequestDispatcher("notfound.jsp").forward(req, resp);
-			System.out.println("not success" + "  " + ex);
+ 		} catch (Exception ex) {
+ 			ex.printStackTrace();
+			throw new RuntimeException(ex);
 		}
 	}
 }

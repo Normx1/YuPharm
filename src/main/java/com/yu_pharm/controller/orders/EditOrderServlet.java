@@ -45,8 +45,7 @@ public class EditOrderServlet extends HttpServlet {
 			String userName = req.getParameter("user");
 			BasicDao<User> user = new UserDao();
 			int id_user = (user.getByName(userName)).getId();
-			System.out.println(id_user);
-			String drugName = req.getParameter("drug");
+ 			String drugName = req.getParameter("drug");
 			/// TODO: 10.05.2021 Сделать обработку ошибки на Юзера и Лекарства, если такие не найдены.
 			BasicDao<Drug> drug = new DrugDao();
 			int id_drug = (drug.getByName(drugName)).getId();

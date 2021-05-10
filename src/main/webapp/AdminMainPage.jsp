@@ -24,5 +24,9 @@
 </form>
 
 	<jsp:include page="/WEB-INF/otherElements/_footer.jsp"></jsp:include>
+<td colspan ="2">
 
+	<a href="${pageContext.request.contextPath}/">Cancel</a>
+</td>
 </body>
+</html>

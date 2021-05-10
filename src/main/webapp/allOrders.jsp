@@ -13,8 +13,13 @@
 </head>
 <body>
 <jsp:include page="/WEB-INF/otherElements/_header.jsp"></jsp:include>
+<h3>Orders</h3>
+<br>
+ <form method="get" action='<c:url value="/createOrder" />' style="display:inline;">
+ 	<input type="submit" value="Create New">
+</form>
+<br><br>
 <table border="1" cellpadding="5" cellspacing="1">
-	<h3>Orders</h3>
 	<tr>
 		<th>ID Order</th>
 		<th>Drug</th>
@@ -33,12 +38,18 @@
 	 			 			<td>
 				<a href='<c:url value="order/edit?id=${order.id_Order}" />'>Edit</a> |
 				<form method="post" action='<c:url value="/order/delete" />' style="display:inline;">
-					<input type="hidden" name="id" value="${order.id_Order}">
+					<input type="hidden" name="id_Order" value="${order.id_Order}">
 					<input type="submit" value="Delete">
 				</form>
 		</tr>
 	</c:forEach>
 </table>
+<br>
+<td colspan ="2">
+
+	<a href="${pageContext.request.contextPath}/">Cancel</a>
+</td>
+<br>
 <jsp:include page="/WEB-INF/otherElements/_footer.jsp"></jsp:include>
 
 </body>

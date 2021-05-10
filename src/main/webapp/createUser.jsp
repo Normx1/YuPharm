@@ -16,5 +16,9 @@
     <input name="password"/><br><br>
     <input type="submit" value="Save"/>
 </form>
+<td colspan ="2">
+
+	<a href="${pageContext.request.contextPath}/">Cancel</a>
+</td>
 </body>
 </html>

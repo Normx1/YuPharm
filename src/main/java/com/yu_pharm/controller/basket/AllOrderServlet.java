@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @WebServlet("/allOrders")
-public class allOrders extends HttpServlet {
+public class AllOrderServlet extends HttpServlet {
 	OrderDao<Order> order = new OrderDao_Imp();
 
 	@Override

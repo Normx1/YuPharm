@@ -15,13 +15,13 @@
 <h3>Edit medicine:</h3>
 <form method="post" action="/order/edit">
 	<label>Id Order</label><br>
-	<input name="id_order" value="${order.id_order}"/>
+	<input name="id_Order" value="${order.id_Order}"/>
 	<br><br>
-	<label>id User</label><br>
-	<input name="id_user" value="${order.id_user}" />
+	<label>Drug</label><br>
+	<input name="drug" value="${order.drug}" />
 	<br><br>
-	<label>id Drug</label><br>
-	<input name="id_drug" value="${order.id_drug}" />
+	<label>User</label><br>
+	<input name="user" value="${order.user}" />
 	<br><br>
 
 	<label>Count</label><br>
@@ -29,20 +29,18 @@
 	<br><br>
 
 	<label>Cost</label><br>
-	<input name="cost" value="${order.recipe}" />
+	<input name="cost" value="${order.cost}" />
 	<br><br>
 
-</form>
-<br><br>
-<input type="hidden" name="id" value="${order.id_order}">
 
-<%--    <label>Description</label><br>--%>
-<%--    <input name="description"/><br><br>--%>
+<input type="hidden" name="id_order" value="${order.id_Order}">
 <input type="submit" value="Save"/>|
 <td colspan ="2">
 
 	<a href="${pageContext.request.contextPath}/">Cancel</a>
 </td>
+</form>
+<br><br>
 <jsp:include page="/WEB-INF/otherElements/_footer.jsp"></jsp:include>
 </form>
 </body>

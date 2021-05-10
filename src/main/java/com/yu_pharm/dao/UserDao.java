@@ -47,7 +47,7 @@ public class UserDao implements BasicDao<User> {
                     String name = resultSet.getString(2);
                     String mail = resultSet.getString(3);
                     String password = resultSet.getString(4);
-                    User userById = new User( id, name, mail, password);
+					user = new User( id, name, mail, password);
                 }
             }
         } catch (Exception ex) {
@@ -117,12 +117,13 @@ public class UserDao implements BasicDao<User> {
 			String sql = "select * from table_name where name=?";
 			try (PreparedStatement preparedStatement = conn.prepareStatement(sql)) {
 				preparedStatement.setString(1, name);
+				System.out.println(name);
 				ResultSet resultSet = preparedStatement.executeQuery();
 				if (resultSet.next()) {
 					int id = resultSet.getInt(1);
  					String mail = resultSet.getString(3);
 					String password = resultSet.getString(4);
-					User userById = new User( id, name, mail, password);
+					user = new User( id, name, mail, password);
 				}
 			}
 		} catch (Exception ex) {

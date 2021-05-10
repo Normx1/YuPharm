@@ -59,9 +59,9 @@ public class OrderDao_Imp implements OrderDao {
                     int userId = resultSet.getInt(3);
                     String drugName = drugDao.getById(drugId).getName();
                     String userName = userDao.getById(userId).getName();
-
+					System.out.println(userId);
                     order.setDrug(drugName);
-                    order.setDrug(userName);
+                    order.setUser(userName);
 
                     order.setCount(resultSet.getInt(4));
                     order.setCost(resultSet.getInt(5));
@@ -94,7 +94,7 @@ public class OrderDao_Imp implements OrderDao {
                     String userName = userDao.getById(userId).getName();
 
                     order.setDrug(drugName);
-                    order.setDrug(userName);
+                    order.setUser(userName);
 
                     order.setCount(resultSet.getInt(4));
                     order.setCost(resultSet.getInt(5));
@@ -124,7 +124,7 @@ public class OrderDao_Imp implements OrderDao {
                     String drugName = drugDao.getById(drugId).getName();
 
                     order.setDrug(drugName);
-                    order.setDrug(userName);
+                    order.setUser(userName);
 
                     order.setCount(resultSet.getInt(4));
                     order.setCost(resultSet.getInt(5));
@@ -154,7 +154,7 @@ public class OrderDao_Imp implements OrderDao {
                     String userName = userDao.getById(userId).getName();
 
                     order.setDrug(drugName);
-                    order.setDrug(userName);
+                    order.setUser(userName);
 
                     order.setCount(resultSet.getInt(4));
                     order.setCost(resultSet.getInt(5));
@@ -186,15 +186,16 @@ public class OrderDao_Imp implements OrderDao {
     @Override
     public Object updateById(Order  order) {
         try (Connection conn = JDBCConnector.getConnection()) {
-            String sql = "UPDATE orders SET id_user = ?,  id_drug = ?, count = ?, cost = ? where id_order = ? ";
+            String sql = "UPDATE orders SET id_drug = ?,  id_user = ?,  count = ?, cost = ? where id_order = ? ";
             try (PreparedStatement preparedStatement = conn.prepareStatement(sql)) {
-                preparedStatement.setInt(1, (Integer) order.getUser());
-                preparedStatement.setInt(2, (Integer) order.getUser());
+                preparedStatement.setInt(1, (int)order.getDrug());
+                preparedStatement.setInt(2, (int)order.getUser());
                 preparedStatement.setInt(3, order.getCount());
                 preparedStatement.setInt(4, order.getCost());
                 preparedStatement.setInt(5, order.getId_Order());
 
                 preparedStatement.execute();
+				System.out.println(order.getDrug()+" "+ order.getUser());
             }
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -206,7 +207,7 @@ public class OrderDao_Imp implements OrderDao {
     @Override
     public Object create(Order  order) {
              try (Connection conn = JDBCConnector.getConnection()) {
-                String sql = "insert into orders (id_user, id_drug, count," +
+                String sql = "insert into orders (id_drug, id_user,  count," +
                         "cost) values (?, ?, ?, ?)";
                 try (PreparedStatement preparedStatement = conn.prepareStatement(sql)) {
                     preparedStatement.setInt(1, (Integer) order.getUser());

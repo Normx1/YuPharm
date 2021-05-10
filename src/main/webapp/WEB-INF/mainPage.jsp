@@ -49,23 +49,15 @@
 
             </td>
             <td>
-                <a href='<c:url value="/drug/edit?id=${drug.id}" />'>Edit</a> |
-                <form method="post" action='<c:url value="/drug/delete" />' style="display:inline;">
-                    <input type="hidden" name="id" value="7">
-                    <input type="submit" value="Delete">
+                <form method="post" action='<c:url value="/drugBuy" />' style="display:inline;">
+                    <input type="hidden" name="drug_id" value="${drug.id}">
+                    <input type="submit" value="Buy">
                 </form>
-<%--                <a href="/drug/delete?id=${drug.id}">Delete</a>--%>
             </td>
         </tr>
     </c:forEach>
 </table>
-<%--<table--%>
-<%--<jsp:include page="/adminListDrugs.jsp"></jsp:include>--%>
-<%--</table--%>
 <br><br>
-<form>
-	<p><a href='<c:url value="/allOrders" />'>Orders</a></p>
-</form>
 <table>
     <jsp:include page="otherElements/_footer.jsp"></jsp:include>
 </table>

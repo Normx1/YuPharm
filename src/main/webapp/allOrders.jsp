@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: Сергей
@@ -12,9 +13,8 @@
 </head>
 <body>
 <jsp:include page="/WEB-INF/otherElements/_header.jsp"></jsp:include>
-<h3>Edit medicine:</h3>
 <table border="1" cellpadding="5" cellspacing="1">
-	<h3>Drugs</h3>
+	<h3>Orders</h3>
 	<tr>
 		<th>ID Order</th>
 		<th>Drug</th>
@@ -28,8 +28,8 @@
 			<td>${order.id_Order}</td>
 			<td>${order.drug}</td>
 			<td>${order.user}</td>
-			<td>${order.count} $</td>
-			<td>${order.cost} $</td>
+			<td>${order.count}</td>
+			<td>${order.cost}</td>
 	 			 			<td>
 				<a href='<c:url value="order/edit?id=${order.id_Order}" />'>Edit</a> |
 				<form method="post" action='<c:url value="/order/delete" />' style="display:inline;">

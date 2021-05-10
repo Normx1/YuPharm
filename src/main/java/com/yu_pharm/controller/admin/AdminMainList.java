@@ -17,15 +17,10 @@ public class AdminMainList extends HttpServlet {
 		try {
 			getServletContext().getRequestDispatcher("/AdminMainPage.jsp").forward(request, response);
 
-		} catch (				Exception ex) {
+		} catch (
+				Exception ex) {
 			System.out.println("not success" + "  " + ex);
 		}
-
-	}
-
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		PrintWriter writer = response.getWriter();
-		writer.print("something");
 
 	}
 }

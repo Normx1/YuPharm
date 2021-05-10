@@ -33,6 +33,7 @@ public class OrderDao_Imp implements OrderDao {
                 int cost = resultSet.getInt(5);
                 Order<String, String> order = new Order<String, String>(Order_id, drugName, userName, count, cost);
                 orderList.add(order);
+			 orderList.stream().forEach(order1 -> System.out.println(order1.getUser()));
             }
         } catch (Exception ex) {
             System.out.println(ex);

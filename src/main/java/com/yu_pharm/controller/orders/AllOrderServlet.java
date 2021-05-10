@@ -13,16 +13,19 @@ import java.io.IOException;
 
 @WebServlet("/allOrders")
 public class AllOrderServlet extends HttpServlet {
-	OrderDao<Order> order = new OrderDao_Imp();
+	OrderDao<Order<String,String>> order = new OrderDao_Imp();
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		try {
 			req.setAttribute("order", order.getAll());
-			getServletContext().getRequestDispatcher("WEB-INF/OrderPage/allOrders.jsp");
+			order.getAll().stream().forEach(order1 -> order1.getId_Order());
+			getServletContext().getRequestDispatcher("/allOrders.jsp").forward(req, resp);
 		} catch (
 				Exception ex) {
-			System.out.println("not success" + "  " + ex);
+			ex.printStackTrace();
+			throw new RuntimeException(ex);
 		}
 	}
+
 }

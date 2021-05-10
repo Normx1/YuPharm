@@ -62,8 +62,13 @@
 <%--<table--%>
 <%--<jsp:include page="/adminListDrugs.jsp"></jsp:include>--%>
 <%--</table--%>
+<br><br>
+<form>
+	<p><a href='<c:url value="/allOrders" />'>Orders</a></p>
+</form>
 <table>
     <jsp:include page="otherElements/_footer.jsp"></jsp:include>
 </table>
+
 </body>
 </html>

@@ -17,12 +17,12 @@
 <form>
     <p><a href='<c:url value="/adminDrugList" />'>Drugs</a></p>
     <p><a href='<c:url value="/adminUserList" />'>Users</a></p>
-    <p><a href="${pageContext.request.contextPath}/">Orders</a></p>
+    <p><a href='<c:url value="/allOrders" />'>Orders</a></p>
 
     <p><a href="${pageContext.request.contextPath}/">Recipes</a></p>
         <%--<a href='<c:url value="/drug/edit?id=${drug.id}" />'>Edit</a> |--%>
 </form>
-<jsp:include page="/WEB-INF/otherElements/_footer.jsp"></jsp:include>
+
+	<jsp:include page="/WEB-INF/otherElements/_footer.jsp"></jsp:include>
 
 </body>
-</html>

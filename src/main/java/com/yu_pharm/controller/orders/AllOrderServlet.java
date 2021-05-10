@@ -1,4 +1,4 @@
-package com.yu_pharm.controller.basket;
+package com.yu_pharm.controller.orders;
 
 import com.yu_pharm.dao.OrderDao;
 import com.yu_pharm.dao.OrderDao_Imp;
@@ -17,7 +17,12 @@ public class AllOrderServlet extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		req.setAttribute("order", order.getAll());
-		getServletContext().getRequestDispatcher("/OrderPage/allOrders.jsp");
+		try {
+			req.setAttribute("order", order.getAll());
+			getServletContext().getRequestDispatcher("WEB-INF/OrderPage/allOrders.jsp");
+		} catch (
+				Exception ex) {
+			System.out.println("not success" + "  " + ex);
+		}
 	}
 }

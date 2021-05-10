@@ -33,7 +33,7 @@
     <br><br>
     <label>Application</label><br>
     <input name="Application" value="Application"/>
-    </textarea>
+    </form>
     <br><br>
     <input type="hidden" name="id" value="${drug.id}">
 

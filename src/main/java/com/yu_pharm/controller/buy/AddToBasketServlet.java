@@ -24,7 +24,7 @@ public class AddToBasketServlet extends HttpServlet {
 			for (String value : request.getParameterValues("drug_id"))
 				if (!value.trim().isEmpty())
 					bean.addItem(Integer.parseInt(value.trim()));
-			System.out.println(bean.getIds());
+//			System.out.println(bean.getIds());
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}

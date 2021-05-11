@@ -50,6 +50,7 @@
 	<a href="${pageContext.request.contextPath}/">Cancel</a>
 </td>
 <br>
+
 <jsp:include page="/WEB-INF/otherElements/_footer.jsp"></jsp:include>
 
 </body>

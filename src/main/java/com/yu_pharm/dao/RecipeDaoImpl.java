@@ -1,7 +1,6 @@
 package com.yu_pharm.dao;
 
-import com.sun.tools.javac.comp.Todo;
-import com.yu_pharm.model.Drug;
+ import com.yu_pharm.model.Drug;
 import com.yu_pharm.model.Order;
 import com.yu_pharm.model.Recipe;
 import com.yu_pharm.model.User;

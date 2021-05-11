@@ -49,7 +49,7 @@
 
             </td>
             <td>
-                <form method="post" action='<c:url value="/drugBuy" />' style="display:inline;">
+                <form method="post" action='<c:url value="/drugBuy"/>' style="display:inline;">
                     <input type="hidden" name="drug_id" value="${drug.id}">
                     <input type="submit" value="Add to basket">
                 </form>

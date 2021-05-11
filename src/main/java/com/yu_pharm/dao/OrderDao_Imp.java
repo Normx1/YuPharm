@@ -112,7 +112,7 @@ public class OrderDao_Imp implements OrderDao {
 		Order<String, String> order = new Order<String, String>();
 		DrugDao drugDao = new DrugDao();
 		UserDao userDao = new UserDao();
-		int userId = (userDao.getByName(userName)).getId(); //не риализованыый метод поиска лекарства по имени
+		int userId = (userDao.getByName(userName)).getId();
 		try (Connection conn = JDBCConnector.getConnection();) {
 			String sql = "select * from orders where id_user=?";
 			try (PreparedStatement preparedStatement = conn.prepareStatement(sql)) {

@@ -1,0 +1,5 @@
+package com.yu_pharm.controller.recipe;
+
+public class EditRecipeServlet {
+
+}

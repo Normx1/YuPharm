@@ -76,7 +76,6 @@ public class DrugDao implements BasicDao<Drug> {
 
     @Override
     public Drug updateById(Drug drug) {
-        System.out.println(99);
          try (Connection conn = JDBCConnector.getConnection()) {
             String sql = "UPDATE drugs SET name = ?,  count = ?, cost = ?, recipe = ? where id = ? ";
             try (PreparedStatement preparedStatement = conn.prepareStatement(sql)) {

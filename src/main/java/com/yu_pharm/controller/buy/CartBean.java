@@ -15,6 +15,18 @@ public class CartBean {
 		return new ArrayList<Integer>(ids);
 	}
 
+	public synchronized void removeItem(int id) {
+		ids.remove(id);
+	}
+
+	public synchronized int getId(int id) {
+		return ids.get(id);
+	}
+
+	public synchronized int length() {
+		return ids.size();
+	}
+
 	public static CartBean get(HttpSession session) {
 		CartBean cart = (CartBean) session.getAttribute("cart");
 		if (cart == null) {

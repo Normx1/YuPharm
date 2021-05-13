@@ -23,8 +23,7 @@ public class EditDrugServlet extends HttpServlet {
             throws ServletException, IOException {
         try {
             int id = Integer.parseInt(request.getParameter("id"));
-            System.out.println(id);
-            Drug drug = drugDao.getById(id);
+             Drug drug = drugDao.getById(id);
              if (drug != null) {
                 request.setAttribute("drug", drug);
                 request.getServletContext().getRequestDispatcher("/editDrug.jsp").forward(request, response);

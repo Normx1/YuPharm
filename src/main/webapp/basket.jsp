@@ -1,68 +1,49 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Сергей
-  Date: 11.05.2021
-  Time: 17:18
-  To change this template use File | Settings | File Templates.
---%>
+<%@ page import="com.yu_pharm.dao.DrugDao" %>
+<%@ page import="com.yu_pharm.model.Drug" %>
+<%@ page import="java.util.List" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
+
+<!DOCTYPE html>
+<html lang="ru">
 <head>
+	<meta charset="UTF-8">
 	<title>Title</title>
 </head>
-<jsp:include page="/WEB-INF/otherElements/_header.jsp"></jsp:include>
-<jsp:include page="/WEB-INF/otherElements/_menu.jsp"></jsp:include>
-<div align="left">
-	<h3>Your basket</h3>
-</div>
-<table border="1" cellpadding="5" cellspacing="1">
 
+<div align="left">
+	<h3>Cure recipe</h3>
+</div>
+<body>
+
+<table border="1" cellpadding="5" cellspacing="1">
 	<tr>
-		<th>№</th>
+		<th>Id</th>
 		<th>Name</th>
 		<th>Count</th>
 		<th>Cost</th>
 		<th>Recipe</th>
-		<th>Info</th>
-		<th>Delete</th>
-	</tr>
-	<c:forEach var="drug" items="${requestScope.drugs}">
+  	</tr>
+	<c:forEach var="cure" items="${requestScope.cure}">
 		<tr>
-			<td>${drug.id}</td>
-			<td>${drug.name}</td>
-			<td>${drug.count}</td>
-			<td>${drug.cost} $</td>
+			<td>${cure.id}</td>
+			<td>${cure.name}</td>
+			<td>${cure.count}</td>
+			<td>${cure.cost} $</td>
 			<td>
-				<div align="center"> ${drug.recipe}
+				<div align="center"> ${cure.recipe}
 				</div>
 			</td>
 			<td>
-				<a href='<c:url value="drug/drugInfo?id=${drug.id}"/>'>Details</a>
+				<a href='<c:url value="drug/drugInfo?id=${cure.id}"/>'>Details</a>
 
 			</td>
-			<td>
-				<form method="post" action='<c:url value="" />' style="display:inline;">
-					<input type="hidden" name="id" value="${drug.id}">
-					<input type="submit" value="Delete">
-				</form>
-		</tr>
 
+		</tr>
 	</c:forEach>
 </table>
 <br><br>
-<form method="post" action='<c:url value="/drugBuy"/>' style="display:inline;">
-	<input type="hidden" name="drug_id" value="${drug.id}">
-	<input type="submit" value="Add to basket">
-</form>
-<br>
-<td colspan="2">
 
-	<a href="${pageContext.request.contextPath}/">Cancel</a>
-</td>
-<br>
-<table>
-	<jsp:include page="/WEB-INF/otherElements/_footer.jsp"></jsp:include>
-</table>
 
 </body>
 </html>

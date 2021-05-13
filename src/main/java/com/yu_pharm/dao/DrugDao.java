@@ -54,7 +54,7 @@ public class DrugDao implements BasicDao<Drug> {
             ex.printStackTrace();
             throw new RuntimeException(ex);
         }
-        return drug;
+        return  drug;
     }
 
     @Override

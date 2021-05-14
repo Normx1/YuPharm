@@ -16,7 +16,11 @@ public class CartBean {
 	}
 
 	public synchronized void removeItem(int id) {
-		ids.remove(id);
+		for (int i = 0; i < ids.size(); i++) {
+			if (id == ids.get(i)) {
+				ids.remove(i);
+			}
+		}
 	}
 
 	public synchronized int getId(int id) {

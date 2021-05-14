@@ -24,9 +24,10 @@ public class BasketServlet extends HttpServlet {
 		HttpSession session = req.getSession();
 		CartBean bean = CartBean.get(session);
 
-		// TODO: 13.05.2021 Реализовать метод вывода в корзину товаров 
 		try {
-			session.setAttribute("cure", drugDao.getAll().stream().filter(b -> bean.getIds().contains(b.getId())).collect(Collectors.toList()));
+			session.setAttribute("cure", drugDao.getAll().stream().filter(b -> bean.getIds()
+					.contains(b.getId()))
+					.collect(Collectors.toList()));
 			getServletContext().getRequestDispatcher("/basket.jsp").forward(req, resp);
 		} catch (IOException ex) {
 			ex.printStackTrace();

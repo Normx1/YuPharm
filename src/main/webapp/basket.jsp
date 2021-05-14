@@ -10,28 +10,27 @@
 	<meta charset="UTF-8">
 	<title>Title</title>
 </head>
-
-<div align="left">
-	<h3>Cure recipe</h3>
-</div>
 <body>
 <jsp:include page="/WEB-INF/otherElements/_header.jsp"></jsp:include>
-
+<div align="left">
+	<h2>Basket</h2>
+</div>
+<br>
 <table border="1" cellpadding="5" cellspacing="1">
 	<tr>
 		<th>Id</th>
 		<th>Name</th>
- 		<th>Cost</th>
+		<th>Cost</th>
 		<th>Recipe</th>
 		<th>Info</th>
 		<th>Delete</th>
-  	</tr>
+	</tr>
 	<c:forEach var="cure" items="${sessionScope.cure}">
 		<tr>
 			<td>${cure.id}</td>
 			<td>${cure.name}</td>
- 			<td>${cure.cost} $</td>
- 			<td>
+			<td>${cure.cost} $</td>
+			<td>
 				<div align="center"> ${cure.recipe}
 				</div>
 			</td>
@@ -45,17 +44,29 @@
 					<input type="submit" value="Delete">
 				</form>
 			</td>
-
 		</tr>
 	</c:forEach>
+
 </table>
+ 	<table>
+		<tr>
+			<td>
+		<h2>Total cost: ${totalCost}$
+			</td>
+			<td>
+	<form method="post" action='<c:url value="/createOrder"/>' style="display:inline;">
+		<input type="hidden" name="cure" value="${sessionScope.cure}">
+		<input type="submit" value="Buy">
+
+	</form>
+			</td>
+		</tr>
+	</table>
+
 <form>
 	<a href="${pageContext.request.contextPath}/">Return</a>
 	<jsp:include page="/WEB-INF/otherElements/_footer.jsp"></jsp:include>
 
 </form>
-<br><br>
-
-
 </body>
 </html>

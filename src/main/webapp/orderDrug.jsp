@@ -12,11 +12,10 @@
 </head>
 <body>
 <jsp:include page="/WEB-INF/otherElements/_header.jsp"></jsp:include>
-<h3>Your ${user.name} orders</h3>
+<h3>Your order # ${order.id_Order}</h3>
 <br>
 <table border="1" cellpadding="5" cellspacing="1">
 	<tr>
-		<th>ID Order</th>
 		<th>Drug</th>
 		<th>Count</th>
 		<th>Cost</th>
@@ -24,10 +23,10 @@
 	</tr>
 	<c:forEach var="order" items="${requestScope.order}">
 		<tr>
-			<td>${order.id_Order}</td>
 			<td>${order.drug}</td>
 			<td>${order.count}</td>
 			<td>${order.cost}</td>
+			<td> </td>
 		</tr>
 	</c:forEach>
 </table>

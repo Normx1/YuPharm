@@ -24,7 +24,7 @@
 		<th>Cost</th>
 		<th>Recipe</th>
   	</tr>
-	<c:forEach var="cure" items="${requestScope.cure}">
+	<c:forEach var="cure" items="${sessionScope.cure}">
 		<tr>
 			<td>${cure.id}</td>
 			<td>${cure.name}</td>

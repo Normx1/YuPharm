@@ -1,6 +1,5 @@
 package com.yu_pharm.controller.buy;
 
-import com.sun.tools.javac.comp.Todo;
 import com.yu_pharm.dao.BasicDao;
 import com.yu_pharm.dao.DrugDao;
 import com.yu_pharm.model.Drug;
@@ -14,6 +13,7 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @WebServlet("/basket")
 public class BasketServlet extends HttpServlet {
@@ -23,11 +23,10 @@ public class BasketServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		HttpSession session = req.getSession();
 		CartBean bean = CartBean.get(session);
-		List<Integer> listId = bean.getIds();
-		Drug cure = drugDao.getById(listId.get(0));
+
 		// TODO: 13.05.2021 Реализовать метод вывода в корзину товаров 
- 		try {
-			req.setAttribute("cure", drugDao.getAll());
+		try {
+			session.setAttribute("cure", drugDao.getAll().stream().filter(b -> bean.getIds().contains(b.getId())).collect(Collectors.toList()));
 			getServletContext().getRequestDispatcher("/basket.jsp").forward(req, resp);
 		} catch (IOException ex) {
 			ex.printStackTrace();

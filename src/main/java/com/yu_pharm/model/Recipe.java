@@ -5,8 +5,9 @@ import java.util.Date;
 public class Recipe {
 	private int recId;
 	private int drugId;
-	private	int userId;
+	private int userId;
 	private Date expDate;
+	private int recipeCount;
 
 	public Recipe(int recId, int drugId, int userId, Date expDate) {
 		this.recId = recId;
@@ -15,19 +16,26 @@ public class Recipe {
 		this.expDate = expDate;
 	}
 
-	public Recipe(int drugId, int userId, Date expDate) {
+	public Recipe(int drugId, int userId, Date expDate, int recipeCount) {
 		this.drugId = drugId;
 		this.userId = userId;
 		this.expDate = expDate;
-	}
-
-	public Recipe(int recId, int drugId, int userId) {
-		this.recId = recId;
-		this.drugId = drugId;
-		this.userId = userId;
+		this.recipeCount = recipeCount;
 	}
 
 	public Recipe() {
+	}
+
+	public Recipe(int recId) {
+		this.recId = recId;
+	}
+
+	public Recipe(int recId, int drugId, int userId, Date expDate, int recipeCount) {
+		this.recId = recId;
+		this.drugId = drugId;
+		this.userId = userId;
+		this.expDate = expDate;
+		this.recipeCount = recipeCount;
 	}
 
 	public int getRecId() {
@@ -61,4 +69,13 @@ public class Recipe {
 	public void setExpDate(Date expDate) {
 		this.expDate = expDate;
 	}
+
+	public int getRecipeCount() {
+		return recipeCount;
+	}
+
+	public void setRecipeCount(int recipeCount) {
+		this.recipeCount = recipeCount;
+	}
 }
+

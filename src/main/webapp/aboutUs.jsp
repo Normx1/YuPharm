@@ -20,6 +20,8 @@ We have a wide selection of high-quality products at affordable prices: natural 
 More than 140 pharmacies and shops throughout Belarus. Call us and we will tell you the nearest pharmacy to your home or work.
 Also, residents of Minsk can order goods with home delivery through our online store. And residents of other cities — delivery by mail with payment by cash on delivery.
 YuPharm — MORE THAN A PHARMACY
+<br>
+<br>
 <a href="${pageContext.request.contextPath}/">Return</a>
 <table>
 	<jsp:include page="/WEB-INF/otherElements/_footer.jsp"></jsp:include>

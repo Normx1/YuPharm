@@ -8,9 +8,9 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <div style="padding: 5px;  align: left;">
 
-    <a href="${pageContext.request.contextPath}/">News</a>
+    <a href="${pageContext.request.contextPath}/news">News</a>
     |
-    <a href="${pageContext.request.contextPath}/">About as</a>
+    <a href="${pageContext.request.contextPath}/aboutUs">About as</a>
     |
     <a href="${pageContext.request.contextPath}/productList">Product List</a>
     |

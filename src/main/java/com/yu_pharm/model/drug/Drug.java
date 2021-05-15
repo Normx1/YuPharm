@@ -28,6 +28,10 @@ public interface Drug extends Data {
 			return get("name", String.class);
 		}
 
+		public void name(String name) {
+			set("name", name);
+		}
+
 		public String description() {
 			return get("description", String.class);
 		}

@@ -23,4 +23,18 @@ class SqlDrugsTest {
 		drug.delete();
 		assertEquals(initialSize, drugs.all().size());
 	}
+
+	@Test
+	public void testUpdate() throws Exception {
+		Drugs drugs = new SqlDrugs(JDBCConnector.getConnection());
+		Drug.Smart drug = new Drug.Smart(drugs.create());
+		try {
+			assertEquals("", drug.name());
+			String newName = "Test";
+			drug.name(newName);
+			assertEquals(newName, drug.name());
+		} finally {
+			drug.delete();
+		}
+	}
 }

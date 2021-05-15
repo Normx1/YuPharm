@@ -34,11 +34,16 @@ public class SqlDrug implements Drug {
 
 	@Override
 	public <T> void set(String key, T value) {
-		try (PreparedStatement st = connection.prepareStatement("update drugs set ? = ? where id = ? ")) {
-			st.setString(1, key);
-			st.setObject(2, value);
-			st.setInt(3, id);
-			st.execute();
+		try {
+			if (key.contains("`")) {
+				throw new IllegalArgumentException("Key '" + key + "' contains escape backtick (`) char");
+			}
+			try (PreparedStatement st = connection.prepareStatement("update drugs set `" + key + "` = ? where id = ? ")) {
+				st.setString(1, key);
+				st.setObject(2, value);
+				st.setInt(3, id);
+				st.execute();
+			}
 		} catch (SQLException ex) {
 			throw new RuntimeException("Failed to update info about " + this, ex);
 		}

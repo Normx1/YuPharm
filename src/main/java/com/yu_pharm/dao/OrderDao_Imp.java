@@ -211,7 +211,7 @@ public class OrderDao_Imp implements OrderDao {
 	@Override
 	public Object create(Order order) {
 		try (Connection conn = JDBCConnector.getConnection()) {
-			String sql = "insert into table_name (drug, userName , mail, phone, address, payment, cost) values (?, ?, ?, ?, ?, ?, ?)";
+			String sql = "insert into orders (drug, name , mail, phone, address, payment, cost) values (?, ?, ?, ?, ?, ?, ?)";
 
 			try (PreparedStatement preparedStatement = conn.prepareStatement(sql)) {
 				preparedStatement.setInt(1, (Integer) order.getDrug());

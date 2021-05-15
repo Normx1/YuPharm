@@ -7,7 +7,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SqlDrugs implements Drugs {
+public class SqlDrugs implements Drugs<Drug> {
 
 	private final Connection connection;
 

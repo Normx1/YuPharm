@@ -44,6 +44,20 @@ public interface Drug extends Data {
 			return get("price", double.class);
 		}
 
+		//region Temp
+		public double count() {
+			return get("count", Double.class);
+		}
+
+		public double cost() {
+			return get("cost", Double.class);
+		}
+
+		public byte recipe() {
+			return get("recipe", Byte.class);
+		}
+		//endregion
+
 		@Override
 		public void delete() {
 			obj.delete();

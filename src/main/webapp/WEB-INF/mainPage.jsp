@@ -34,23 +34,23 @@
         <th>info</th>
         <th>Buy</th>
     </tr>
-    <c:forEach var="drug" items="${requestScope.drugs}">
+    <c:forEach var="drug" items="${applicationScope.drugs.all()}">
         <tr>
-            <td>${drug.id}</td>
-            <td>${drug.name}</td>
-            <td>${drug.count}</td>
-            <td>${drug.cost} $</td>
+            <td>${drug.id()}</td>
+            <td>${drug.name()}</td>
+            <td>${drug.count()}</td>
+            <td>${drug.cost()} $</td>
             <td>
-                <div align="center"> ${drug.recipe}
+                <div align="center"> ${drug.recipe()}
                 </div>
             </td>
             <td>
-                <a href='<c:url value="drug/drugInfo?id=${drug.id}"/>'>Details</a>
+                <a href='<c:url value="drug/drugInfo?id=${drug.id()}"/>'>Details</a>
 
             </td>
             <td>
                 <form method="post" action='<c:url value="/drugBuy"/>' style="display:inline;">
-                    <input type="hidden" name="drug_id" value="${drug.id}">
+                    <input type="hidden" name="drug_id" value="${drug.id()}">
                     <input type="submit" value="Add to basket">
                 </form>
             </td>

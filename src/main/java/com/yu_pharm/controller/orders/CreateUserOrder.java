@@ -26,7 +26,7 @@ public class CreateUserOrder extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		getServletContext().getRequestDispatcher("detailOfOrder.jsp").forward(request, response);
+		getServletContext().getRequestDispatcher("/detailOfOrder.jsp").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -36,26 +36,24 @@ public class CreateUserOrder extends HttpServlet {
 		HttpSession session = request.getSession();
 		CartBean bean = CartBean.get(session);
 
-
 		try {
 			String name = request.getParameter("name");
 			String mail = request.getParameter("mail");
-			int phone = Integer.parseInt(request.getParameter("phone"));
+			String phone =   request.getParameter("phone");
 			String address = request.getParameter("address");
 			int payment = Integer.parseInt(request.getParameter("payment"));
 			drugDao.getAll().stream().filter(b -> bean.getIds()
 					.contains(b.getId()))
 					.collect(Collectors.toList());
 			int cost = (int) session.getAttribute("totalCost");
-
-
-			Order order = new Order<BasicDao<Drug>,String>(drugDao, cost, name, address, phone, payment );
+			Order order = new Order<BasicDao<Drug>, String>(drugDao, cost, name, address, phone, payment);
 
 			if (payment == 0) {
+				session.setAttribute("order",order);
 				response.sendRedirect(request.getContextPath() + "/paymentCard");
 			} else {
-				response.sendRedirect(request.getContextPath() + "/");
 				orderDao.create(order);
+				response.sendRedirect(request.getContextPath() + "/");
 			}
 		} catch (Exception ex) {
 			ex.printStackTrace();

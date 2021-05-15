@@ -7,11 +7,11 @@ public class Order<T, T1> {
     private int cost;
     private int count;
     private String address;
-    private  int phone;
+    private  String phone;
     private int name;
     private int payment;
 
-	public Order(int id_Order, T drug, T1 user, int cost, int count, String address, int phone, int name) {
+	public Order(int id_Order, T drug, T1 user, int cost, int count, String address, String phone, int name) {
 		this.id_Order = id_Order;
 		this.drug = drug;
 		this.user = user;
@@ -22,7 +22,7 @@ public class Order<T, T1> {
 		this.name = name;
 	}
 
-	public Order(T drug, int cost, String address, int phone, int name) {
+	public Order(T drug, int cost, String address, String phone, int name) {
 		this.drug = drug;
 		this.cost = cost;
 		this.address = address;
@@ -34,7 +34,7 @@ public class Order<T, T1> {
 		this.drug = drug;
 	}
 
-	public Order(String address, int phone, int name) {
+	public Order(String address, String phone, int name) {
 		this.address = address;
 		this.phone = phone;
 		this.name = name;
@@ -48,11 +48,11 @@ public class Order<T, T1> {
 		this.address = address;
 	}
 
-	public int getPhone() {
+	public String getPhone() {
 		return phone;
 	}
 
-	public void setPhone(int phone) {
+	public void setPhone(String phone) {
 		this.phone = phone;
 	}
 
@@ -72,7 +72,7 @@ public class Order<T, T1> {
 		this.payment = payment;
 	}
 
-	public Order(T drug, int cost,  T1 user, String address, int phone, int payment) {
+	public Order(T drug, int cost,  T1 user, String address, String phone, int payment) {
 		this.drug = drug;
 		this.user = user;
 		this.cost = cost;

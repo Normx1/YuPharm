@@ -54,7 +54,7 @@
 		<h2>Total cost: ${totalCost}$
 			</td>
 			<td>
-	<form method="post" action='<c:url value="/createOrder"/>' style="display:inline;">
+	<form method="get" action='<c:url value="createUserOrder"/>' style="display:inline;">
 		<input type="hidden" name="cure" value="${sessionScope.cure}">
 		<input type="submit" value="Buy">
 

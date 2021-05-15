@@ -29,7 +29,6 @@
 	<input type="checkbox" name="payment" value="2" checked/> Pay by money
 	<br><br>
 	<input type="submit" value="Submit"/>
-
 </form>
 <td colspan="2">
 	<a href="${pageContext.request.contextPath}/">Cancel</a>

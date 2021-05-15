@@ -23,8 +23,11 @@
 	<tr>
 		<th>ID Order</th>
 		<th>Drug</th>
-		<th>User</th>
-		<th>Count</th>
+		<th>User name</th>
+		<th>Mail</th>
+		<th>Phone</th>
+		<th>Address</th>
+		<th>Payment</th>
 		<th>Cost</th>
  		<th>Action</th>
 	</tr>
@@ -33,8 +36,11 @@
 			<td>${order.id_Order}</td>
 			<td>${order.drug}</td>
 			<td>${order.user}</td>
-			<td>${order.count}</td>
+			<td>${order.mail}</td>
+			<td>${order.phone}</td>
+			<td>${order.address}</td>
 			<td>${order.cost}</td>
+			<td>${order.payment}</td>
 	 			 			<td>
 				<a href='<c:url value="order/edit?id=${order.id_Order}" />'>Edit</a> |
 				<form method="post" action='<c:url value="/order/delete" />' style="display:inline;">

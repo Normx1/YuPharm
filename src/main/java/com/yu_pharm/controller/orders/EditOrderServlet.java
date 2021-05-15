@@ -40,24 +40,24 @@ public class EditOrderServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-		try {
-			int id = Integer.parseInt(req.getParameter("id_Order"));
-			String userName = req.getParameter("user");
-			BasicDao<User> user = new UserDao();
-			int id_user = (user.getByName(userName)).getId();
- 			String drugName = req.getParameter("drug");
-			/// TODO: 10.05.2021 Сделать обработку ошибки на Юзера и Лекарства, если такие не найдены.
-			BasicDao<Drug> drug = new DrugDao();
-			int id_drug = (drug.getByName(drugName)).getId();
-
-			int count = Integer.parseInt(req.getParameter("count"));
-			int cost = Integer.parseInt(req.getParameter("cost"));
-			Order order = new Order(id, id_drug, id_user, count, cost);
-			orderDao.updateById(order);
-			resp.sendRedirect(req.getContextPath() + "/");
-		} catch (Exception ex) {
-			ex.printStackTrace();
-			getServletContext().getRequestDispatcher("/notfound.jsp").forward(req, resp);
-		}
+//		try {
+//			int id = Integer.parseInt(req.getParameter("id_Order"));
+//			String userName = req.getParameter("user");
+//			BasicDao<User> user = new UserDao();
+//			int id_user = (user.getByName(userName)).getId();
+// 			String drugName = req.getParameter("drug");
+//			/// TODO: 10.05.2021 Сделать обработку ошибки на Юзера и Лекарства, если такие не найдены.
+//			BasicDao<Drug> drug = new DrugDao();
+//			int id_drug = (drug.getByName(drugName)).getId();
+//
+//			int count = Integer.parseInt(req.getParameter("count"));
+//			int cost = Integer.parseInt(req.getParameter("cost"));
+//			Order order = new Order(id, id_drug, id_user, count, cost);
+//			orderDao.updateById(order);
+//			resp.sendRedirect(req.getContextPath() + "/");
+//		} catch (Exception ex) {
+//			ex.printStackTrace();
+//			getServletContext().getRequestDispatcher("/notfound.jsp").forward(req, resp);
+//		}
 	}
 }

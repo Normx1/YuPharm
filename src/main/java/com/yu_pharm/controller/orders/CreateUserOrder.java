@@ -46,14 +46,14 @@ public class CreateUserOrder extends HttpServlet {
 					.contains(b.getId()))
 					.collect(Collectors.toList());
 			int cost = (int) session.getAttribute("totalCost");
-			Order order = new Order<BasicDao<Drug>, String>(drugDao, cost, name, address, phone, payment);
+//			Order order = new Order<BasicDao<Drug>, String>(drugDao, cost, name, address, phone, payment);
 
 			if (payment == 0) {
-				session.setAttribute("order",order);
+//				session.setAttribute("order",order);
 				response.sendRedirect(request.getContextPath() + "/paymentCard");
 			} else {
-				orderDao.create(order);
-				response.sendRedirect(request.getContextPath() + "/");
+//				orderDao.create(order);
+//				response.sendRedirect(request.getContextPath() + "/");
 			}
 		} catch (Exception ex) {
 			ex.printStackTrace();

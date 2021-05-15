@@ -25,15 +25,17 @@ public class OrderDao_Imp implements OrderDao {
 			while (resultSet.next()) {
 				int Order_id = resultSet.getInt(1);
 				int drugId = resultSet.getInt(2);
-				int userId = resultSet.getInt(3);
-				String drugName = drugDao.getById(drugId).getName();
-				String userName = userDao.getById(userId).getName();
+				String userName = resultSet.getString(3);
+				String mail = resultSet.getString(4);
+				String phone = resultSet.getString(5);
+				String address = resultSet.getString(6);
+				int cost = resultSet.getInt(7);
+				int payment = resultSet.getInt(8);
 
-				int count = resultSet.getInt(4);
-				int cost = resultSet.getInt(5);
-				Order<String, String> order = new Order<String, String>(Order_id, drugName, userName, count, cost);
+				String drugName = drugDao.getById(drugId).getName();
+
+				Order<String, String> order = new Order<String, String>(Order_id, drugName, userName, mail, phone, address, payment, cost);
 				orderList.add(order);
-				orderList.stream().forEach(order1 -> System.out.println(order1.getUser()));
 			}
 		} catch (Exception ex) {
 			System.out.println(ex);
@@ -53,18 +55,17 @@ public class OrderDao_Imp implements OrderDao {
 				preparedStatement.setInt(1, orderId);
 				ResultSet resultSet = preparedStatement.executeQuery();
 				if (resultSet.next()) {
-					order.setId_Order(resultSet.getInt(1));
-
+					int Order_id = resultSet.getInt(1);
 					int drugId = resultSet.getInt(2);
-					int userId = resultSet.getInt(3);
+					String userName = resultSet.getString(3);
+					String mail = resultSet.getString(4);
+					String phone = resultSet.getString(5);
+					String address = resultSet.getString(6);
+					int cost = resultSet.getInt(7);
+					int payment = resultSet.getInt(8);
+//					int count = resultSet.getInt(9);
 					String drugName = drugDao.getById(drugId).getName();
-					String userName = userDao.getById(userId).getName();
-					System.out.println(userId);
-					order.setDrug(drugName);
-					order.setUser(userName);
-
-					order.setCount(resultSet.getInt(4));
-					order.setCost(resultSet.getInt(5));
+					order = new Order<String, String>(Order_id, drugName, userName, mail, phone, address, cost, payment);
 				}
 			}
 		} catch (Exception ex) {
@@ -76,58 +77,60 @@ public class OrderDao_Imp implements OrderDao {
 
 	@Override
 	public Order<String, String> getByUserId(int userId) {
-		Order<String, String> order = new Order<String, String>();
-		DrugDao drugDao = new DrugDao();
-		UserDao userDao = new UserDao();
-
-		try (Connection conn = JDBCConnector.getConnection();) {
-			String sql = "select * from orders where id_user=?";
-			try (PreparedStatement preparedStatement = conn.prepareStatement(sql)) {
-				preparedStatement.setInt(1, userId);
-				ResultSet resultSet = preparedStatement.executeQuery();
-				if (resultSet.next()) {
-					order.setId_Order(resultSet.getInt(1));
-
-					int drugId = resultSet.getInt(2);
-					String drugName = drugDao.getById(drugId).getName();
-
-					String userName = userDao.getById(userId).getName();
-
-					order.setDrug(drugName);
-					order.setUser(userName);
-
-					order.setCount(resultSet.getInt(4));
-					order.setCost(resultSet.getInt(5));
-				}
-			}
-		} catch (Exception ex) {
-			ex.printStackTrace();
-			throw new RuntimeException(ex);
-		}
-		return order;
+//		Order<String, String> order = new Order<String, String>();
+//		DrugDao drugDao = new DrugDao();
+//		UserDao userDao = new UserDao();
+//
+//		try (Connection conn = JDBCConnector.getConnection();) {
+//			String sql = "select * from orders where id_user=?";
+//			try (PreparedStatement preparedStatement = conn.prepareStatement(sql)) {
+//				preparedStatement.setInt(1, userId);
+//				ResultSet resultSet = preparedStatement.executeQuery();
+//				if (resultSet.next()) {
+//					order.setId_Order(resultSet.getInt(1));
+//
+//					int drugId = resultSet.getInt(2);
+//					String drugName = drugDao.getById(drugId).getName();
+//
+//					String userName = userDao.getById(userId).getName();
+//
+//					order.setDrug(drugName);
+//					order.setUser(userName);
+//
+//					order.setCount(resultSet.getInt(4));
+//					order.setCost(resultSet.getInt(5));
+//				}
+//			}
+//		} catch (Exception ex) {
+//			ex.printStackTrace();
+//			throw new RuntimeException(ex);
+//		}
+//		return order;
+		return null;
 	}
 
 	@Override
 	public Order<String, String> getByUserName(String userName) {
 		Order<String, String> order = new Order<String, String>();
 		DrugDao drugDao = new DrugDao();
-		UserDao userDao = new UserDao();
-		int userId = (userDao.getByName(userName)).getId();
+
 		try (Connection conn = JDBCConnector.getConnection();) {
-			String sql = "select * from orders where id_user=?";
+			String sql = "select * from orders where userName=?";
 			try (PreparedStatement preparedStatement = conn.prepareStatement(sql)) {
-				preparedStatement.setInt(1, userId);
+				preparedStatement.setString(1, userName);
 				ResultSet resultSet = preparedStatement.executeQuery();
 				if (resultSet.next()) {
-					order.setId_Order(resultSet.getInt(1));
-					int drugId = resultSet.getInt(3);
+					int Order_id = resultSet.getInt(1);
+					int drugId = resultSet.getInt(2);
+					String mail = resultSet.getString(4);
+					String phone = resultSet.getString(5);
+					String address = resultSet.getString(6);
+					int cost = resultSet.getInt(7);
+					int payment = resultSet.getInt(8);
+//					int count = resultSet.getInt(9);
 					String drugName = drugDao.getById(drugId).getName();
+					order = new Order<String, String>(Order_id, drugName, userName, mail, phone, address, cost, payment);
 
-					order.setDrug(drugName);
-					order.setUser(userName);
-
-					order.setCount(resultSet.getInt(4));
-					order.setCost(resultSet.getInt(5));
 				}
 			}
 		} catch (Exception ex) {
@@ -141,7 +144,6 @@ public class OrderDao_Imp implements OrderDao {
 	public Order<String, String> getByDrugName(String drugName) {
 		Order<String, String> order = new Order<String, String>();
 		DrugDao drugDao = new DrugDao();
-		UserDao userDao = new UserDao();
 		int drugId = (drugDao.getByName(drugName)).getId(); //не риализованыый метод поиска лекарства по имени
 		try (Connection conn = JDBCConnector.getConnection();) {
 			String sql = "select * from orders where id_drug=?";
@@ -149,15 +151,15 @@ public class OrderDao_Imp implements OrderDao {
 				preparedStatement.setInt(1, drugId);
 				ResultSet resultSet = preparedStatement.executeQuery();
 				if (resultSet.next()) {
-					order.setId_Order(resultSet.getInt(1));
-					int userId = resultSet.getInt(2);
-					String userName = userDao.getById(userId).getName();
-
-					order.setDrug(drugName);
-					order.setUser(userName);
-
-					order.setCount(resultSet.getInt(4));
-					order.setCost(resultSet.getInt(5));
+					int Order_id = resultSet.getInt(1);
+					String userName = resultSet.getString(3);
+					String mail = resultSet.getString(4);
+					String phone = resultSet.getString(5);
+					String address = resultSet.getString(6);
+					int cost = resultSet.getInt(7);
+					int payment = resultSet.getInt(8);
+//					int count = resultSet.getInt(9);
+					order = new Order<String, String>(Order_id, drugName, userName, mail, phone, address, cost, payment);
 				}
 			}
 		} catch (Exception ex) {
@@ -186,13 +188,16 @@ public class OrderDao_Imp implements OrderDao {
 	@Override
 	public Object updateById(Order order) {
 		try (Connection conn = JDBCConnector.getConnection()) {
-			String sql = "UPDATE orders SET id_drug = ?,  id_user = ?,  count = ?, cost = ? where id_order = ? ";
+			String sql = "UPDATE orders SET drug = ?,  userName = ?,  mail = ?, phone = ?, address = ?, cost = ?, payment = ?  where id_order = ? ";
 			try (PreparedStatement preparedStatement = conn.prepareStatement(sql)) {
 				preparedStatement.setInt(1, (int) order.getDrug());
-				preparedStatement.setInt(2, (int) order.getUser());
-				preparedStatement.setInt(3, order.getCount());
-				preparedStatement.setInt(4, order.getCost());
-				preparedStatement.setInt(5, order.getId_Order());
+				preparedStatement.setString(2, (String) order.getUser());
+				preparedStatement.setString(3, order.getMail());
+				preparedStatement.setString(4, order.getPhone());
+				preparedStatement.setString(5, order.getAddress());
+				preparedStatement.setInt(6, order.getCost());
+				preparedStatement.setInt(7, order.getPayment());
+				preparedStatement.setInt(8, order.getId_Order());
 
 				preparedStatement.execute();
 			}
@@ -206,13 +211,16 @@ public class OrderDao_Imp implements OrderDao {
 	@Override
 	public Object create(Order order) {
 		try (Connection conn = JDBCConnector.getConnection()) {
-			String sql = "insert into orders (id_drug, id_user,  count," +
-					"cost) values (?, ?, ?, ?)";
+			String sql = "insert into table_name (drug, userName , mail, phone, address, payment, cost) values (?, ?, ?, ?, ?, ?, ?)";
+
 			try (PreparedStatement preparedStatement = conn.prepareStatement(sql)) {
-				preparedStatement.setInt(1, (Integer) order.getUser());
-				preparedStatement.setInt(2, (Integer) order.getDrug());
-				preparedStatement.setInt(3, order.getCount());
-				preparedStatement.setInt(4, order.getCost());
+				preparedStatement.setInt(1, (Integer) order.getDrug());
+				preparedStatement.setString(2, (String) order.getUser());
+				preparedStatement.setString(3, order.getMail());
+				preparedStatement.setString(4, order.getPhone());
+				preparedStatement.setString(5, order.getAddress());
+				preparedStatement.setInt(6, order.getPayment());
+				preparedStatement.setInt(7, order.getCost());
 				preparedStatement.execute();
 			}
 		} catch (Exception ex) {

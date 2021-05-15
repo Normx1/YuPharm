@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet ("/deleteRecipe")
+@WebServlet("/deleteRecipe")
 public class DeleteRecipeServlet extends HttpServlet {
 	RecipeDao<Recipe> recipeDao = new RecipeDaoImpl();
 
@@ -19,7 +19,6 @@ public class DeleteRecipeServlet extends HttpServlet {
 			throws ServletException, IOException {
 
 		try {
-			//Отличие sendRedirect  и forward в том что 1 показывает url не полный а 2 полный путь, вроде так
 			int id = Integer.parseInt(request.getParameter("recId"));
 			recipeDao.deleteById(id);
 			response.sendRedirect(request.getContextPath() + "/adminRecipeList");

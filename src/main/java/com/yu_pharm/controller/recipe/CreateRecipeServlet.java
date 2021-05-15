@@ -29,9 +29,9 @@ public class CreateRecipeServlet extends HttpServlet {
 		try {
 			int drugId = Integer.parseInt(request.getParameter("drugId"));
 			int userId = Integer.parseInt(request.getParameter("userId"));
-			Date expirationDate = Date.from(Instant.parse(request.getParameter("expirationDate")));
+			Date expDate = Date.from(Instant.parse(request.getParameter("expirationDate")));
 			int recipeCount = Integer.parseInt(request.getParameter("recipeCount"));
-			Recipe recipe = new Recipe(drugId, userId, expirationDate, recipeCount);
+			Recipe recipe = new Recipe(drugId, userId, expDate, recipeCount);
 			recipeDao.create(recipe);
 			response.sendRedirect(request.getContextPath() + "/adminRecipeList");
 		} catch (Exception ex) {

@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @WebServlet("/allRecipes")
-public class ALlRecipesServlet extends HttpServlet {
+public class AllRecipesServlet extends HttpServlet {
 	RecipeDao<Recipe> recipeDao = new RecipeDaoImpl();
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)

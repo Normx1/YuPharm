@@ -6,8 +6,83 @@ public class Order<T, T1> {
     private T1 user;
     private int cost;
     private int count;
+    private String address;
+    private  int phone;
+    private int name;
+    private int payment;
 
-    public int getId_Order() {
+	public Order(int id_Order, T drug, T1 user, int cost, int count, String address, int phone, int name) {
+		this.id_Order = id_Order;
+		this.drug = drug;
+		this.user = user;
+		this.cost = cost;
+		this.count = count;
+		this.address = address;
+		this.phone = phone;
+		this.name = name;
+	}
+
+	public Order(T drug, int cost, String address, int phone, int name) {
+		this.drug = drug;
+		this.cost = cost;
+		this.address = address;
+		this.phone = phone;
+		this.name = name;
+	}
+
+	public Order(T drug) {
+		this.drug = drug;
+	}
+
+	public Order(String address, int phone, int name) {
+		this.address = address;
+		this.phone = phone;
+		this.name = name;
+	}
+
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+	public int getPhone() {
+		return phone;
+	}
+
+	public void setPhone(int phone) {
+		this.phone = phone;
+	}
+
+	public int getName() {
+		return name;
+	}
+
+	public void setName(int name) {
+		this.name = name;
+	}
+
+	public int getPayment() {
+		return payment;
+	}
+
+	public void setPayment(int payment) {
+		this.payment = payment;
+	}
+
+	public Order(T drug, int cost,  T1 user, String address, int phone, int payment) {
+		this.drug = drug;
+		this.user = user;
+		this.cost = cost;
+		this.address = address;
+		this.phone = phone;
+		//this.name = name;
+		this.payment = payment;
+	}
+
+	public int getId_Order() {
         return id_Order;
     }
 

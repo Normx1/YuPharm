@@ -41,8 +41,8 @@ public class EditOrderServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
 		try {
-			int id = Integer.parseInt(req.getParameter("id_Order"));
-			String userName = req.getParameter("name");
+			int id = Integer.parseInt(req.getParameter("id_order"));
+			String userName = req.getParameter("user");
   			String drugName = req.getParameter("drug");
 			BasicDao<Drug> drug = new DrugDao();
 			int id_drug = (drug.getByName(drugName)).getId();
@@ -53,7 +53,7 @@ public class EditOrderServlet extends HttpServlet {
 			int cost = Integer.parseInt(req.getParameter("cost"));
 			Order order = new Order(id, id_drug, userName, mail, phone, address, payment , cost);
 			orderDao.updateById(order);
-			resp.sendRedirect(req.getContextPath() + "/");
+			resp.sendRedirect(req.getContextPath() + "/allOrders");
 		} catch (Exception ex) {
 			ex.printStackTrace();
 			getServletContext().getRequestDispatcher("/notfound.jsp").forward(req, resp);

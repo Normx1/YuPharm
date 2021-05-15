@@ -25,7 +25,7 @@ public class OrderDao_Imp implements OrderDao {
 			while (resultSet.next()) {
 				int Order_id = resultSet.getInt(1);
 				int drugId = resultSet.getInt(2);
-				String userName = resultSet.getString(3);
+				String name = resultSet.getString(3);
 				String mail = resultSet.getString(4);
 				String phone = resultSet.getString(5);
 				String address = resultSet.getString(6);
@@ -34,7 +34,7 @@ public class OrderDao_Imp implements OrderDao {
 
 				String drugName = drugDao.getById(drugId).getName();
 
-				Order<String, String> order = new Order<String, String>(Order_id, drugName, userName, mail, phone, address, payment, cost);
+				Order<String, String> order = new Order<String, String>(Order_id, drugName, name, mail, phone, address, payment, cost);
 				orderList.add(order);
 			}
 		} catch (Exception ex) {
@@ -115,7 +115,7 @@ public class OrderDao_Imp implements OrderDao {
 		DrugDao drugDao = new DrugDao();
 
 		try (Connection conn = JDBCConnector.getConnection();) {
-			String sql = "select * from orders where userName=?";
+			String sql = "select * from orders where name=?";
 			try (PreparedStatement preparedStatement = conn.prepareStatement(sql)) {
 				preparedStatement.setString(1, userName);
 				ResultSet resultSet = preparedStatement.executeQuery();
@@ -188,7 +188,7 @@ public class OrderDao_Imp implements OrderDao {
 	@Override
 	public Object updateById(Order order) {
 		try (Connection conn = JDBCConnector.getConnection()) {
-			String sql = "UPDATE orders SET drug = ?,  userName = ?,  mail = ?, phone = ?, address = ?, cost = ?, payment = ?  where id_order = ? ";
+			String sql = "UPDATE orders SET drug = ?,  name = ?,  mail = ?, phone = ?, address = ?, cost = ?, payment = ?  where id_order = ? ";
 			try (PreparedStatement preparedStatement = conn.prepareStatement(sql)) {
 				preparedStatement.setInt(1, (int) order.getDrug());
 				preparedStatement.setString(2, (String) order.getUser());

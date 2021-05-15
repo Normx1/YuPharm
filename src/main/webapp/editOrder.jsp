@@ -14,8 +14,7 @@
 <jsp:include page="/WEB-INF/otherElements/_header.jsp"></jsp:include>
 <h3>Edit medicine:</h3>
 <form method="post" action="/order/edit">
-	<label>Id Order</label><br>
-	<input name="id_Order" value="${order.id_Order}"/>
+
 	<br><br>
 	<label>Drug</label><br>
 	<input name="drug" value="${order.drug}" />
@@ -23,17 +22,23 @@
 	<label>User</label><br>
 	<input name="user" value="${order.user}" />
 	<br><br>
-
-	<label>Count</label><br>
-	<input name="count" value="${order.count}" />
+	<label>Mail</label><br>
+	<input name="mail" value="${order.mail}" />
 	<br><br>
-
+	<label>Phone</label><br>
+	<input name="phone" value="${order.phone}" />
+	<br><br>
+	<label>Address</label><br>
+	<input name="address" value="${order.address}" />
+	<br><br>
+	<label>Address</label><br>
+	<input name="payment" value="${order.payment}" />
+	<br><br>
 	<label>Cost</label><br>
 	<input name="cost" value="${order.cost}" />
 	<br><br>
 
-
-<input type="hidden" name="id_order" value="${order.id_Order}">
+<input type="hidden" name="id_order" value="${order.id_Order}"/>
 <input type="submit" value="Save"/>|
 <td colspan ="2">
 

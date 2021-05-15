@@ -2,6 +2,7 @@ package com.yu_pharm.model.drug;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
 public class SqlDrug implements Drug {
 
@@ -25,9 +26,10 @@ public class SqlDrug implements Drug {
 		try {
 			assertNoBacktick(key);
 			try (PreparedStatement st = connection.prepareStatement("select `" + key + "` from drugs where id=?")) {
-				st.setString(1, key);
-				st.setInt(2, id);
-				return st.getResultSet().getObject(1, type);
+				st.setInt(1, id);
+				ResultSet result = st.executeQuery();
+				result.next();
+				return result.getObject(1, type);
 			}
 		} catch (Exception ex) {
 			throw new RuntimeException("Failed to request info about " + this, ex);
@@ -45,10 +47,9 @@ public class SqlDrug implements Drug {
 		try {
 			assertNoBacktick(key);
 			try (PreparedStatement st = connection.prepareStatement("update drugs set `" + key + "` = ? where id = ? ")) {
-				st.setString(1, key);
-				st.setObject(2, value);
-				st.setInt(3, id);
-				st.execute();
+				st.setObject(1, value);
+				st.setInt(2, id);
+				st.executeUpdate();
 			}
 		} catch (Exception ex) {
 			throw new RuntimeException("Failed to update info about " + this, ex);

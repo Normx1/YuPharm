@@ -23,6 +23,7 @@ public class SqlDrugs implements Drugs {
 		try (PreparedStatement st = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
 			st.executeUpdate();
 			ResultSet keys = st.getGeneratedKeys();
+			keys.next();
 			return new SqlDrug(keys.getInt(1), connection);
 		} catch (Exception ex) {
 			throw new RuntimeException("Failed to create new drug", ex);

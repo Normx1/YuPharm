@@ -38,6 +38,7 @@ public class SqlDrug implements Drug {
 			st.setString(1, key);
 			st.setObject(2, value);
 			st.setInt(3, id);
+			st.execute();
 		} catch (SQLException ex) {
 			throw new RuntimeException("Failed to update info about " + this, ex);
 		}

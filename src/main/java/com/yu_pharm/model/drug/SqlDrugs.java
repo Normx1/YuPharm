@@ -3,6 +3,7 @@ package com.yu_pharm.model.drug;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,9 +19,11 @@ public class SqlDrugs implements Drugs {
 
 	@Override
 	public Drug create() {
-		try (PreparedStatement st = connection.prepareStatement("insert into drugs output id values ('')")) {
-			ResultSet resultSet = st.executeQuery();
-			return new SqlDrug(resultSet.getInt(1), connection);
+		String sql = "insert into drugs output id values ('')";
+		try (PreparedStatement st = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
+			st.executeUpdate();
+			ResultSet keys = st.getGeneratedKeys();
+			return new SqlDrug(keys.getInt(1), connection);
 		} catch (Exception ex) {
 			throw new RuntimeException("Failed to create new drug", ex);
 		}

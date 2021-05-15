@@ -25,8 +25,8 @@ public class RecipeDaoImpl implements RecipeDao {
 				int drugId = resultSet.getInt(2);
 				int userId = resultSet.getInt(3);
 				Date expDate = resultSet.getDate(4);
-				int cost = resultSet.getInt(5);
-				Recipe recipe = new Recipe(recId, drugId, userId, expDate);
+				int count = resultSet.getInt(5);
+				Recipe recipe = new Recipe(recId, drugId, userId, expDate, count);
 				recipeList.add(recipe);
 			}
 		} catch (Exception ex) {

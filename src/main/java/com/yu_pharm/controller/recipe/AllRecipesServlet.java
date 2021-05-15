@@ -19,7 +19,7 @@ public class AllRecipesServlet extends HttpServlet {
 			throws ServletException, IOException {
 		try {
 			request.setAttribute("recipe", recipeDao.getAll());
-			getServletContext().getRequestDispatcher("/allRecipes.jsp").forward(request, response);
+			getServletContext().getRequestDispatcher("/adminRecipeList.jsp").forward(request, response);
 		} catch (
 				Exception ex) {
 			ex.printStackTrace();

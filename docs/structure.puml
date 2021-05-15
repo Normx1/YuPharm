@@ -1,0 +1,56 @@
+@startuml
+
+legend left
+Design structure of online pharmacy shop
+endlegend
+
+enum Role {
+	Viewer : not logged in
+	Customer : logged in
+	Pharmacist
+	Doctor
+	Admin
+	SuperAdmin \ root
+}
+
+interface User {
+	+ int id()
+	+ Role[] roles()
+}
+Role <-- User
+
+interface Drug {
+	+ int id()
+}
+interface Drugs {
+	+ Drug create()
+	+ List<Drug> all()
+	+ void delete(Drug drug)
+}
+Drugs --> Drug
+
+interface Order {
+	+ int id()
+}
+interface Orders {
+	+ Order create()
+    + List<Orders> all()
+    + void delete(Order order)
+}
+Orders --> Order
+
+interface Recipe {
+	+ int id()
+}
+interface Recipes {
+	+ Recipe create()
+	+ List<Recipe> list()
+	+ void delete(Recipe recipe)
+}
+Recipes --> Recipe
+
+User --> Drugs
+User --> Orders
+User --> Recipes
+
+@enduml

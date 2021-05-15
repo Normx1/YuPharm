@@ -2,7 +2,6 @@ package com.yu_pharm.model.drug;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.SQLException;
 
 public class SqlDrug implements Drug {
 
@@ -23,28 +22,35 @@ public class SqlDrug implements Drug {
 
 	@Override
 	public <T> T get(String key, Class<T> type) {
-		try (PreparedStatement st = connection.prepareStatement("select ? from drugs where id=?")) {
-			st.setString(1, key);
-			st.setInt(2, id);
-			return st.getResultSet().getObject(0, type);
-		} catch (SQLException ex) {
+		try {
+			assertNoBacktick(key);
+			try (PreparedStatement st = connection.prepareStatement("select `" + key + "` from drugs where id=?")) {
+				st.setString(1, key);
+				st.setInt(2, id);
+				return st.getResultSet().getObject(1, type);
+			}
+		} catch (Exception ex) {
 			throw new RuntimeException("Failed to request info about " + this, ex);
+		}
+	}
+
+	private void assertNoBacktick(String columnName) {
+		if (columnName.contains("`")) {
+			throw new IllegalArgumentException("Key '" + columnName + "' contains escape backtick (`) char");
 		}
 	}
 
 	@Override
 	public <T> void set(String key, T value) {
 		try {
-			if (key.contains("`")) {
-				throw new IllegalArgumentException("Key '" + key + "' contains escape backtick (`) char");
-			}
+			assertNoBacktick(key);
 			try (PreparedStatement st = connection.prepareStatement("update drugs set `" + key + "` = ? where id = ? ")) {
 				st.setString(1, key);
 				st.setObject(2, value);
 				st.setInt(3, id);
 				st.execute();
 			}
-		} catch (SQLException ex) {
+		} catch (Exception ex) {
 			throw new RuntimeException("Failed to update info about " + this, ex);
 		}
 	}

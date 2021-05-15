@@ -19,7 +19,7 @@ public class SqlDrugs implements Drugs {
 
 	@Override
 	public Drug create() {
-		String sql = "insert into drugs values ('')";
+		String sql = "insert into drugs (name, count, cost) values ('', 0, 0)";
 		try (PreparedStatement st = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
 			st.executeUpdate();
 			ResultSet keys = st.getGeneratedKeys();

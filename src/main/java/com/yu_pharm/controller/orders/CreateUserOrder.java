@@ -22,7 +22,6 @@ public class CreateUserOrder extends HttpServlet {
 	List<Drug> drugList = new ArrayList<>();
 	OrderDao<Order> orderDao = new OrderDao_Imp();
 	BasicDao<Drug> drugDao = new DrugDao();
-	BasicDao<User> userDao = new UserDao();
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -39,21 +38,23 @@ public class CreateUserOrder extends HttpServlet {
 		try {
 			String name = request.getParameter("name");
 			String mail = request.getParameter("mail");
-			String phone =   request.getParameter("phone");
+			String phone = request.getParameter("phone");
 			String address = request.getParameter("address");
 			int payment = Integer.parseInt(request.getParameter("payment"));
-			drugDao.getAll().stream().filter(b -> bean.getIds()
-					.contains(b.getId()))
+			if (payment == 0 ) {
+				response.sendRedirect(request.getContextPath() + "/payment");
+			}else {
+			List<Integer> ids = drugDao.getAll().stream()
+					.filter(b -> bean.getIds().contains(b.getId()))
+					.map(drug -> drug.getId())
 					.collect(Collectors.toList());
 			int cost = (int) session.getAttribute("totalCost");
-//			Order order = new Order<BasicDao<Drug>, String>(drugDao, cost, name, address, phone, payment);
 
-			if (payment == 0) {
-//				session.setAttribute("order",order);
-				response.sendRedirect(request.getContextPath() + "/paymentCard");
-			} else {
-//				orderDao.create(order);
-//				response.sendRedirect(request.getContextPath() + "/");
+			for (int i = 0; i < ids.size() ; i++) {
+				Order order = new Order(ids.get(i), name, mail, phone, address, payment, cost);
+   					orderDao.create(order);
+					response.sendRedirect(request.getContextPath() + "/");
+				}
 			}
 		} catch (Exception ex) {
 			ex.printStackTrace();

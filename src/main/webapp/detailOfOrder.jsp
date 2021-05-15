@@ -24,9 +24,9 @@
 	<label>Address</label><br>
 	<input name="address"/><br><br>
 	<label>Choose method of payment</label><br>
-	<input type="checkbox" name="payment" value="0" checked/> Pay by Card Now
-	<input type="checkbox" name="payment" value="1" checked/> Pay by Card upon delivery
-	<input type="checkbox" name="payment" value="2" checked/> Pay by money
+	<input type="checkbox" name="payment" value="0"  /> Pay by Card Now
+	<input type="checkbox" name="payment" value="1"  /> Pay by Card upon delivery
+	<input type="checkbox" name="payment" value="2"  /> Pay by money
 	<br><br>
 	<input type="submit" value="Submit"/>
 </form>

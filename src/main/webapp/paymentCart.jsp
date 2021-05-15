@@ -13,7 +13,7 @@
 <body>
 <jsp:include page="/WEB-INF/otherElements/_header.jsp"></jsp:include>
 <h3>Card data:</h3>
-<form method="get" action="{pageContext.request.contextPath}/">
+<form method="post" action="/payment">
 	<label>Card number</label><br>
 	<input name="CardNumber"/>
 	<br><br>

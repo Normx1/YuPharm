@@ -42,8 +42,7 @@
 <input type="submit" value="Save"/>|
 <td colspan ="2">
 
-	<a href="${pageContext.request.contextPath}/">Cancel</a>
-</td>
+c</td>
 </form>
 <br><br>
 <jsp:include page="/WEB-INF/otherElements/_footer.jsp"></jsp:include>

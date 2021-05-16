@@ -6,6 +6,9 @@
 	<title>User</title>
 </head>
 <body>
+<jsp:include page="WEB-INF/otherElements/_header.jsp"/>
+<jsp:include page="WEB-INF/otherElements/_menu.jsp"/>
+<br>
 <h3>New user</h3>
 <form method="post" action="user/create">
 	<label>Name</label><br>

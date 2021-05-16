@@ -12,7 +12,8 @@
 	<title>All Orders</title>
 </head>
 <body>
-<jsp:include page="/WEB-INF/otherElements/_header.jsp"></jsp:include>
+ <jsp:include page="WEB-INF/otherElements/_header.jsp"/>
+<jsp:include page="WEB-INF/otherElements/_menu.jsp"/>
 <h3>Orders</h3>
 <br>
  <form method="get" action='<c:url value="/createOrder" />' style="display:inline;">

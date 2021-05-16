@@ -6,7 +6,9 @@
 	<title>User</title>
 </head>
 <body>
-<jsp:include page="/WEB-INF/otherElements/_header.jsp"></jsp:include>
+<jsp:include page="WEB-INF/otherElements/_header.jsp"/>
+<jsp:include page="WEB-INF/otherElements/_menu.jsp"/>
+
 <h3>New Order</h3>
 <form method="post" action="/createOrder">
 	<label>Drug</label><br>

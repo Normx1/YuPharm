@@ -4,8 +4,8 @@
 	<title>Title</title>
 </head>
 <body>
-<jsp:include page="/WEB-INF/otherElements/_header.jsp"/>
-
+<jsp:include page="WEB-INF/otherElements/_header.jsp"/>
+<jsp:include page="WEB-INF/otherElements/_menu.jsp"/>
 <h2>About Us</h2>
 ABOUT THE YuPharm NETWORK»
 YuPharm is a popular pharmacy chain in Belarus, specializing in natural products for health and beauty.

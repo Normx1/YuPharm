@@ -18,6 +18,7 @@
 </head>
 <body>
 <jsp:include page="WEB-INF/otherElements/_header.jsp"/>
+<jsp:include page="WEB-INF/otherElements/_menu.jsp"/>
 <h3>Edit medicine:</h3>
 <form method="post" action="/drug/edit">
 	<input type="hidden" name="id" value="${drug.id()}">

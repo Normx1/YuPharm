@@ -11,7 +11,10 @@
 	<title>Title</title>
 </head>
 <body>
-<jsp:include page="/WEB-INF/otherElements/_header.jsp"></jsp:include>
+
+<jsp:include page="WEB-INF/otherElements/_header.jsp"/>
+<jsp:include page="WEB-INF/otherElements/_menu.jsp"/>
+
 <h3>Your ${user.name} orders</h3>
 <br>
 <table border="1" cellpadding="5" cellspacing="1">

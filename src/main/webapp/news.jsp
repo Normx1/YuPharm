@@ -11,8 +11,8 @@
 	<title>Title</title>
 </head>
 <body>
-<jsp:include page="/WEB-INF/otherElements/_header.jsp"></jsp:include>
-
+<jsp:include page="WEB-INF/otherElements/_header.jsp"/>
+<jsp:include page="WEB-INF/otherElements/_menu.jsp"/>
 <h2>News</h2>
 News
 Assistance continues to be provided during a difficult epidemiological situation.

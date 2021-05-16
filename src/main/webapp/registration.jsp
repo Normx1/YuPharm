@@ -6,7 +6,10 @@
 	<title>Edit </title>
 </head>
 <body>
-<jsp:include page="WEB-INF/otherElements/_header.jsp"></jsp:include>
+
+<jsp:include page="WEB-INF/otherElements/_header.jsp"/>
+<jsp:include page="WEB-INF/otherElements/_menu.jsp"/>
+
 <h3></h3>
 <form method="post" action="/user/create">
 	<label>Input Name:</label><br>

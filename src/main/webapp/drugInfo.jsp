@@ -6,8 +6,8 @@
 	<title>Drug Info</title>
 </head>
 <body>
-<jsp:include page="/WEB-INF/otherElements/_header.jsp"/>
-
+<jsp:include page="WEB-INF/otherElements/_header.jsp"/>
+<jsp:include page="WEB-INF/otherElements/_menu.jsp"/>
 <h3> Cure:"${drug.name()}"</h3>
 
 <table>

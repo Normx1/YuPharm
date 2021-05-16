@@ -11,8 +11,8 @@
 	<title>Title</title>
 </head>
 <body>
-<jsp:include page="/WEB-INF/otherElements/_header.jsp"></jsp:include>
-
+<jsp:include page="WEB-INF/otherElements/_header.jsp"/>
+<jsp:include page="WEB-INF/otherElements/_menu.jsp"/>
 <h3>Detail of order</h3>
 <form method="post" action="/createUserOrder">
 	<label>Name</label><br>

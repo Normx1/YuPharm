@@ -8,7 +8,8 @@
 	<title>Title</title>
 </head>
 <body>
-<jsp:include page="/WEB-INF/otherElements/_header.jsp" />
+<jsp:include page="WEB-INF/otherElements/_header.jsp"/>
+<jsp:include page="WEB-INF/otherElements/_menu.jsp"/>
 <div align="left">
 	<h2>Basket</h2>
 </div>

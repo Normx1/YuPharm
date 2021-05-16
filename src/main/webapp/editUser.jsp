@@ -9,7 +9,8 @@
 <html>
 
 <body>
-<jsp:include page="WEB-INF/otherElements/_header.jsp"></jsp:include>
+<jsp:include page="WEB-INF/otherElements/_header.jsp"/>
+<jsp:include page="WEB-INF/otherElements/_menu.jsp"/>
 <h3>Edit User id = ${users.id}:</h3>
 <form method="post" action="/user/edit">
 	<label>Name</label><br>

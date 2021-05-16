@@ -18,7 +18,7 @@
 	<p><a href='<c:url value="/adminDrugList" />'>Drugs</a></p>
 	<p><a href='<c:url value="/adminUserList" />'>Users</a></p>
 	<p><a href='<c:url value="/allOrders" />'>Orders</a></p>
-	<p><a href='<c:url value="/allRecipes"/>'>Recipes</a></p>
+<%--	<p><a href='<c:url value="/allRecipes"/>'>Recipes</a></p>--%>
 
 </form>
 <td colspan="2">

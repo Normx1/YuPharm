@@ -40,8 +40,8 @@ public class EditUserServlet extends HttpServlet {
 			String name = request.getParameter("name");
 			String mail = request.getParameter("mail");
 			String password = request.getParameter("password");
-			int role = Integer.parseInt(request.getParameter("password"));
-			User user = new User(id, name, mail, password);
+			int role = Integer.parseInt(request.getParameter("role"));
+			User user = new User(id, name, mail, password, role);
 			userBasicDao.updateById(user);
 			response.sendRedirect(request.getContextPath() + "/adminUserList");
 		} catch (Exception ex) {

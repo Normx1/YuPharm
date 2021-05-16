@@ -23,10 +23,13 @@
 	<input name="phone"/><br><br>
 	<label>Address</label><br>
 	<input name="address"/><br><br>
-	<label>Choose method of payment</label><br>
-	<input type="checkbox" name="payment" value="0"  /> Pay by Card Now
-	<input type="checkbox" name="payment" value="1"  /> Pay by Card upon delivery
-	<input type="checkbox" name="payment" value="2"  /> Pay by money
+	<label>Choose method of payment:</label><br>
+	<input type="radio" name="payment" value="0"  /> Pay by Card Now
+	<br>
+	<input type="radio" name="payment" value="1"  /> Pay by Card upon delivery
+	<br>
+	<input type="radio" name="payment" value="2"  /> Pay by money
+	<br>
 	<br><br>
 	<input type="submit" value="Submit"/>
 </form>

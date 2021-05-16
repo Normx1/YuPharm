@@ -22,8 +22,14 @@
 	<input name="password" value="${users.password}" />
 	<br><br><br>
 	<label>Role</label><br>
-	<input name="role" value="${users.role}" />
-	<br><br><br>
+	<form>
+		<input type="radio" name="role" value="0"/> Viewer
+		<input type="radio" name="role" value="1"/> Customer
+		<input type="radio" name="role" value="2"/> Pharmacist
+		<input type="radio" name="role" value="3"/> Doctor
+		<input type="radio" name="role" value="4"/> Admin
+		<input type="radio" name="role" value="5"/> SuperAdmin
+	</form>	<br><br><br>
 	<input type="hidden" name="id" value="${users.id}">
 
 	<input type="submit" value="Save"/>|

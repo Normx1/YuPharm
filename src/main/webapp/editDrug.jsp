@@ -1,51 +1,51 @@
+<%--@elvariable id="drug" type="com.yu_pharm.model.drug.Drug.Smart"--%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html>
 <head>
 	<meta charset="UTF-8">
 	<title>Edit </title>
+	<style>
+		form > label {
+			display: table;
+			width: 300px;
+		}
+
+		form > label > * {
+			float: right;
+		}
+	</style>
 </head>
 <body>
-<jsp:include page="WEB-INF/otherElements/_header.jsp"></jsp:include>
+<jsp:include page="WEB-INF/otherElements/_header.jsp"/>
 <h3>Edit medicine:</h3>
 <form method="post" action="/drug/edit">
-	<label>Name</label><br>
-	<input name="name" value="${drug.name}"/>
-	<br><br>
-	<label>Cost</label><br>
-	<input name="cost" value="${drug.cost}"/>
-	<br><br>
-	<label>Count</label><br>
-	<input name="count" value="${drug.count}"/>
-	<br><br>
-
-	<label>Recipe</label><br>
-	<input name="recipe" value="${drug.recipe}"/>
-	<br><br>
-	Recipe: <input type="radio" name="recipe" value="1" checked/>Yes
-	<input type="radio" name="recipe" value="0" checked/>No
-	<br><br>
-	<label>Main action</label><br>
-	<input name="Main_action" value="Some Main action"/>
-	<br><br>
-	<label>Description</label><br>
-	<input name="description" value="description"/>
-	<br><br>
-	<label>Application</label><br>
-	<input name="Application" value="Application"/>
-	<input type="hidden" name="id" value="${drug.id}">
-
-	<br><br>
-	<input type="submit" value="Save"/>|
+	<input type="hidden" name="id" value="${drug.id()}">
+	<label>Name
+		<input name="name" value="${drug.name()}"/>
+	</label>
+	<label>Cost
+		<input name="cost" value="${drug.cost()}"/>
+	</label>
+	<label>Count
+		<input name="count" value="${drug.count}"/>
+	</label>
+	<label>Recipe:
+		<label><input type="radio" name="recipe" value="1" checked/>Yes</label>
+		<label><input type="radio" name="recipe" value="0"/>No</label>
+	</label>
+	<label>Main action
+		<input name="Main_action" value="Some Main action"/>
+	</label>
+	<label>Description
+		<input name="description" value="description"/>
+	</label>
+	<label>Application
+		<input name="Application" value="Application"/>
+	</label>
+	<input type="submit" value="Save"/>
 </form>
-
-<%--    <label>Description</label><br>--%>
-<%--    <input name="description"/><br><br>--%>
-<td colspan="2">
-
-	<a href="${pageContext.request.contextPath}/">Cancel</a>
-</td>
-<jsp:include page="WEB-INF/otherElements/_footer.jsp"></jsp:include>
-</form>
+<a href="${pageContext.request.contextPath}/">Cancel</a>
+<jsp:include page="WEB-INF/otherElements/_footer.jsp"/>
 </body>
 </html>

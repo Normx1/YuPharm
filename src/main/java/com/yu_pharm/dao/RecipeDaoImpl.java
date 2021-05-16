@@ -1,13 +1,10 @@
 package com.yu_pharm.dao;
 
- import com.yu_pharm.model.Drug;
-import com.yu_pharm.model.Order;
-import com.yu_pharm.model.Recipe;
+ import com.yu_pharm.model.Recipe;
 import com.yu_pharm.model.User;
 import com.yu_pharm.sql.JDBCConnector;
 
-import java.io.IOException;
-import java.sql.*;
+ import java.sql.*;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -123,31 +120,6 @@ public class RecipeDaoImpl implements RecipeDao {
 				while (resultSet.next()) {
 					int recId = resultSet.getInt(1);
 					int drugId = resultSet.getInt(2);
-					Date expDate = resultSet.getDate(4);
-					Recipe recipe = new Recipe(recId, drugId, userId, expDate);
-					recipeList.add(recipe);
-				}
-			}
-		} catch (Exception exception) {
-			exception.printStackTrace();
-		}
-		return recipeList;
-	}
-
-
-	@Override
-	public Object getByDrugName(String name) {
-		List<Recipe> recipeList = new ArrayList<>();
-		BasicDao<Drug> drugBasicDao = new DrugDao();
-		int drugId = (drugBasicDao.getByName(name)).getId();
-		try (Connection conn = JDBCConnector.getConnection()) {
-			String sql = "select * from recipies where userId=?";
-			try (PreparedStatement preparedStatement = conn.prepareStatement(sql)) {
-				preparedStatement.setInt(1, drugId);
-				ResultSet resultSet = preparedStatement.executeQuery();
-				while (resultSet.next()) {
-					int recId = resultSet.getInt(1);
-					int userId = resultSet.getInt(3);
 					Date expDate = resultSet.getDate(4);
 					Recipe recipe = new Recipe(recId, drugId, userId, expDate);
 					recipeList.add(recipe);

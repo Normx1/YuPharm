@@ -1,8 +1,6 @@
 package com.yu_pharm.controller.buy;
 
-import com.yu_pharm.dao.BasicDao;
-import com.yu_pharm.dao.DrugDao;
-import com.yu_pharm.model.Drug;
+import com.yu_pharm.model.drug.Drugs;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,34 +9,34 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
 import java.util.stream.Collectors;
 
 @WebServlet("/basket")
 public class BasketServlet extends HttpServlet {
-	private BasicDao<Drug> drugDao = new DrugDao();
+
+	private Drugs.Smart drugs;
+
+
+	@Override
+	public void init() {
+		drugs = ((Drugs.Smart) getServletContext().getAttribute("drugs"));
+	}
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		HttpSession session = req.getSession();
 		CartBean bean = CartBean.get(session);
-		int totalCost = 0;
+		double totalCost = 0;
 
 		for (int i = 0; i < bean.length(); i++) {
-			totalCost = totalCost + drugDao.getById(bean.getId(i)).getCost();
+			totalCost = totalCost + drugs.findById(bean.getId(i)).cost();
 		}
-		System.out.println(totalCost);
-		try {
-			session.setAttribute("cure", drugDao.getAll().stream().filter(b -> bean.getIds()
-					.contains(b.getId()))
-					.collect(Collectors.toList()));
-			session.setAttribute("totalCost", totalCost);
 
-			getServletContext().getRequestDispatcher("/basket.jsp").forward(req, resp);
-		} catch (IOException ex) {
-			ex.printStackTrace();
-		}
+		session.setAttribute("cure", drugs.all().stream()
+				.filter(b -> bean.getIds().contains(b.id()))
+				.collect(Collectors.toList()));
+		session.setAttribute("totalCost", totalCost);
+
+		getServletContext().getRequestDispatcher("/basket.jsp").forward(req, resp);
 	}
 }

@@ -1,6 +1,3 @@
-<%@ page import="com.yu_pharm.dao.DrugDao" %>
-<%@ page import="com.yu_pharm.model.Drug" %>
-<%@ page import="java.util.List" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
@@ -26,24 +23,24 @@
         <th>Info</th>
         <th>Action</th>
     </tr>
-    <c:forEach var="drug" items="${requestScope.drugs}">
+    <c:forEach var="drug" items="${applicationScope.drugs.all()}">
         <tr>
-            <td>${drug.id}</td>
-            <td>${drug.name}</td>
-            <td>${drug.count}</td>
-            <td>${drug.cost} $</td>
+            <td>${drug.id()}</td>
+            <td>${drug.name()}</td>
+            <td>${drug.count()}</td>
+            <td>${drug.cost()} $</td>
             <td>
-                <div align="center"> ${drug.recipe}
+                <div align="center"> ${drug.recipe()}
                 </div>
             </td>
             <td>
-                <a href='<c:url value="drug/drugInfo?id=${drug.id}"/>'>Details</a>
+                <a href='<c:url value="drug/info?id=${drug.id()}"/>'>Details</a>
 
             </td>
             <td>
-                <a href='<c:url value="drug/edit?id=${drug.id}" />'>Edit</a> |
+                <a href='<c:url value="drug/edit?id=${drug.id()}" />'>Edit</a> |
                 <form method="post" action='<c:url value="/drug/delete" />' style="display:inline;">
-                    <input type="hidden" name="id" value="${drug.id}">
+                    <input type="hidden" name="id" value="${drug.id()}">
                     <input type="submit" value="Delete">
                 </form>
         </tr>

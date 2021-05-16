@@ -18,8 +18,6 @@ public interface RecipeDao<T> {
 
 	T getByUserName(String name);
 
-	T getByDrugName(String name);
-
 }
 
 

@@ -1,6 +1,3 @@
-<%@ page import="com.yu_pharm.dao.DrugDao" %>
-<%@ page import="com.yu_pharm.model.Drug" %>
-<%@ page import="java.util.List" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
@@ -35,7 +32,7 @@
 				</div>
 			</td>
 			<td>
-				<a href='<c:url value="drug/drugInfo?id=${cure.id}"/>'>Details</a>
+				<a href='<c:url value="drug/info?id=${cure.id}"/>'>Details</a>
 
 			</td>
 			<td>

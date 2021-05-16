@@ -36,6 +36,10 @@ public interface Drug extends Data {
 			return get("description", String.class);
 		}
 
+		public void description(String value) {
+			set("description", String.class);
+		}
+
 		public boolean recipeRequired() {
 			return get("recipeRequired", boolean.class);
 		}
@@ -45,16 +49,47 @@ public interface Drug extends Data {
 		}
 
 		//region Temp
+		//main action
+		//application
+
+		public String mainAction() {
+			return get("main_action", String.class);
+		}
+
+		public void mainAction(String value) {
+			set("main_action", value);
+		}
+
+		public String application() {
+			return get("application", String.class);
+		}
+
+		public void application(String value) {
+			set("application", value);
+		}
+
 		public double count() {
 			return get("count", Double.class);
+		}
+
+		public void count(double value) {
+			set("count", value);
 		}
 
 		public double cost() {
 			return get("cost", Double.class);
 		}
 
+		public void cost(double value) {
+			set("cost", value);
+		}
+
 		public byte recipe() {
 			return get("recipe", Byte.class);
+		}
+
+		public void recipe(byte value) {
+			set("recipe", value);
 		}
 		//endregion
 

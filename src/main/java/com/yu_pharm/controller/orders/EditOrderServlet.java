@@ -1,9 +1,8 @@
 package com.yu_pharm.controller.orders;
 
-import com.yu_pharm.dao.*;
-import com.yu_pharm.model.Drug;
+import com.yu_pharm.dao.OrderDao;
 import com.yu_pharm.model.Order;
-import com.yu_pharm.model.User;
+import com.yu_pharm.model.drug.Drugs;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -14,14 +13,23 @@ import java.io.IOException;
 
 @WebServlet("/order/edit")
 public class EditOrderServlet extends HttpServlet {
-	OrderDao<Order> orderDao = new OrderDao_Imp();
+
+	private Drugs.Smart drugs;
+	private OrderDao<Order> orders;
+
+
+	@Override
+	public void init() {
+		drugs = ((Drugs.Smart) getServletContext().getAttribute("drugs"));
+		orders = ((OrderDao<Order>) getServletContext().getAttribute("orders"));
+	}
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		try {
 			int id = Integer.parseInt((req.getParameter("id")));
 			System.out.println(id);
-			Order order = orderDao.getByOrderId(id);
+			Order order = orders.getByOrderId(id);
 
 			if (order != null) {
 				req.setAttribute("order", order);
@@ -30,29 +38,24 @@ public class EditOrderServlet extends HttpServlet {
 				getServletContext().getRequestDispatcher("/notfound.jsp").forward(req, resp);
 			}
 		} catch (Exception ex) {
-//			getServletContext().getRequestDispatcher("/notfound.jsp").forward(req, resp);
-			ex.printStackTrace();
 			throw new RuntimeException(ex);
 		}
-
 	}
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
 		try {
 			int id = Integer.parseInt(req.getParameter("id_order"));
 			String userName = req.getParameter("user");
   			String drugName = req.getParameter("drug");
-			BasicDao<Drug> drug = new DrugDao();
-			int id_drug = (drug.getByName(drugName)).getId();
+			int id_drug = drugs.findByName(drugName).id();
 			String mail = req.getParameter("mail");
 			String phone = req.getParameter("phone");
 			String address = req.getParameter("address");
 			int payment = Integer.parseInt(req.getParameter("payment"));
 			int cost = Integer.parseInt(req.getParameter("cost"));
 			Order order = new Order(id, id_drug, userName, mail, phone, address, payment , cost);
-			orderDao.updateById(order);
+			orders.updateById(order);
 			resp.sendRedirect(req.getContextPath() + "/allOrders");
 		} catch (Exception ex) {
 			ex.printStackTrace();

@@ -13,9 +13,7 @@ public interface OrderDao<T> {
 
     T getByUserName(String userName);
 
-    T getByDrugName(String drugName);
-
-    T deleteById(int id);
+	T deleteById(int id);
 
 
     Object updateById(Order order);

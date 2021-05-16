@@ -1,28 +1,30 @@
 package com.yu_pharm.controller.orders;
 
-import com.yu_pharm.controller.buy.CartBean;
-import com.yu_pharm.dao.*;
-import com.yu_pharm.model.Drug;
+import com.yu_pharm.dao.OrderDao;
 import com.yu_pharm.model.Order;
+import com.yu_pharm.model.drug.Drugs;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 @WebServlet("/createOrder")
 public class CreateOrderServlet extends HttpServlet {
-	List<Drug> drugList = new ArrayList<>();
-	OrderDao<Order> orderDao = new OrderDao_Imp();
-	BasicDao<Drug> drugDao = new DrugDao();
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	private Drugs.Smart drugs;
+	private OrderDao<Order> orders;
+
+
+	@Override
+	public void init() {
+		drugs = ((Drugs.Smart) getServletContext().getAttribute("drugs"));
+		orders = ((OrderDao<Order>) getServletContext().getAttribute("orders"));
+	}
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 //		try {
 //			HttpSession session = request.getSession();
@@ -40,7 +42,7 @@ public class CreateOrderServlet extends HttpServlet {
 //			Order order = new Order(id_drug, userName, mail, phone, address, payment, cost);
 //			orderDao.create(order);
 //			response.sendRedirect(request.getContextPath() + "/allOrders");
-			getServletContext().getRequestDispatcher("/createOrder.jsp").forward(request, response);
+		getServletContext().getRequestDispatcher("/createOrder.jsp").forward(request, response);
 
 
 //		} catch (Exception ex) {
@@ -48,12 +50,11 @@ public class CreateOrderServlet extends HttpServlet {
 //		}
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		try {
 			String drugName = request.getParameter("drug");
-			int drug = (drugDao.getByName(drugName)).getId();
+			int drug = drugs.findByName(drugName).id();
 			String userName = request.getParameter("user");
 			String mail = request.getParameter("mail");
 			String phone = request.getParameter("phone");
@@ -61,8 +62,8 @@ public class CreateOrderServlet extends HttpServlet {
 			int payment = Integer.parseInt(request.getParameter("payment"));
 			int cost = Integer.parseInt(request.getParameter("cost"));
 
-			Order order = new Order<Integer,String>(drug, userName, mail, phone, address, payment, cost);
-			orderDao.create(order);
+			Order<Integer, String> order = new Order<>(drug, userName, mail, phone, address, payment, cost);
+			orders.create(order);
 			response.sendRedirect(request.getContextPath() + "/allOrders");
 		} catch (Exception ex) {
 			ex.printStackTrace();

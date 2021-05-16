@@ -21,7 +21,9 @@
 	<label>Password</label><br>
 	<input name="password" value="${users.password}" />
 	<br><br><br>
-
+	<label>Role</label><br>
+	<input name="role" value="${users.role}" />
+	<br><br><br>
 	<input type="hidden" name="id" value="${users.id}">
 
 	<input type="submit" value="Save"/>|

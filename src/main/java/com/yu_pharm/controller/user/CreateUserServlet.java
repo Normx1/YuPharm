@@ -13,26 +13,27 @@ import java.io.IOException;
 
 @WebServlet("/user/create")
 public class CreateUserServlet extends HttpServlet {
-    BasicDao<User> userDao = new UserDao();
+	BasicDao<User> userDao = new UserDao();
 
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        getServletContext().getRequestDispatcher("/registration.jsp").forward(request, response);
-    }
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		getServletContext().getRequestDispatcher("/registration.jsp").forward(request, response);
+	}
 
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        System.out.println(1);
-        try {
-            String name = request.getParameter("name");
-            String mail = request.getParameter("mail");
-            String password = request.getParameter("password");
-            User users = new User(name, password, mail);
-            userDao.create(users);
-            response.sendRedirect(request.getContextPath() + "/adminUserList");
-        } catch (Exception ex) {
-            ex.printStackTrace();
-            getServletContext().getRequestDispatcher("/notfound.jsp").forward(request, response);
-        }
-    }
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		try {
+			String name = request.getParameter("name");
+			String mail = request.getParameter("mail");
+			String password = request.getParameter("password");
+			int role = Integer.parseInt(request.getParameter("role"));
+			User users = new User(name, password, mail, role);
+			userDao.create(users);
+			response.sendRedirect(request.getContextPath() + "/adminUserList");
+		} catch (
+				Exception ex) {
+			ex.printStackTrace();
+			getServletContext().getRequestDispatcher("/notfound.jsp").forward(request, response);
+		}
+	}
 }

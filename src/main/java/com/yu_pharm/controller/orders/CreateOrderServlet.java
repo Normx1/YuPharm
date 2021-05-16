@@ -25,29 +25,7 @@ public class CreateOrderServlet extends HttpServlet {
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-//		try {
-//			HttpSession session = request.getSession();
-//			CartBean bean = CartBean.get(session);
-//			String drugName = request.getParameter("drug");
-//			String id_drug = bean.getIds().stream().sorted().toString();
-//			// TODO: 15.05.2021
-//			String userName = request.getParameter("user");
-//			String mail = request.getParameter("mail");
-//			String phone = request.getParameter("phone");
-//			String address = request.getParameter("address");
-//			int payment = Integer.parseInt(request.getParameter("payment"));
-//			int cost = Integer.parseInt(request.getParameter("cost"));
-//
-//			Order order = new Order(id_drug, userName, mail, phone, address, payment, cost);
-//			orderDao.create(order);
-//			response.sendRedirect(request.getContextPath() + "/allOrders");
 		getServletContext().getRequestDispatcher("/createOrder.jsp").forward(request, response);
-
-
-//		} catch (Exception ex) {
-//			ex.printStackTrace();
-//		}
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

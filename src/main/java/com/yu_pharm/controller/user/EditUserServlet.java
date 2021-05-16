@@ -13,39 +13,40 @@ import java.io.IOException;
 
 @WebServlet("/user/edit")
 public class EditUserServlet extends HttpServlet {
-    BasicDao<User> userBasicDao = new UserDao();
+	BasicDao<User> userBasicDao = new UserDao();
 
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        try {
-            int id = Integer.parseInt(request.getParameter("id"));
-            User users = userBasicDao.getById(id);
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		try {
+			int id = Integer.parseInt(request.getParameter("id"));
+			User users = userBasicDao.getById(id);
 
-            if (users != null) {
-                request.setAttribute("users", users);
-                getServletContext().getRequestDispatcher("/editUser.jsp").forward(request, response);
-            } else {
-                getServletContext().getRequestDispatcher("/notfound.jsp").forward(request, response);
-            }
-        } catch (Exception ex) {
-            getServletContext().getRequestDispatcher("/notfound.jsp").forward(request, response);
-        }
-    }
+			if (users != null) {
+				request.setAttribute("users", users);
+				getServletContext().getRequestDispatcher("/editUser.jsp").forward(request, response);
+			} else {
+				getServletContext().getRequestDispatcher("/notfound.jsp").forward(request, response);
+			}
+		} catch (Exception ex) {
+			getServletContext().getRequestDispatcher("/notfound.jsp").forward(request, response);
+		}
+	}
 
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 
-        try {
-            int id = Integer.parseInt(request.getParameter("id"));
-            String name = request.getParameter("name");
-            String mail = request.getParameter("mail");
-            String password = request.getParameter("password");
-            User user = new User(id, name, mail, password);
-            userBasicDao.updateById(user);
+		try {
+			int id = Integer.parseInt(request.getParameter("id"));
+			String name = request.getParameter("name");
+			String mail = request.getParameter("mail");
+			String password = request.getParameter("password");
+			int role = Integer.parseInt(request.getParameter("password"));
+			User user = new User(id, name, mail, password);
+			userBasicDao.updateById(user);
 			response.sendRedirect(request.getContextPath() + "/adminUserList");
-        } catch (Exception ex) {
-            ex.printStackTrace();
+		} catch (Exception ex) {
+			ex.printStackTrace();
 //            getServletContext().getRequestDispatcher("/notfound.jsp").forward(request, response);
-        }
-    }
+		}
+	}
 }

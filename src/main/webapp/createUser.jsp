@@ -14,6 +14,8 @@
     <input name="mail"/><br><br>
     <label>Password</label><br>
     <input name="password"/><br><br>
+	<label>Role</label><br>
+	<input name="role"/><br><br>
     <input type="submit" value="Save"/>
 </form>
 <td colspan ="2">

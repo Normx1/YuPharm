@@ -17,7 +17,7 @@ public class CreateDrugServlet extends HttpServlet {
 
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		getServletContext().getRequestDispatcher("/WEB-INF/Create/createDrug.jsp").forward(request, response);
+		getServletContext().getRequestDispatcher("/createDrug.jsp").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

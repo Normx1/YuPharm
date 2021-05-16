@@ -2,7 +2,6 @@ package com.yu_pharm.controller.login;
 
 import com.yu_pharm.controller.util.MyUtils;
 import com.yu_pharm.model.User;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -14,15 +13,9 @@ import java.io.IOException;
 
 @WebServlet(urlPatterns = {"/userInfo"})
 public class UserInfoServlet extends HttpServlet {
-    private static final long serialVersionUID = 1L;
-
-    public UserInfoServlet() {
-        super();
-    }
 
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
 
         // Проверить, вошел ли пользователь в систему (login) или нет.
@@ -31,24 +24,18 @@ public class UserInfoServlet extends HttpServlet {
         // Если еще не вошел в систему (login).
         if (loginedUser == null) {
             // Redirect (Перенаправить) к странице login.
-            response.sendRedirect("/WEB-INF/login");
+            response.sendRedirect("/login");
             return;
         }
         // Сохранить информацию в request attribute перед тем как forward (перенаправить).
         request.setAttribute("user", loginedUser);
 
         // Если пользователь уже вошел в систему (login), то forward (перенаправить) к странице
-        // /WEB-INF/views/userInfoView.jsp
-        RequestDispatcher dispatcher //
-                = this.getServletContext().getRequestDispatcher("/WEB-INF/login/userInfoView.jsp");
-        dispatcher.forward(request, response);
-
+        this.getServletContext().getRequestDispatcher("/login/userInfoView.jsp").forward(request, response);
     }
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doGet(request, response);
     }
-
 }

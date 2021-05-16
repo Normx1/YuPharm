@@ -13,8 +13,13 @@ import java.io.IOException;
 @WebServlet("/drug/create")
 public class CreateDrugServlet extends HttpServlet {
 
-	private final Drugs.Smart drugs = ((Drugs.Smart) getServletContext().getAttribute("drugs"));
+	private Drugs.Smart drugs;
 
+
+	@Override
+	public void init() throws ServletException {
+		drugs = ((Drugs.Smart) getServletContext().getAttribute("drugs"));
+	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		getServletContext().getRequestDispatcher("/createDrug.jsp").forward(request, response);

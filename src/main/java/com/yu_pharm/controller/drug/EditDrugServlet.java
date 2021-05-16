@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 
-@WebServlet(urlPatterns = {"/drug/edit"})
+@WebServlet("/drug/edit")
 public class EditDrugServlet extends HttpServlet {
 
 	private Drugs.Smart drugs;

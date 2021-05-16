@@ -12,17 +12,17 @@ import java.io.IOException;
 @WebServlet("/drug/delete")
 public class DeleteDrugServlet extends HttpServlet {
 
-	private final Drugs.Smart drugs = ((Drugs.Smart) getServletContext().getAttribute("drugs"));
+	private Drugs.Smart drugs;
 
+
+	@Override
+	public void init() {
+		drugs = ((Drugs.Smart) getServletContext().getAttribute("drugs"));
+	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-		try {
-			int id = Integer.parseInt(request.getParameter("id"));
-			drugs.findById(id).delete();
-			response.sendRedirect(request.getContextPath() + "/adminDrugList");
-		} catch (Exception ex) {
-			getServletContext().getRequestDispatcher("notfound.jsp").forward(request, response);
-		}
+		int id = Integer.parseInt(request.getParameter("id"));
+		drugs.findById(id).delete();
+		response.sendRedirect(request.getContextPath() + "/adminDrugList");
 	}
 }

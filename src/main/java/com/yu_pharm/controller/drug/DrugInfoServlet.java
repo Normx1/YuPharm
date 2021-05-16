@@ -3,7 +3,6 @@ package com.yu_pharm.controller.drug;
 import com.yu_pharm.model.drug.Drug;
 import com.yu_pharm.model.drug.Drugs;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -23,16 +22,10 @@ public class DrugInfoServlet extends HttpServlet {
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		try {
-			int id = Integer.parseInt(request.getParameter("id"));
-			Drug.Smart drug = drugs.findById(id);
-			request.setAttribute("drug", drug);
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/drugInfo.jsp");
-			dispatcher.forward(request, response);
-		} catch (Exception ex) {
-			getServletContext().getRequestDispatcher("/notfound.jsp").forward(request, response);
-			throw ex;
-		}
+		int id = Integer.parseInt(request.getParameter("id"));
+		Drug.Smart drug = drugs.findById(id);
+		request.setAttribute("drug", drug);
+		request.getRequestDispatcher("/drugInfo.jsp").forward(request, response);
 	}
 }
 

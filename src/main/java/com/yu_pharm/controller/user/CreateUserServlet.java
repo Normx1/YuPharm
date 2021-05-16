@@ -33,7 +33,6 @@ public class CreateUserServlet extends HttpServlet {
         } catch (Exception ex) {
             ex.printStackTrace();
             getServletContext().getRequestDispatcher("/notfound.jsp").forward(request, response);
-//            getServletContext().getRequestDispatcher("/create").forward(request, response);
         }
     }
 }

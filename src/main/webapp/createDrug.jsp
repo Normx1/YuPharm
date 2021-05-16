@@ -10,7 +10,7 @@
 <body>
 <jsp:include page="WEB-INF/otherElements/_header.jsp"></jsp:include>
 <h3>Create new medicine:</h3>
-<form method="post" action="/create">
+<form method="post" action="/drug/create">
     <label>Name</label><br>
     <input name="name"/>
     <br><br>

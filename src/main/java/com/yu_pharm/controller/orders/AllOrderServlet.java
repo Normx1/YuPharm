@@ -1,8 +1,6 @@
 package com.yu_pharm.controller.orders;
 
-import com.yu_pharm.dao.BasicDao;
 import com.yu_pharm.dao.OrderDao;
-import com.yu_pharm.dao.OrderDao_Imp;
 import com.yu_pharm.model.Order;
 
 import javax.servlet.ServletException;
@@ -14,21 +12,21 @@ import java.io.IOException;
 
 @WebServlet("/allOrders")
 public class AllOrderServlet extends HttpServlet {
-	private BasicDao<Order<String, String>> order;
+
+	private OrderDao<Order> order;
+
 
 	@Override
-	public void init() throws ServletException {
-		order = ((BasicDao<Order<String, String>>) getServletContext().getAttribute("orders"));
+	public void init() {
+		order = ((OrderDao<Order>) getServletContext().getAttribute("orders"));
 	}
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
 		try {
 			req.setAttribute("order", order.getAll());
 			getServletContext().getRequestDispatcher("/allOrders.jsp").forward(req, resp);
-		} catch (				Exception ex) {
-			ex.printStackTrace();
+		} catch (Exception ex) {
 			throw new RuntimeException(ex);
 		}
 	}

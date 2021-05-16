@@ -8,7 +8,7 @@
 	<title>Title</title>
 </head>
 <body>
-<jsp:include page="/WEB-INF/otherElements/_header.jsp"></jsp:include>
+<jsp:include page="/WEB-INF/otherElements/_header.jsp" />
 <div align="left">
 	<h2>Basket</h2>
 </div>
@@ -24,20 +24,20 @@
 	</tr>
 	<c:forEach var="cure" items="${sessionScope.cure}">
 		<tr>
-			<td>${cure.id}</td>
-			<td>${cure.name}</td>
-			<td>${cure.cost} $</td>
+			<td>${cure.id()}</td>
+			<td>${cure.name()}</td>
+			<td>${cure.cost()} $</td>
 			<td>
-				<div align="center"> ${cure.recipe}
+				<div align="center"> ${cure.recipe()}
 				</div>
 			</td>
 			<td>
-				<a href='<c:url value="drug/info?id=${cure.id}"/>'>Details</a>
+				<a href='<c:url value="drug/info?id=${cure.id()}"/>'>Details</a>
 
 			</td>
 			<td>
 				<form method="get" action='<c:url value="/remove/basket" />' style="display:inline;">
-					<input type="hidden" name="id" value="${cure.id}">
+					<input type="hidden" name="id" value="${cure.id()}">
 					<input type="submit" value="Delete">
 				</form>
 			</td>
@@ -62,7 +62,7 @@
 
 <form>
 	<a href="${pageContext.request.contextPath}/">Return</a>
-	<jsp:include page="/WEB-INF/otherElements/_footer.jsp"></jsp:include>
+	<jsp:include page="/WEB-INF/otherElements/_footer.jsp" />
 
 </form>
 </body>

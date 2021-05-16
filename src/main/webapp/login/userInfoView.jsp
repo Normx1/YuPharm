@@ -14,8 +14,8 @@
 </head>
 <body>
 
-<jsp:include page="../otherElements/_header.jsp"></jsp:include>
-<jsp:include page="../otherElements/_menu.jsp"></jsp:include>
+<jsp:include page="../WEB-INF/otherElements/_header.jsp"></jsp:include>
+<jsp:include page="../WEB-INF/otherElements/_menu.jsp"></jsp:include>
 
 <h3>Hello: ${user.name}</h3>
 
@@ -25,7 +25,7 @@ Mail: ${user.mail } <br/>
 
 <a href='<c:url value="/userOrders?name=${user.name}" />'>My Orders</a> |
 
-<jsp:include page="../otherElements/_footer.jsp"></jsp:include>
+<jsp:include page="../WEB-INF/otherElements/_footer.jsp"></jsp:include>
 
 </body>
 </html>

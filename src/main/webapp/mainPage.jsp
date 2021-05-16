@@ -9,8 +9,8 @@
 	<title>Title</title>
 </head>
 <body>
-<jsp:include page="otherElements/_header.jsp"/>
-<jsp:include page="otherElements/_menu.jsp"/>
+<jsp:include page="WEB-INF/otherElements/_header.jsp"/>
+<jsp:include page="WEB-INF/otherElements/_menu.jsp"/>
 <div align="left">
 	<h3>Cure recipe</h3>
 </div>
@@ -44,6 +44,6 @@
 		</tr>
 	</c:forEach>
 </table>
-<jsp:include page="otherElements/_footer.jsp"/>
+<jsp:include page="WEB-INF/otherElements/_footer.jsp"/>
 </body>
 </html>

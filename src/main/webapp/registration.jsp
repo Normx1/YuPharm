@@ -6,7 +6,7 @@
     <title>Edit </title>
 </head>
 <body>
-<jsp:include page="otherElements/_header.jsp"></jsp:include>
+<jsp:include page="WEB-INF/otherElements/_header.jsp"></jsp:include>
 <h3>Edit medicine:</h3>
 <form method="post" action="/user/create">
     <label>Input Name:</label><br>
@@ -32,7 +32,7 @@
     <input type="submit" value="Save"/>
     <a href="${pageContext.request.contextPath}/">Cancel</a>
     </td>
-    <jsp:include page="otherElements/_footer.jsp"></jsp:include>
+    <jsp:include page="WEB-INF/otherElements/_footer.jsp"></jsp:include>
 </form>
 </body>
 </html>

@@ -20,11 +20,20 @@ public class InitListener implements ServletContextListener {
 	@Override
 	public void contextInitialized(ServletContextEvent sce) {
 		try {
-			Supplier<Connection> connection = () -> {
-				try {
-					return JDBCConnector.getConnection();
-				} catch (SQLException ex) {
-					throw new RuntimeException("Failed to get connection to db", ex);
+			Supplier<Connection> connection = new Supplier<>() {
+
+				private Connection connection;
+
+				@Override
+				public synchronized Connection get() {
+					try {
+						if (connection == null) {
+							connection = JDBCConnector.getConnection();
+						}
+						return connection;
+					} catch (SQLException ex) {
+						throw new RuntimeException("Failed to get connection to db", ex);
+					}
 				}
 			};
 			Drugs.Smart drugs = new Drugs.Smart(new SqlDrugs(connection));

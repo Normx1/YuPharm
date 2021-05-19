@@ -41,6 +41,13 @@ public class User<T> {
 		this.role = role;
 	}
 
+	public User(String name, String mail, String password, T role) {
+		this.name = name;
+		this.password = password;
+		this.mail = mail;
+		this.role = role;
+	}
+
 	public int getId() {
 		return id;
 	}
@@ -69,8 +76,8 @@ public class User<T> {
 		return mail;
 	}
 
-	public T getRole() {
-		return role;
+	public int getRole() {
+		return (int) role;
 	}
 
 	public void setRole(T role) {
@@ -86,10 +93,5 @@ public class User<T> {
 		this.name = name;
 	}
 
-	public User(String name, String mail, String password, T role) {
-		this.name = name;
-		this.password = password;
-		this.mail = mail;
-		this.role = role;
-	}
+
 }

@@ -17,30 +17,41 @@
 	<input name="name" value="${users.name}"/>
 	<br><br>
 	<label>Mail</label><br>
-	<input name="mail" value="${users.mail}" />
+	<input name="mail" value="${users.mail}"/>
 	<br><br>
 	<label>Password</label><br>
-	<input name="password" value="${users.password}" />
+	<input name="password" value="${users.password}"/>
 	<br><br><br>
-	<label>Role</label><br>
-	<form>
-		<input type="radio" name="role" value="0"/> Viewer
-		<input type="radio" name="role" value="1"/> Customer
-		<input type="radio" name="role" value="2"/> Pharmacist
-		<input type="radio" name="role" value="3"/> Doctor
-		<input type="radio" name="role" value="4"/> Admin
-		<input type="radio" name="role" value="5"/> SuperAdmin
-	</form>	<br><br><br>
-	<input type="hidden" name="id" value="${users.id}">
+	<label>Role:
+		<label>
+			<input type="radio" name="role" value="0"/>
+		</label> Viewer
+		<label>
+			<input type="radio" name="role" value="1"/>
+		</label> Customer
+		<label>
+			<input type="radio" name="role" value="2"/>
+		</label> Pharmacist
+		<label>
+			<input type="radio" name="role" value="3"/>
+		</label> Doctor
+		<label>
+			<input type="radio" name="role" value="4"/>
+		</label> Admin
+		<label>
+			<input type="radio" name="role" value="5"/>
+		</label> SuperAdmin
+	<br>
+	<input type="hidden" name="id" value="${users.id}"/>
+	</label><br>
 
 	<input type="submit" value="Save"/>|
-
-	<td colspan ="2">
+	<td colspan="2">
 		<a href="/adminUserList">Return</a>
 	</td>
 
 </form>
- <%--    <label>Description</label><br>--%>
+<%--    <label>Description</label><br>--%>
 <%--    <input name="description"/><br><br>--%>
 <jsp:include page="../../WEB-INF/otherElements/_footer.jsp"></jsp:include>
 </form>

@@ -44,11 +44,11 @@ public class UserDao implements BasicDao<User> {
 				ResultSet resultSet = preparedStatement.executeQuery();
 				if (resultSet.next()) {
 
- 					String name = resultSet.getString(2);
+					String name = resultSet.getString(2);
 					String mail = resultSet.getString(3);
 					String password = resultSet.getString(4);
 					int role = resultSet.getInt(5);
-					user = new User(id, name, mail, password,role);
+					user = new User(id, name, mail, password, role);
 				}
 			}
 		} catch (Exception ex) {
@@ -75,16 +75,15 @@ public class UserDao implements BasicDao<User> {
 	}
 
 	@Override
-	public User updateById(User user1) {
-		User user = getById(user1.getId());
+	public User updateById(User user) {
 		try (Connection conn = JDBCConnector.getConnection()) {
-			String sql = "UPDATE table_name SET name = ?, mail = ?, password = ? WHERE id = ?";
+			String sql = "UPDATE table_name SET name = ?, mail = ?, password = ?, role = ? WHERE id = ?";
 			try (PreparedStatement preparedStatement = conn.prepareStatement(sql)) {
-				preparedStatement.setString(1, user1.getName());
-				preparedStatement.setString(2, user1.getMail());
-				preparedStatement.setString(3, user1.getPassword());
-				preparedStatement.setInt(5, (Integer) user.getRole());
-				preparedStatement.setInt(4, user.getId());
+				preparedStatement.setString(1, user.getName());
+				preparedStatement.setString(2, user.getMail());
+				preparedStatement.setString(3, user.getPassword());
+				preparedStatement.setInt(4, user.getRole());
+				preparedStatement.setInt(5, user.getId());
 				preparedStatement.execute();
 			}
 		} catch (Exception ex) {
@@ -135,4 +134,30 @@ public class UserDao implements BasicDao<User> {
 		}
 		return user;
 	}
+
+
+//
+//	public List<User> getAllPagination(int offset, int noOfRecords) {
+//		String query = "select * from table_name "+ offset + ", " + noOfRecords;
+//		List<User> userList = new ArrayList<>();
+//		try (Connection conn = JDBCConnector.getConnection();
+//			 Statement statement = conn.createStatement();
+//			 ResultSet resultSet = statement.executeQuery(
+//			 		"select * from table_name");) {
+//			//Получем все элементы таблицы
+//			while (resultSet.next()) {
+//				int id = resultSet.getInt(1);
+//				String name = resultSet.getString(2);
+//				String mail = resultSet.getString(3);
+//				int role = resultSet.getInt(4);
+//				User user = new User(id, name, mail, role);
+//				userList.add(user);
+//			}
+//		} catch (Exception ex) {
+//			ex.printStackTrace();
+//			throw new RuntimeException(ex);
+//		}
+//		return userList;
+//	}
+
 }

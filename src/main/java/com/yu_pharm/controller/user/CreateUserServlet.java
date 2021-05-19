@@ -26,8 +26,8 @@ public class CreateUserServlet extends HttpServlet {
 			String name = request.getParameter("name");
 			String mail = request.getParameter("mail");
 			String password = request.getParameter("password");
-			int role = Integer.parseInt(request.getParameter("Role"));
-			User users = new User(name, password, mail, role);
+			int role = 0;
+			User users = new User(name, mail,password, role);
 			userDao.create(users);
 			response.sendRedirect(request.getContextPath() + "/adminUserList");
 		} catch (

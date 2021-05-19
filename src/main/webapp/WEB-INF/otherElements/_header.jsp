@@ -8,4 +8,5 @@
     <div style=" align: left">
         <h1 style="color:#FFFFFF"> <fmt:message key="_header.Welcome"/></h1>
     </div>
+
 </div>

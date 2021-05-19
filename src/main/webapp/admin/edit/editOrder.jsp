@@ -18,36 +18,36 @@
 
 	<br><br>
 	<label>Drug</label><br>
-	<input name="drug" value="${order.drug}" />
+	<input name="drug" value="${order.drug}"/>
 	<br><br>
 	<label>User</label><br>
-	<input name="user" value="${order.user}" />
+	<input name="user" value="${order.user}"/>
 	<br><br>
 	<label>Mail</label><br>
-	<input name="mail" value="${order.mail}" />
+	<input name="mail" value="${order.mail}"/>
 	<br><br>
 	<label>Phone</label><br>
-	<input name="phone" value="${order.phone}" />
+	<input name="phone" value="${order.phone}"/>
 	<br><br>
 	<label>Address</label><br>
-	<input name="address" value="${order.address}" />
+	<input name="address" value="${order.address}"/>
 	<br><br>
 	<label>Address</label><br>
-	<input name="payment" value="${order.payment}" />
+	<input name="payment" value="${order.payment}"/>
 	<br><br>
 	<label>Cost</label><br>
-	<input name="cost" value="${order.cost}" />
+	<input name="cost" value="${order.cost}"/>
 	<br><br>
 
-<input type="hidden" name="id_order" value="${order.id_Order}"/>
-<input type="submit" value="Save"/>|
-<td colspan ="2">
-
-c</td>
+	<input type="hidden" name="id_order" value="${order.id_Order}"/>
+	<input type="submit" value="Save"/>|
+	<td colspan="2">
+		<a href="/allOrders">Return</a>
+	</td>
 </form>
 <br><br>
 <jsp:include page="/WEB-INF/otherElements/_footer.jsp"></jsp:include>
 </form>
 </body>
 
- </html>
+</html>

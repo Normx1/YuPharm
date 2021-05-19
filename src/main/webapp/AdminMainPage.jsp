@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%--
   Created by IntelliJ IDEA.
   User: Сергей
@@ -12,10 +13,10 @@
 	<title>Title</title>
 </head>
 <jsp:include page="/WEB-INF/otherElements/_header.jsp"></jsp:include>
-<jsp:include page="/WEB-INF/otherElements/_menu.jsp"></jsp:include>
+
 <body>
 <form>
-	<p><a href='<c:url value="/adminDrugList" />'>Drugs</a></p>
+	<p><a href='<c:url value="/adminDrugList" />'><fmt:message key="drug"></fmt:message> </a></p>
 	<p><a href='<c:url value="/adminUserList" />'>Users</a></p>
 	<p><a href='<c:url value="/allOrders" />'>Orders</a></p>
 <%--	<p><a href='<c:url value="/allRecipes"/>'>Recipes</a></p>--%>

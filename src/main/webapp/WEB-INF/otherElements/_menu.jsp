@@ -15,7 +15,6 @@
     <a href="${pageContext.request.contextPath}/userInfo">My Account Info</a>
     |
     <a href="${pageContext.request.contextPath}/login">Login/Sign in</a>
-
     |
     <a href="${pageContext.request.contextPath}/AdminMainPage">AdminPage</a>
 
@@ -35,4 +34,7 @@
 <div style="align: right;">
     Search <input name="search">
 
+</div>
+<div
+<jsp:include page="/WEB-INF/otherElements/locale.jsp"></jsp:include>
 </div>

@@ -32,7 +32,7 @@
 	</tr>
 	<c:forEach var="recipe" items="${requestScope.recipe}">
 		<tr>
- 			<td>${recipe.recId}</td>
+			<td>${recipe.recId}</td>
 			<td>${recipe.drugId}</td>
 			<td>${recipe.userId}</td>
 			<td>${recipe.expDate} $</td>

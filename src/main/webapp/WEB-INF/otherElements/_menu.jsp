@@ -1,7 +1,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <div>
-	<div style="padding: 5px;  align: left;">
+	<div style="padding: 5px; text-align: left;">
 
 		<a href="${pageContext.request.contextPath}/info/news.jsp"><fmt:message key="_menu.News"/></a>
 		|
@@ -13,6 +13,12 @@
 		|
 		<a href="${pageContext.request.contextPath}/AdminMainPage"><fmt:message key="_menu.Admin"/></a>
 
-		<jsp:include page="/WEB-INF/otherElements/locale.jsp"/>
+		<form method="post" action="${pageContext.request.contextPath}/locale">
+			<select name="language" onchange="submit()">
+				<option value="en_EN" ${language == "en_EN" ? "selected" : ""}>English</option>
+				<option value="ru_RU" ${language == "ru_RU" ? "selected" : ""}>Русский</option>
+			</select>
+			<input type="hidden" name="from" value="${pageContext.request.requestURI}"/>
+		</form>
 	</div>
 </div>

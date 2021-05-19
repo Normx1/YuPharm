@@ -15,7 +15,7 @@
 <fmt:message key="aboutUs.Text"></fmt:message>
 <br>
 <br>
-<a href="${pageContext.request.contextPath}/">Return</a>
+<a href="${pageContext.request.contextPath}/"><fmt:message key="Return"></fmt:message></a>
 <jsp:include page="/WEB-INF/otherElements/_footer.jsp"/>
 </body>
 </html>

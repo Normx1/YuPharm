@@ -12,7 +12,7 @@ public class User<T> {
 	public User() {
 	}
 
-	public User(int id, String name, String password, String mail, T role) {
+	public User(int id, String name, String mail, String password, T role) {
 		this.id = id;
 		this.name = name;
 		this.password = password;
@@ -21,7 +21,7 @@ public class User<T> {
 	}
 
 
-	public User(int id, String name, String password, String mail) {
+	public User(int id, String name, String mail, String password) {
 		this.id = id;
 		this.name = name;
 		this.password = password;
@@ -86,7 +86,7 @@ public class User<T> {
 		this.name = name;
 	}
 
-	public User(String name, String password, String mail, T role) {
+	public User(String name, String mail, String password, T role) {
 		this.name = name;
 		this.password = password;
 		this.mail = mail;

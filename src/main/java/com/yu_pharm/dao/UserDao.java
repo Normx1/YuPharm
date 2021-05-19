@@ -44,12 +44,11 @@ public class UserDao implements BasicDao<User> {
 				ResultSet resultSet = preparedStatement.executeQuery();
 				if (resultSet.next()) {
 
-					int prodId = resultSet.getInt(1);
-					String name = resultSet.getString(2);
+ 					String name = resultSet.getString(2);
 					String mail = resultSet.getString(3);
 					String password = resultSet.getString(4);
 					int role = resultSet.getInt(5);
-					user = new User(id, name, mail, password);
+					user = new User(id, name, mail, password,role);
 				}
 			}
 		} catch (Exception ex) {

@@ -32,7 +32,7 @@ public class EditDrugServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Drug.Smart drug = drugs.findById(Integer.parseInt(request.getParameter("id")));
 		drug.name(request.getParameter("name"));
-		drug.cost(Double.parseDouble(request.getParameter("cost")));
+//		drug.cost(Double.parseDouble(request.getParameter("cost")));
 		drug.count(Double.parseDouble(request.getParameter("count")));
 		drug.recipe(Byte.parseByte(request.getParameter("recipe")));
 		drug.mainAction(request.getParameter("main_action"));

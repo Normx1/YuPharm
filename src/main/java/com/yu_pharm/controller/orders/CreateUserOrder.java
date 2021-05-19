@@ -30,7 +30,7 @@ public class CreateUserOrder extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		getServletContext().getRequestDispatcher("/detailOfOrder.jsp").forward(request, response);
+		getServletContext().getRequestDispatcher("/buy&basket/detailOfOrder.jsp").forward(request, response);
 	}
 
 	@Override

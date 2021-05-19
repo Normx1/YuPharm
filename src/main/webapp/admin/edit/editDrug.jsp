@@ -17,8 +17,8 @@
 	</style>
 </head>
 <body>
-<jsp:include page="WEB-INF/otherElements/_header.jsp"/>
-<jsp:include page="WEB-INF/otherElements/_menu.jsp"/>
+<jsp:include page="../../WEB-INF/otherElements/_header.jsp"/>
+<jsp:include page="../../WEB-INF/otherElements/_menu.jsp"/>
 <h3>Edit medicine:</h3>
 <form method="post" action="/drug/edit">
 	<input type="hidden" name="id" value="${drug.id()}">
@@ -47,6 +47,6 @@
 	<input type="submit" value="Save"/>
 </form>
 <a href="${pageContext.request.contextPath}/">Cancel</a>
-<jsp:include page="WEB-INF/otherElements/_footer.jsp"/>
+<jsp:include page="../../WEB-INF/otherElements/_footer.jsp"/>
 </body>
 </html>

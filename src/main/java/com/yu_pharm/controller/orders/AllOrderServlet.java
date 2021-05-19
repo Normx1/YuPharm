@@ -25,7 +25,7 @@ public class AllOrderServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		try {
 			req.setAttribute("order", order.getAll());
-			getServletContext().getRequestDispatcher("/allOrders.jsp").forward(req, resp);
+			getServletContext().getRequestDispatcher("/admin/allOrders.jsp").forward(req, resp);
 		} catch (Exception ex) {
 			throw new RuntimeException(ex);
 		}

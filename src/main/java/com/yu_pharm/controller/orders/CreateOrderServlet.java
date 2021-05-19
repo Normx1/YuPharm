@@ -25,7 +25,7 @@ public class CreateOrderServlet extends HttpServlet {
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		getServletContext().getRequestDispatcher("/createOrder.jsp").forward(request, response);
+		getServletContext().getRequestDispatcher("/admin/create/createOrder.jsp").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

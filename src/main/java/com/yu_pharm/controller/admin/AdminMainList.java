@@ -15,7 +15,7 @@ public class AdminMainList extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		try {
-			getServletContext().getRequestDispatcher("/AdminMainPage.jsp").forward(request, response);
+			getServletContext().getRequestDispatcher("/admin/AdminMainPage.jsp").forward(request, response);
 
 		} catch (
 				Exception ex) {

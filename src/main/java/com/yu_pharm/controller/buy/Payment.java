@@ -12,7 +12,7 @@ import java.io.IOException;
 public class Payment extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		getServletContext().getRequestDispatcher("/paymentCart.jsp").forward(req, resp);
+		getServletContext().getRequestDispatcher("/buy&basket/paymentCart.jsp").forward(req, resp);
 	}
 
 	@Override

@@ -16,10 +16,10 @@
 
 </head>
 <body>
-<jsp:include page="WEB-INF/otherElements/_header.jsp"/>
-<jsp:include page="WEB-INF/otherElements/_menu.jsp"/>
+<jsp:include page="../WEB-INF/otherElements/_header.jsp"/>
+<jsp:include page="../WEB-INF/otherElements/_menu.jsp"/>
 <p><h2>Users List</h2>
-<p><a href='<c:url value="createUser.jsp" />'>Create new User</a></p>
+<p><a href='<c:url value="/user/create" />'>Create new User</a></p>
 <table border="1" cellpadding="5" cellspacing="1">
     <tr>
         <th>Name</th>

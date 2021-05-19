@@ -11,8 +11,8 @@
 	<title>Title</title>
 </head>
 <body>
-<jsp:include page="WEB-INF/otherElements/_header.jsp"/>
-<jsp:include page="WEB-INF/otherElements/_menu.jsp"/>
+<jsp:include page="../../WEB-INF/otherElements/_header.jsp"/>
+<jsp:include page="../../WEB-INF/otherElements/_menu.jsp"/>
 <h3>Edit medicine:</h3>
 <form method="post" action="/order/edit">
 

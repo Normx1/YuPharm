@@ -6,8 +6,8 @@
 	<title>User</title>
 </head>
 <body>
-<jsp:include page="WEB-INF/otherElements/_header.jsp"/>
-<jsp:include page="WEB-INF/otherElements/_menu.jsp"/>
+<jsp:include page="../../WEB-INF/otherElements/_header.jsp"/>
+<jsp:include page="../../WEB-INF/otherElements/_menu.jsp"/>
 
 <h3>New Order</h3>
 <form method="post" action="/createOrder">

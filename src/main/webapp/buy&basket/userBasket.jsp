@@ -17,7 +17,6 @@
 		<th><fmt:message key="userBasket.Cost"/></th>
 		<th><fmt:message key="userBasket.Recipe"/></th>
 		<th><fmt:message key="userBasket.Address"/></th>
-		<th>Address</th>
 	</tr>
 	<c:forEach var="drugs" items="${requestScope.drugs}">
 		<tr>
@@ -28,12 +27,12 @@
 			<td>${drugs.count}</td>
 			<td>${drugs.cost}</td>
 			<td>${drugs.recipe}</td>
-			<td><a href='<c:url value="/drug/edit?id=${drugs.id}"/>'>Edit</a></td>
+			<td><a href='<c:url value="/drug/edit?id=${drugs.id}"/>'><fmt:message key="Edit"/></a></td>
 			<td>
 
 				<form method="post" action='<c:url value="/drug/delete"/>' style="display:inline;">
 					<input type="hidden" name="id" value="${drugs.id}">
-					<input type="submit" value="<fmt:message key="Delete" />">
+					<input type="submit" value="<fmt:message key="Delete"/>">
 				</form>
 			</td>
 		</tr>

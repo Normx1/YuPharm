@@ -22,7 +22,7 @@ public class CreateDrugServlet extends HttpServlet {
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		getServletContext().getRequestDispatcher("/createDrug.jsp").forward(request, response);
+		getServletContext().getRequestDispatcher("/admin/create/createDrug.jsp").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

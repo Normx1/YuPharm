@@ -1,3 +1,4 @@
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%--
   Created by IntelliJ IDEA.
   User: qa
@@ -10,6 +11,6 @@
  height: 50px;
  padding: 20px;">
     <div style=" align: left">
-        <h1 style="color:#FFFFFF"> Welcome to YuPharm.com !</h1>
+        <h1 style="color:#FFFFFF"> <fmt:message key="_header.Welcome"/></h1>
     </div>
 </div>

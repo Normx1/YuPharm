@@ -8,8 +8,8 @@
 	<title>Title</title>
 </head>
 <body>
-<jsp:include page="WEB-INF/otherElements/_header.jsp"/>
-<jsp:include page="WEB-INF/otherElements/_menu.jsp"/>
+<jsp:include page="../WEB-INF/otherElements/_header.jsp"/>
+<jsp:include page="../WEB-INF/otherElements/_menu.jsp"/>
 <h2><fmt:message key="aboutUs.headline"></fmt:message>
 	<br></h2>
 <fmt:message key="aboutUs.Text"></fmt:message>

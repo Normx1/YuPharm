@@ -26,7 +26,7 @@ public class EditDrugServlet extends HttpServlet {
 		int id = Integer.parseInt(request.getParameter("id"));
 		Drug.Smart drug = drugs.findById(id);
 		request.getSession().setAttribute("drug", drug);
-		request.getServletContext().getRequestDispatcher("/editDrug.jsp").forward(request, response);
+		request.getServletContext().getRequestDispatcher("/admin/edit/editDrug.jsp").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

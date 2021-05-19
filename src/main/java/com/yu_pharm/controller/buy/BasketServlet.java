@@ -37,6 +37,6 @@ public class BasketServlet extends HttpServlet {
 				.collect(Collectors.toList()));
 		session.setAttribute("totalCost", totalCost);
 
-		getServletContext().getRequestDispatcher("/basket.jsp").forward(req, resp);
+		getServletContext().getRequestDispatcher("/buy&basket/basket.jsp").forward(req, resp);
 	}
 }

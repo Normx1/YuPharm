@@ -1,3 +1,4 @@
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%--
   Created by IntelliJ IDEA.
   User: qa
@@ -8,33 +9,18 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <div style="padding: 5px;  align: left;">
 
-    <a href="${pageContext.request.contextPath}/news">News</a>
+    <a href="${pageContext.request.contextPath}/news"><fmt:message key="_menu.News"/></a>
     |
-    <a href="${pageContext.request.contextPath}/aboutUs">About as</a>
+    <a href="${pageContext.request.contextPath}/aboutUs"><fmt:message key="_menu.AboutUs"/></a>
     |
-    <a href="${pageContext.request.contextPath}/userInfo">My Account Info</a>
+    <a href="${pageContext.request.contextPath}/userInfo"><fmt:message key="_menu.UserInfo"/></a>
     |
-    <a href="${pageContext.request.contextPath}/login">Login/Sign in</a>
+    <a href="${pageContext.request.contextPath}/login"><fmt:message key="_menu.Login"/></a>
     |
-    <a href="${pageContext.request.contextPath}/AdminMainPage">AdminPage</a>
+    <a href="${pageContext.request.contextPath}/AdminMainPage"><fmt:message key="_menu.Admin"/></a>
 
 
 
-</div>
-<div style=" align: left;">
-    <br>
-    <!-- User store in session with attribute: loginedUser -->
-    Hello <b>${loginedUser.name} </b>
-    <br/>
-    <a href="${pageContext.request.contextPath}/basket"> Basket </a>
-
-
-</div>
-<br>
-<div style="align: right;">
-    Search <input name="search">
-
-</div>
 <div
 <jsp:include page="/WEB-INF/otherElements/locale.jsp"></jsp:include>
 </div>

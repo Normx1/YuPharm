@@ -33,7 +33,7 @@ public class EditOrderServlet extends HttpServlet {
 
 			if (order != null) {
 				req.setAttribute("order", order);
-				getServletContext().getRequestDispatcher("/editOrder.jsp").forward(req, resp);
+				getServletContext().getRequestDispatcher("/admin/edit/editOrder.jsp").forward(req, resp);
 			} else {
 				getServletContext().getRequestDispatcher("/notfound.jsp").forward(req, resp);
 			}

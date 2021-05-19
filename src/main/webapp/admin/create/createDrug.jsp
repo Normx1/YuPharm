@@ -8,8 +8,8 @@
 </head>
 
 <body>
-<jsp:include page="WEB-INF/otherElements/_header.jsp"/>
-<jsp:include page="WEB-INF/otherElements/_menu.jsp"/>
+<jsp:include page="../../WEB-INF/otherElements/_header.jsp"/>
+<jsp:include page="../../WEB-INF/otherElements/_menu.jsp"/>
 
 
 <h3>Create new medicine:</h3>
@@ -42,7 +42,7 @@
 
         <a href="/adminDrugList">Cancel</a>
     </td>
-    <jsp:include page="WEB-INF/otherElements/_footer.jsp"></jsp:include>
+    <jsp:include page="../../WEB-INF/otherElements/_footer.jsp"></jsp:include>
 </form>
 </body>
 </html>

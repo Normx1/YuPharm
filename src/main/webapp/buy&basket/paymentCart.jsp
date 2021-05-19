@@ -1,3 +1,4 @@
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%--
   Created by IntelliJ IDEA.
   User: Сергей
@@ -11,10 +12,10 @@
 	<title>Title</title>
 </head>
 <body>
-<jsp:include page="WEB-INF/otherElements/_header.jsp"/>
-<jsp:include page="WEB-INF/otherElements/_menu.jsp"/>
+<jsp:include page="../WEB-INF/otherElements/_header.jsp"/>
+<jsp:include page="../WEB-INF/otherElements/_menu.jsp"/>
 
-<h3>Card data:</h3>
+<h3> <fmt:message key="paymentCart.Title"/></h3>
 <form method="post" action="/payment">
 	<label>Card number</label><br>
 	<input name="CardNumber"/>
@@ -25,15 +26,15 @@
 	<label>Valid to</label><br>
 	<input name="valid"/>
 	<br><br>
-	<input type="checkbox" name="rules" value="1" checked/> I agree with rules
+	<input type="checkbox" name="rules" value="1" checked/> <fmt:message key="paymentCart.Confirmation"/>
 	<br><br>
-	<input type="submit" value="Buy"/>
+	<input type="submit" value="<fmt:message key="buy"/>"/>
 
 	<h4>Bank card payments are processed and stored through the electronic PayPaid system, </h4>
 	<h4> which meets all data transfer security requirements (PCI DSS, level 1).
 	</h4>
 	<td colspan="2">
-		<a href="${pageContext.request.contextPath}/">Cancel</a>
+		<a href="${pageContext.request.contextPath}/"><fmt:message key="Cancel"/></a>
 	</td>
 </form>
 <br><br>

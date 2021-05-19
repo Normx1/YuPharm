@@ -17,6 +17,6 @@ public class AdminUserList extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         request.setAttribute("users", userDao.getAll());
-        getServletContext().getRequestDispatcher("/adminUserList.jsp").forward(request, response);
+        getServletContext().getRequestDispatcher("/admin/adminUserList.jsp").forward(request, response);
     }
 }

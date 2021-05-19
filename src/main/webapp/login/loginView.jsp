@@ -50,8 +50,6 @@
 	<a href="${pageContext.request.contextPath}/user/create"> <fmt:message key="Registration"/></a>
 
 </form>
-
-
 <jsp:include page="../WEB-INF/otherElements/_footer.jsp"></jsp:include>
 </body>
 </html>

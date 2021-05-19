@@ -11,6 +11,6 @@ import java.io.IOException;
 public class AboutUsServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		resp.sendRedirect(req.getContextPath() + "/aboutUs.jsp");
+		resp.sendRedirect(req.getContextPath() + "/info/aboutUs.jsp");
 	}
 }

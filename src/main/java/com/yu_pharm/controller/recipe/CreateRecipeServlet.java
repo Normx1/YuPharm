@@ -20,7 +20,7 @@ public class CreateRecipeServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		getServletContext().getRequestDispatcher("/createRecipe.jsp").forward(request, response);
+		getServletContext().getRequestDispatcher("/admin/create/createRecipe.jsp").forward(request, response);
 
 	}
 

@@ -11,6 +11,6 @@ import java.io.IOException;
 public class AdminDrugList extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		getServletContext().getRequestDispatcher("/adminDrugList.jsp").forward(request, response);
+		getServletContext().getRequestDispatcher("/admin/adminDrugList.jsp").forward(request, response);
 	}
 }

@@ -1,3 +1,4 @@
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%--@elvariable id="drug" type="com.yu_pharm.model.drug.Drug.Smart"--%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
@@ -8,39 +9,39 @@
 <body>
 <jsp:include page="WEB-INF/otherElements/_header.jsp"/>
 <jsp:include page="WEB-INF/otherElements/_menu.jsp"/>
-<h3> Cure:"${drug.name()}"</h3>
+<h3><fmt:message key="userBasket.Id"/>"${drug.name()}"</h3>
 
 <table>
 	<tr>
-		<td>Name:</td>
+		<td><fmt:message key="userBasket.Id"/></td>
 		<td>${drug.name()}</td>
 	</tr>
 	<tr>
-		<td>Cost:</td>
+		<td><fmt:message key="userBasket.Cost"/></td>
 		<td>${drug.cost()}</td>
 	</tr>
 	<tr>
-		<td>Count:</td>
+		<td><fmt:message key="userBasket.Count"/></td>
 		<td>${drug.count()}</td>
 	</tr>
 	<tr>
-		<td>Recipe:</td>
-		<td>Not implemented yet</td>
+		<td><fmt:message key="userBasket.Recipe"/></td>
+		<td>${drug.recipe()}</td>
 	</tr>
 	<tr>
-		<td>Main action:</td>
-		<td>Not implemented yet</td>
+		<td><fmt:message key="drugInfo.MainAction"/></td>
+ 		<td>Not implemented yet</td>
 	</tr>
 	<tr>
-		<td>Description:</td>
-		<td>Not implemented yet</td>
+		<td><fmt:message key="drugInfo.Description"/></td>
+ 		<td>Not implemented yet</td>
 	</tr>
 	<tr>
-		<td>Application:</td>
-		<td>Not implemented yet</td>
+		<td><fmt:message key="drugInfo.Application"/></td>
+ 		<td>Not implemented yet</td>
 	</tr>
 	<tr>
-		<td colspan="2"><a href="${pageContext.request.contextPath}/">Return</a></td>
+		<td colspan="2"><a href="${pageContext.request.contextPath}/"><fmt:message key="Return"/></a></td>
 	</tr>
 </table>
 </body>

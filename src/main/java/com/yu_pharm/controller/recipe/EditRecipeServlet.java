@@ -27,7 +27,7 @@ public class EditRecipeServlet extends HttpServlet {
 
 			if (recipe != null) {
 				request.setAttribute("recipe", recipe);
-				getServletContext().getRequestDispatcher("/recipeEdit.jsp").forward(request, response);
+				getServletContext().getRequestDispatcher("/admin/edit/recipeEdit.jsp").forward(request, response);
 			} else {
 				getServletContext().getRequestDispatcher("/notfound.jsp").forward(request, response);
 			}

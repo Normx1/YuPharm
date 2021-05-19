@@ -23,7 +23,7 @@ public class EditUserServlet extends HttpServlet {
 
 			if (users != null) {
 				request.setAttribute("users", users);
-				getServletContext().getRequestDispatcher("/editUser.jsp").forward(request, response);
+				getServletContext().getRequestDispatcher("/admin/edit/editUser.jsp").forward(request, response);
 			} else {
 				getServletContext().getRequestDispatcher("/notfound.jsp").forward(request, response);
 			}

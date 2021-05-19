@@ -9,8 +9,8 @@
 <html>
 
 <body>
-<jsp:include page="WEB-INF/otherElements/_header.jsp"/>
-<jsp:include page="WEB-INF/otherElements/_menu.jsp"/>
+<jsp:include page="../../WEB-INF/otherElements/_header.jsp"/>
+<jsp:include page="../../WEB-INF/otherElements/_menu.jsp"/>
 <h3>Edit User id = ${users.id}:</h3>
 <form method="post" action="/user/edit">
 	<label>Name</label><br>
@@ -42,7 +42,7 @@
 </form>
  <%--    <label>Description</label><br>--%>
 <%--    <input name="description"/><br><br>--%>
-<jsp:include page="WEB-INF/otherElements/_footer.jsp"></jsp:include>
+<jsp:include page="../../WEB-INF/otherElements/_footer.jsp"></jsp:include>
 </form>
 </body>
 </html>

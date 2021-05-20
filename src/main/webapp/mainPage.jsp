@@ -44,7 +44,7 @@
 		<th><fmt:message key="details"/></th>
 		<th><fmt:message key="Basket"/></th>
 	</tr>
-	<c:forEach var="drug" items="${applicationScope.drugs.all()}">
+	<c:forEach var="drug" items="${applicationScope.drug}">
 		<tr>
 			<td>${drug.id()}</td>
 			<td>${drug.name()}</td>
@@ -74,9 +74,9 @@
 The when condition does not display a link for the current page--%>
 <table border="1" cellpadding="5" cellspacing="5">
 	<tr>
-		<c:forEach begin="1" end="${noOfPages}" var="i">
+		<c:forEach begin="1" end="${applicationScope.noOfPages}" var="i">
 			<c:choose>
-				<c:when test="${currentPage eq i}">
+				<c:when test="${applicationScope.currentPage eq i}">
 					<td>${i}</td>
 				</c:when>
 				<c:otherwise>

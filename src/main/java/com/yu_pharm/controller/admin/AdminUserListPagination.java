@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @WebServlet("/PaginationUser")
 public class AdminUserListPagination extends HttpServlet {
@@ -18,18 +19,17 @@ public class AdminUserListPagination extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
- 		int page = 1;
-		int recordsPerPage = 2;
+		int page = 1;
+		int recordsPerPage = 4;
+		List<User> list = userDao.getAll();
 		if (request.getParameter("page") != null)
 			page = Integer.parseInt(request.getParameter("page"));
-		List<User> list = userDao.getAllPagination((page - 1) * recordsPerPage,
-				recordsPerPage);
 		int noOfRecords = (int) userDao.getAll().stream().count();
 		int noOfPages = (int) Math.ceil(noOfRecords * 1.0 / recordsPerPage);
-		request.setAttribute("employeeList", list);
 		request.setAttribute("noOfPages", noOfPages);
 		request.setAttribute("currentPage", page);
-		request.setAttribute("users", list);
+		request.setAttribute("users", list.stream().skip((page - 1) * recordsPerPage)
+				.limit(recordsPerPage).collect(Collectors.toList()));
 		getServletContext().getRequestDispatcher("/admin/PaginationUser.jsp").forward(request, response);
 	}
 }

@@ -49,4 +49,6 @@ public class SqlDrugs implements Drugs<Drug> {
 			throw new RuntimeException("Failed to fetch drugs", ex);
 		}
 	}
+
+
 }

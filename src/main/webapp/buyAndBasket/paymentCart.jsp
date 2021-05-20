@@ -15,7 +15,7 @@
 <jsp:include page="../WEB-INF/otherElements/_header.jsp"/>
 <jsp:include page="../WEB-INF/otherElements/_menu.jsp"/>
 
-<h3> <fmt:message key="paymentCart.Title"/></h3>
+<h3><fmt:message key="paymentCart.Title"/></h3>
 <form method="post" action="/payment">
 	<label>Card number</label><br>
 	<input name="CardNumber"/>
@@ -28,7 +28,7 @@
 	<br><br>
 	<input type="checkbox" name="rules" value="1" checked/> <fmt:message key="paymentCart.Confirmation"/>
 	<br><br>
-	<input type="submit" value="<fmt:message key="buy"/>"/>
+	<input type="submit" value="<fmt:message key="Basket.buy"/>">
 
 	<h4>Bank card payments are processed and stored through the electronic PayPaid system, </h4>
 	<h4> which meets all data transfer security requirements (PCI DSS, level 1).

@@ -43,7 +43,7 @@
 		<th><fmt:message key="userBasket.Cost"/></th>
 		<th><fmt:message key="userBasket.Recipe"/></th>
 		<th><fmt:message key="details"/></th>
-		<th><fmt:message key="buy"/></th>
+		<th><fmt:message key="Basket"/></th>
 	</tr>
 	<c:forEach var="drug" items="${applicationScope.drugs.all()}">
 		<tr>
@@ -52,13 +52,19 @@
 <%--			<td>${drug.count()}</td>--%>
 			<td>${drug.cost()} $</td>
 			<td>
-				<div align="center"> ${drug.recipe()} </div>
+				<c:set var = "recipe" scope = "session" value ="${drug.recipe()}"/>
+				<c:if test = "${recipe == 1}">
+				<div align="center"><fmt:message key="recipe.Yes"/></div>
+				</c:if>
+				<c:if test = "${recipe == 0}">
+					<div align="center"><fmt:message key="recipe.No"/> </div>
+				</c:if>
 			</td>
 			<td><a href='<c:url value="drug/info?id=${drug.id()}"/>'><fmt:message key="details"/></a></td>
 			<td>
 				<form method="post" action='<c:url value="/drugBuy"/>' style="display:inline;">
 					<input type="hidden" name="drug_id" value="${drug.id()}">
-					<input type="submit" value=<fmt:message key="AddToBasket"/>>
+					<input type="submit"  value=<fmt:message key="AddToBasket"/>>
 				</form>
 			</td>
 		</tr>

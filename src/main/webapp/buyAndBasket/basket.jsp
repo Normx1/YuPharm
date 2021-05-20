@@ -34,7 +34,7 @@
 				</div>
 			</td>
 			<td>
-				<a href='<c:url value="drug/info?id=${cure.id()}"/>'>Details</a>
+				<a href='<c:url value="drug/info?id=${cure.id()}"/>'><fmt:message key="details"/></a>
 
 			</td>
 			<td>
@@ -47,24 +47,25 @@
 	</c:forEach>
 
 </table>
- 	<table>
-		<tr>
-			<td>
-		<h2><fmt:message key="totalCost"/> ${totalCost}$
-			</td>
-			<td>
-	<form method="get" action='<c:url value="createUserOrder"/>' style="display:inline;">
-		<input type="hidden" name="cure" value="${sessionScope.cure}">
-		<input type="submit" value=<fmt:message key="buy"/>>
+<table>
+	<tr>
+		<td>
+			<h2>
+				<fmt:message key="totalCost"/> ${totalCost}$
+		</td>
+		<td>
+			<form method="get" action='<c:url value="createUserOrder"/>' style="display:inline;">
+				<input type="hidden" name="cure" value="${sessionScope.cure}">
+				<input type="submit" value=<fmt:message key="Basket.buy"/>>
 
-	</form>
-			</td>
-		</tr>
-	</table>
+			</form>
+		</td>
+	</tr>
+</table>
 
 <form>
 	<a href="${pageContext.request.contextPath}/"><fmt:message key="Return"/></a>
-	<jsp:include page="/WEB-INF/otherElements/_footer.jsp" />
+	<jsp:include page="/WEB-INF/otherElements/_footer.jsp"/>
 
 </form>
 </body>

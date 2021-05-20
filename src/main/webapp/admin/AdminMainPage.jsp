@@ -19,6 +19,7 @@
 	<p><a href='<c:url value="/adminDrugList" />'><fmt:message key="drug"></fmt:message> </a></p>
 	<p><a href='<c:url value="/adminUserList" />'>Users</a></p>
 	<p><a href='<c:url value="/allOrders" />'>Orders</a></p>
+	<p><a href='<c:url value="/PaginationUser" />'>Pagination of User</a></p>
 <%--	<p><a href='<c:url value="/allRecipes"/>'>Recipes</a></p>--%>
 
 </form>

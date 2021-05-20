@@ -136,28 +136,25 @@ public class UserDao implements BasicDao<User> {
 	}
 
 
-//
-//	public List<User> getAllPagination(int offset, int noOfRecords) {
-//		String query = "select * from table_name "+ offset + ", " + noOfRecords;
-//		List<User> userList = new ArrayList<>();
-//		try (Connection conn = JDBCConnector.getConnection();
-//			 Statement statement = conn.createStatement();
-//			 ResultSet resultSet = statement.executeQuery(
-//			 		"select * from table_name");) {
-//			//Получем все элементы таблицы
-//			while (resultSet.next()) {
-//				int id = resultSet.getInt(1);
-//				String name = resultSet.getString(2);
-//				String mail = resultSet.getString(3);
-//				int role = resultSet.getInt(4);
-//				User user = new User(id, name, mail, role);
-//				userList.add(user);
-//			}
-//		} catch (Exception ex) {
-//			ex.printStackTrace();
-//			throw new RuntimeException(ex);
-//		}
-//		return userList;
-//	}
-
+	public List<User> getAllPagination(int offset, int noOfRecords) {
+		String query = "select * from table_name LIMIT " + offset + ", " + noOfRecords;
+		List<User> userList = new ArrayList<>();
+		try (Connection conn = JDBCConnector.getConnection();
+			 Statement statement = conn.createStatement();
+			 ResultSet resultSet = statement.executeQuery(query);) {
+			//Получем все элементы таблицы
+			while (resultSet.next()) {
+				int id = resultSet.getInt(1);
+				String name = resultSet.getString(2);
+				String mail = resultSet.getString(3);
+				int role = resultSet.getInt(4);
+				User user = new User(id, name, mail, role);
+				userList.add(user);
+			}
+		} catch (Exception ex) {
+			ex.printStackTrace();
+			throw new RuntimeException(ex);
+		}
+		return userList;
+	}
 }

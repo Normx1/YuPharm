@@ -15,4 +15,5 @@ public interface BasicDao<T> {
 
 	T getByName(String name);
 
+	List<T> getAllPagination(int i, int recordsPerPage);
 }

@@ -18,12 +18,12 @@
     <input name="name"/>
     <br><br>
     <label>Cost</label><br>
-    <input name="cost"/>
+    <input  name="cost"/>
     <br><br>
     <label>Count</label><br>
     <input name="count"/>
     <br><br>
-    Recipe: <input type="radio" name="recipe" value="1" checked/>Yes
+    Recipe: <input type="radio"  name="recipe" value="1" checked/>Yes
     <input type="radio" name="recipe" value="0" checked/>No
     <br><br>
     <label>Main action</label><br>

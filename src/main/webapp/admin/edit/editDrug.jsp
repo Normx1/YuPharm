@@ -21,30 +21,30 @@
 <jsp:include page="../../WEB-INF/otherElements/_menu.jsp"/>
 <h3>Edit medicine:</h3>
 <form method="post" action="/drug/edit">
-	<input type="hidden" name="id" value="${drug.id()}">
+	<input required type="hidden" name="id" value="${drug.id()}">
 	<label>Name
-		<input name="name" value="${drug.name()}"/>
+		<input required name="name" value="${drug.name()}"/>
 	</label>
 	<label>Cost
-		<input name="cost" value="${drug.cost()}"/>
+		<input required name="cost" value="${drug.cost()}"/>
 	</label>
 	<label>Count
-		<input name="count" value="${drug.count}"/>
+		<input required name="count" value="${drug.count}"/>
 	</label>
 	<label>Recipe:
 		<label><input type="radio" name="recipe" value="1" checked/>Yes</label>
 		<label><input type="radio" name="recipe" value="0"/>No</label>
 	</label>
 	<label>Main action
-		<input name="Main_action" value="Some Main action"/>
+		<input required name="Main_action" value="Some Main action"/>
 	</label>
 	<label>Description
-		<input name="description" value="description"/>
+		<input required name="description" value="description"/>
 	</label>
 	<label>Application
-		<input name="Application" value="Application"/>
+		<input required name="Application" value="Application"/>
 	</label>
-	<input type="submit" value="Save"/>
+	<input required type="submit" value="Save"/>
 </form>
 <a href="${pageContext.request.contextPath}/">Cancel</a>
 <jsp:include page="../../WEB-INF/otherElements/_footer.jsp"/>

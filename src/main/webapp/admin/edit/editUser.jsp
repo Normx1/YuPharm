@@ -14,13 +14,13 @@
 <h3>Edit User id = ${users.id}:</h3>
 <form method="post" action="/user/edit">
 	<label>Name</label><br>
-	<input name="name" value="${users.name}"/>
+	<input required name="name" value="${users.name}"/>
 	<br><br>
 	<label>Mail</label><br>
-	<input name="mail" value="${users.mail}"/>
+	<input required name="mail" value="${users.mail}"/>
 	<br><br>
 	<label>Password</label><br>
-	<input name="password" value="${users.password}"/>
+	<input required name="password" value="${users.password}"/>
 	<br><br><br>
 	<label>Role:
 		<label>

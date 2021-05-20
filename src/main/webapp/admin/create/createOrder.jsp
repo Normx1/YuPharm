@@ -12,19 +12,19 @@
 <h3>New Order</h3>
 <form method="post" action="/createOrder">
 	<label>Drug</label><br>
-	<input name="drug"/><br><br>
+	<input required name="drug"/><br><br>
 	<label>User</label><br>
-	<input name="user"/><br><br>
+	<input required  name="user"/><br><br>
 	<label>Mail</label><br>
-	<input name="mail"/><br><br>
+	<input required name="mail"/><br><br>
 	<label>Phone</label><br>
-	<input name="phone"/><br><br>
+	<input required name="phone"/><br><br>
 	<label>Address</label><br>
-	<input name="address"/><br><br>
+	<input required name="address"/><br><br>
 	<label>Payment</label><br>
-	<input name="payment"/><br><br>
+	<input required name="payment"/><br><br>
 	<label>Cost</label><br>
-	<input name="cost"/><br><br>
+	<input required name="cost"/><br><br>
 	<br>
 	<input type="submit" value="Save"/>
 

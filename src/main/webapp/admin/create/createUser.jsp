@@ -12,11 +12,11 @@
 <h3>New user</h3>
 <form method="post" action="user/create">
 	<label>Name</label><br>
-	<input name="name"/><br><br>
+	<input required name="name"/><br><br>
 	<label>Mail</label><br>
-	<input name="mail"/><br><br>
+	<input required name="mail"/><br><br>
 	<label>Password</label><br>
-	<input name="password"/><br><br>
+	<input required name="password"/><br><br>
 	<label>Role</label><br>
 	<form>
 	<input type="radio" name="role" value="0"/> Viewer

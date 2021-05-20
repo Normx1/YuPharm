@@ -17,13 +17,13 @@
 <h3>New Recipe</h3>
 <form method="post" action="/createRecipe">
 	<label>Drug Id</label><br>
-	<input name="drugId"/><br><br>
+	<input required name="drugId"/><br><br>
 	<label>User Id</label><br>
-	<input name="userId"/><br><br>
+	<input required name="userId"/><br><br>
 	<label>Expiration Date</label><br>
-	<input name="expirationDate"/><br><br>
+	<input required name="expirationDate"/><br><br>
 	<label>Count</label><br>
-	<input name="recipeCount"/><br><br>
+	<input required name="recipeCount"/><br><br>
 	<input type="submit" value="Save"/>
 </form>
 <td colspan ="2">

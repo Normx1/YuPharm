@@ -18,25 +18,25 @@
 
 	<br><br>
 	<label>Drug</label><br>
-	<input name="drug" value="${order.drug}"/>
+	<input required name="drug" value="${order.drug}"/>
 	<br><br>
 	<label>User</label><br>
-	<input name="user" value="${order.user}"/>
+	<input required name="user" value="${order.user}"/>
 	<br><br>
 	<label>Mail</label><br>
-	<input name="mail" value="${order.mail}"/>
+	<input required name="mail" value="${order.mail}"/>
 	<br><br>
 	<label>Phone</label><br>
-	<input name="phone" value="${order.phone}"/>
+	<input required name="phone" value="${order.phone}"/>
 	<br><br>
 	<label>Address</label><br>
-	<input name="address" value="${order.address}"/>
+	<input required name="address" value="${order.address}"/>
 	<br><br>
 	<label>Address</label><br>
-	<input name="payment" value="${order.payment}"/>
+	<input required name="payment" value="${order.payment}"/>
 	<br><br>
 	<label>Cost</label><br>
-	<input name="cost" value="${order.cost}"/>
+	<input required name="cost" value="${order.cost}"/>
 	<br><br>
 
 	<input type="hidden" name="id_order" value="${order.id_Order}"/>

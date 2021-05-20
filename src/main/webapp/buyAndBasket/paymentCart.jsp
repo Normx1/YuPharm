@@ -18,15 +18,15 @@
 <h3><fmt:message key="paymentCart.Title"/></h3>
 <form method="post" action="/payment">
 	<label>Card number</label><br>
-	<input name="CardNumber"/>
+	<input required name="CardNumber"/>
 	<br><br>
 	<label>Name</label><br>
-	<input name="name"/>
+	<input required name="name"/>
 	<br><br>
 	<label>Valid to</label><br>
-	<input name="valid"/>
+	<input required name="valid"/>
 	<br><br>
-	<input type="checkbox" name="rules" value="1" checked/> <fmt:message key="paymentCart.Confirmation"/>
+	<input required type="checkbox" name="rules" value="1" checked/> <fmt:message key="paymentCart.Confirmation"/>
 	<br><br>
 	<input type="submit" value="<fmt:message key="Basket.buy"/>">
 

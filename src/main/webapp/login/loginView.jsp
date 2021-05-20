@@ -21,7 +21,7 @@
 	<table border="0">
 		<tr>
 			<td><fmt:message key="loginView.UserName"/></td>
-			<td><input type="text" name="name" value="${user.name}"/></td>
+			<td><input type="text"  name="name" value="${user.name}"/></td>
 		</tr>
 		<tr>
 			<td>Mail</td>

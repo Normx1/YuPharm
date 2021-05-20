@@ -16,18 +16,18 @@
 <form method="post" action="/recipe/edit">
 
 	<label>Drug ID</label><br>
-	<input name="drugId" value="${recipe.drugId}"/>
+	<input  required name="drugId" value="${recipe.drugId}"/>
 	<br><br>
 	<label>User ID</label><br>
-	<input name="userId" value="${recipe.userId}"/>
+	<input required name="userId" value="${recipe.userId}"/>
 	<br><br>
 
 	<label>Expiration Date</label><br>
-	<input name="expDate" value="${recipe.expDate}"/>
+	<input required name="expDate" value="${recipe.expDate}"/>
 	<br> <br>
 
 	<label> Count </label><br>
-	<input name="recipeCount" value="${recipe.recipeCount}"/>
+	<input required name="recipeCount" value="${recipe.recipeCount}"/>
 	<br><br>
 
 	<input type="hidden" name="recId" value="${recipe.recId}">

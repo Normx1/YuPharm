@@ -135,7 +135,7 @@ public class UserDao implements BasicDao<User> {
 		return user;
 	}
 
-
+@Override
 	public List<User> getAllPagination(int offset, int noOfRecords) {
 		String query = "select * from table_name LIMIT " + offset + ", " + noOfRecords;
 		List<User> userList = new ArrayList<>();

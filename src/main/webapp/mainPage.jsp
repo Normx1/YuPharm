@@ -22,7 +22,6 @@
 	<br/>
 	<a href="${pageContext.request.contextPath}/basket"> <fmt:message key="_menu.Basket"/> </a>
 
-
 </div>
 <br>
 <div style="align: right;">
@@ -37,9 +36,9 @@
 <table border="1" cellpadding="5" cellspacing="1">
 
 	<tr>
- 		<th><fmt:message key="userBasket.№"/></th>
+		<th><fmt:message key="userBasket.№"/></th>
 		<th><fmt:message key="userBasket.Id"/></th>
-<%--		<th>Count</th>--%>
+		<%--		<th>Count</th>--%>
 		<th><fmt:message key="userBasket.Cost"/></th>
 		<th><fmt:message key="userBasket.Recipe"/></th>
 		<th><fmt:message key="details"/></th>
@@ -49,27 +48,57 @@
 		<tr>
 			<td>${drug.id()}</td>
 			<td>${drug.name()}</td>
-<%--			<td>${drug.count()}</td>--%>
+				<%--			<td>${drug.count()}</td>--%>
 			<td>${drug.cost()} $</td>
 			<td>
-				<c:set var = "recipe" scope = "session" value ="${drug.recipe()}"/>
-				<c:if test = "${recipe == 1}">
-				<div align="center"><fmt:message key="recipe.Yes"/></div>
+				<c:set var="recipe" scope="session" value="${drug.recipe()}"/>
+				<c:if test="${recipe == 1}">
+					<div align="center"><fmt:message key="recipe.Yes"/></div>
 				</c:if>
-				<c:if test = "${recipe == 0}">
-					<div align="center"><fmt:message key="recipe.No"/> </div>
+				<c:if test="${recipe == 0}">
+					<div align="center"><fmt:message key="recipe.No"/></div>
 				</c:if>
 			</td>
 			<td><a href='<c:url value="drug/info?id=${drug.id()}"/>'><fmt:message key="details"/></a></td>
 			<td>
 				<form method="post" action='<c:url value="/drugBuy"/>' style="display:inline;">
 					<input type="hidden" name="drug_id" value="${drug.id()}">
-					<input type="submit"  value=<fmt:message key="AddToBasket"/>>
+					<input type="submit" value=<fmt:message key="AddToBasket"/>>
 				</form>
 			</td>
 		</tr>
 	</c:forEach>
 </table>
-<jsp:include page="WEB-INF/otherElements/_footer.jsp"/>
+<br>
+<%--For displaying Page numbers.
+The when condition does not display a link for the current page--%>
+<table border="1" cellpadding="5" cellspacing="5">
+	<tr>
+		<c:forEach begin="1" end="${noOfPages}" var="i">
+			<c:choose>
+				<c:when test="${currentPage eq i}">
+					<td>${i}</td>
+				</c:when>
+				<c:otherwise>
+					<td><a href="${pageContext.request.contextPath}/?page=${i}">${i}</a></td>
+				</c:otherwise>
+			</c:choose>
+		</c:forEach>
+	</tr>
+</table>
+<br>
+
+<%--For displaying Previous link except for the 1st page --%>
+<c:if test="${currentPage != 1}">
+	<td><a href="/?page=${currentPage - 1}">Previous</a></td>
+</c:if>
+<%--For displaying Next link --%>
+<c:if test="${currentPage lt noOfPages}">
+	<td><a href="${pageContext.request.contextPath}/?page=${currentPage + 1}">Next</a></td>
+</c:if>
+<br><br>
+<table>
+	<jsp:include page="/WEB-INF/otherElements/_footer.jsp"></jsp:include>
+</table>
 </body>
 </html>

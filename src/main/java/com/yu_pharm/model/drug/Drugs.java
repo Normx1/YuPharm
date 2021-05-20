@@ -31,6 +31,7 @@ public interface Drugs<T extends Drug> {
 			return drugs.all().stream().map(Drug.Smart::new).collect(Collectors.toList());
 		}
 
+
 		public Drug.Smart findById(int id) {
 			return all().stream()
 					.filter(d -> d.id() == id)

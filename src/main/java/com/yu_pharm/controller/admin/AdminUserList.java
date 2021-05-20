@@ -13,10 +13,11 @@ import java.io.IOException;
 
 @WebServlet("/adminUserList")
 public class AdminUserList extends HttpServlet {
-    BasicDao<User> userDao = new UserDao();
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        request.setAttribute("users", userDao.getAll());
-        getServletContext().getRequestDispatcher("/admin/adminUserList.jsp").forward(request, response);
-    }
+	BasicDao<User> userDao = new UserDao();
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		request.setAttribute("users", userDao.getAll());
+		getServletContext().getRequestDispatcher("/admin/adminUserList.jsp").forward(request, response);
+	}
 }

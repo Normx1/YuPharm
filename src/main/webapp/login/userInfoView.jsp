@@ -25,6 +25,11 @@ Mail: ${user.mail } <br/>
 
 <a href='<c:url value="//UserOrders?name=${user.name}" />'>My Orders</a> |
 
+<form method="get" action='<c:url value="/logout" />' style="display:inline;">
+	<input type="submit" value="Logout">
+</form>
+
+
 <jsp:include page="../WEB-INF/otherElements/_footer.jsp"></jsp:include>
 
 </body>

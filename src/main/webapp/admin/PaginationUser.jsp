@@ -18,7 +18,8 @@
 <body>
 <jsp:include page="../WEB-INF/otherElements/_header.jsp"/>
 <jsp:include page="../WEB-INF/otherElements/_menu.jsp"/>
-<p><h2>Users List</h2>
+<p>
+<h2>Users List</h2>
 <p><a href='<c:url value="/user/create" />'>Create new User</a></p>
 <table border="1" cellpadding="5" cellspacing="1">
 	<tr>
@@ -40,11 +41,7 @@
 		</tr>
 	</c:forEach>
 </table>
-<%--For displaying Previous link except for the 1st page --%>
-<c:if test="${currentPage != 1}">
-	<td><a href="PaginationUser.do?page=${currentPage - 1}">Previous</a></td>
-</c:if>
-
+<br>
 <%--For displaying Page numbers.
 The when condition does not display a link for the current page--%>
 <table border="1" cellpadding="5" cellspacing="5">
@@ -61,15 +58,22 @@ The when condition does not display a link for the current page--%>
 		</c:forEach>
 	</tr>
 </table>
+<br>
 
+<%--For displaying Previous link except for the 1st page --%>
+<c:if test="${currentPage != 1}">
+	<td><a href="PaginationUser?page=${currentPage - 1}">Previous</a></td>
+</c:if>
 <%--For displaying Next link --%>
 <c:if test="${currentPage lt noOfPages}">
 	<td><a href="${pageContext.request.contextPath}/PaginationUser?page=${currentPage + 1}">Next</a></td>
 </c:if>
-<td colspan ="2">
+<br><br>
+<td colspan="2">
 
-	<a href="${pageContext.request.contextPath}/">Cancel</a>
+	<a href="${pageContext.request.contextPath}/AdminMainPage">To Admin main page</a>
 </td>
+<br>
 <table>
 	<jsp:include page="/WEB-INF/otherElements/_footer.jsp"></jsp:include>
 </table>

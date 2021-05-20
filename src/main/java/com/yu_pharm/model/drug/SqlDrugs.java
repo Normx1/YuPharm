@@ -50,5 +50,18 @@ public class SqlDrugs implements Drugs<Drug> {
 		}
 	}
 
-
+	public List<Drug> allPagination(int offset, int noOfRecords) {
+		String query = "select id from drugs LIMIT " + offset + ", " + noOfRecords;
+		List<Drug> result = new ArrayList<>();
+		try (PreparedStatement st = connection.get().prepareStatement(query)) {
+			ResultSet resultSet = st.executeQuery();
+			while (resultSet.next()) {
+				int id = resultSet.getInt(1);
+				result.add(new SqlDrug(id, connection.get()));
+			}
+			return result;
+		} catch (Exception ex) {
+			throw new RuntimeException("Failed to fetch pagination of drugs ", ex);
+		}
+	}
 }

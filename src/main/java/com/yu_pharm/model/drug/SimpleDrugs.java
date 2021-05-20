@@ -34,4 +34,5 @@ public class SimpleDrugs implements Drugs<Drug> {
 	public List<Drug> all() {
 		return new ArrayList<>(drugs.values());
 	}
+
 }

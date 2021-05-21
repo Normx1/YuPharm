@@ -17,7 +17,7 @@ public class Payment extends HttpServlet {
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		resp.sendRedirect( "/");
+		resp.sendRedirect( "/success");
 	}
 }
 

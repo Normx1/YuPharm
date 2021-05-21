@@ -28,7 +28,7 @@ public class AdminUserListPagination extends HttpServlet {
 		int noOfPages = (int) Math.ceil(noOfRecords * 1.0 / recordsPerPage);
 		request.setAttribute("noOfPages", noOfPages);
 		request.setAttribute("currentPage", page);
-		request.setAttribute("users", list.stream().skip((page - 1) * recordsPerPage)
+		request.setAttribute("users", list.stream().skip((long) (page - 1) * recordsPerPage)
 				.limit(recordsPerPage).collect(Collectors.toList()));
 		getServletContext().getRequestDispatcher("/admin/PaginationUser.jsp").forward(request, response);
 	}

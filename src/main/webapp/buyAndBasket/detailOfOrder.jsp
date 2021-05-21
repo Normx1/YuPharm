@@ -1,4 +1,5 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: Сергей
@@ -26,18 +27,22 @@
 	<label><fmt:message key="orderDetail.Address"/></label><br>
 	<input required name="address"/><br><br>
 	<label><fmt:message key="orderDetail.Payment"/></label><br>
-	<input required type="radio" name="payment" value="0"/> <fmt:message key="orderDetail.Payment.Card.Now"/>
-	<br>
-	<input required  type="radio" name="payment" value="1"/> <fmt:message key="orderDetail.Payment.Card.Leter"/>
-	<br>
-	<input required type="radio" name="payment" value="2"/> <fmt:message key="orderDetail.Payment.Pay.Money"/>
-	<br>
-	<br><br>
+	<%--@elvariable id="Payment" type="com.yu_pharm.model.Payment"--%>
+	<%@ page import="com.yu_pharm.model.Payment" %>
+
+	<c:forEach var="payment" items="${Payment.values()}">
+		<label>
+			<input required type="radio" name="payment" value="${payment.name()}">
+			<fmt:message key="${payment.key}"/>
+			<br/>
+		</label>
+	</c:forEach>
+	<br/>
 	<input type="submit" value=<fmt:message key="Next"/>>
 </form>
 <td colspan="2">
 	<a href="${pageContext.request.contextPath}/"><fmt:message key="Return"/></a>
 </td>
-<jsp:include page="/WEB-INF/otherElements/_footer.jsp"></jsp:include>
+<jsp:include page="/WEB-INF/otherElements/_footer.jsp"/>
 </body>
 </html>

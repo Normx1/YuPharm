@@ -3,7 +3,9 @@ package com.yu_pharm.controller.orders;
 import com.mysql.cj.util.StringUtils;
 import com.yu_pharm.controller.buy.CartBean;
 import com.yu_pharm.dao.OrderDao;
+import com.yu_pharm.dao.OrderDao_Imp;
 import com.yu_pharm.model.Order;
+import com.yu_pharm.model.Payment;
 import com.yu_pharm.model.drug.Drugs;
 
 import javax.servlet.ServletException;
@@ -13,7 +15,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 @WebServlet("/createUserOrder")
@@ -40,7 +44,6 @@ public class CreateUserOrder extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		CartBean bean = CartBean.get(session);
-
 		try {
 			String name = request.getParameter("name");
 			String mail = request.getParameter("mail");
@@ -55,27 +58,19 @@ public class CreateUserOrder extends HttpServlet {
 				System.out.println(errorString);
 			}
 			String address = request.getParameter("address");
-			int payment = Integer.parseInt(request.getParameter("payment"));
-			if (payment == 0) {
+			Payment payment = Payment.valueOf(request.getParameter("payment"));
+			if (payment.name().equals("orderDetail.Payment.Card.Now")) {
 				response.sendRedirect(request.getContextPath() + "/payment");
 			} else {
-				List<Integer> ids = drugs.all().stream()
-						.filter(b -> bean.getIds().contains(b.id()))
-						.map(drug -> drug.id())
-						.collect(Collectors.toList());
-				try {
-					double cost = (double) session.getAttribute("totalCost");
-
-					for (int i = 0; i < ids.size(); i++) {
-						Order order = new Order(ids.get(i), name, mail, phone, address, payment, cost);
-						orders.create(order);
-						response.sendRedirect("/");
-					}
-				} catch (NullPointerException ex) {
-					response.sendRedirect("/");
-				}
+				Map<Integer, Integer> id = bean.getIds().stream().collect(Collectors.toMap(v -> v, v -> 1));
+				double cost = 0;
+				cost = bean.getIds().stream().map(i->drugs.findById(i)).mapToDouble(drug->drug.cost()).sum();
+				Order order = new Order(id, name, mail, phone, address, cost, payment);
+				orders.create(order);
+ 				response.sendRedirect("/");
 			}
-		} catch (Exception ex) {
+		} catch (
+				Exception ex) {
 			ex.printStackTrace();
 		}
 	}

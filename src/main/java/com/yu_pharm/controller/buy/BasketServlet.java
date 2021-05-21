@@ -13,9 +13,10 @@ import java.util.stream.Collectors;
 
 @WebServlet("/basket")
 public class BasketServlet extends HttpServlet {
+	boolean hasError = false;
+	String errorString = null;
 
 	private Drugs.Smart drugs;
-
 
 	@Override
 	public void init() {
@@ -26,6 +27,17 @@ public class BasketServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		HttpSession session = req.getSession();
 		CartBean bean = CartBean.get(session);
+
+		if (bean.getIds().stream().count() == 0) {
+			if (req.getSession().getAttribute("language").equals("en_EN")) {
+				errorString = "You haven't added any cure!";
+			} else {
+				errorString = "Вы не добавили ни одного лекарства!";
+
+			}
+			req.setAttribute("errorString", errorString);
+			getServletContext().getRequestDispatcher("/mainPage.jsp").forward(req, resp);
+		}
 		double totalCost = 0;
 
 		for (int i = 0; i < bean.length(); i++) {
@@ -40,3 +52,4 @@ public class BasketServlet extends HttpServlet {
 		getServletContext().getRequestDispatcher("/buyAndBasket/basket.jsp").forward(req, resp);
 	}
 }
+

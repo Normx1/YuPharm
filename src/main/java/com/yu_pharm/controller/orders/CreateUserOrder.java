@@ -1,5 +1,6 @@
 package com.yu_pharm.controller.orders;
 
+import com.mysql.cj.util.StringUtils;
 import com.yu_pharm.controller.buy.CartBean;
 import com.yu_pharm.dao.OrderDao;
 import com.yu_pharm.model.Order;
@@ -20,6 +21,8 @@ public class CreateUserOrder extends HttpServlet {
 
 	private Drugs.Smart drugs;
 	private OrderDao<Order> orders;
+
+	String errorString = null;
 
 
 	@Override
@@ -42,6 +45,16 @@ public class CreateUserOrder extends HttpServlet {
 			String name = request.getParameter("name");
 			String mail = request.getParameter("mail");
 			String phone = request.getParameter("phone");
+			if (StringUtils.isStrictlyNumeric(phone) != true) {
+				if (request.getSession().getAttribute("language").equals("en_EN")) {
+					errorString = "The phone number should include only numbers!";
+				} else {
+					errorString = "Номер телефона должен содеражать только цифры!";
+				}
+			}
+			getServletContext().getRequestDispatcher(request.getContextPath()+"/buyAndBasket/detailOfOrder.jsp").forward(request, response);
+			System.out.println(errorString);
+
 			String address = request.getParameter("address");
 			int payment = Integer.parseInt(request.getParameter("payment"));
 			if (payment == 0) {

@@ -12,7 +12,7 @@
 <jsp:include page="../WEB-INF/otherElements/_header.jsp"/>
 <jsp:include page="../WEB-INF/otherElements/_menu.jsp"/>
 <div align="left">
-	<h2>Basket</h2>
+	<h2><fmt:message key="Basket"/></h2>
 </div>
 <br>
 <table border="1" cellpadding="5" cellspacing="1">

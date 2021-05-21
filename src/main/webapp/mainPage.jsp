@@ -33,6 +33,7 @@
 <div align="left">
 	<h3><fmt:message key="MainPage.Tittle"/></h3>
 </div>
+<p style="color: red;">${errorString}</p>
 <table border="1" cellpadding="5" cellspacing="1">
 
 	<tr>

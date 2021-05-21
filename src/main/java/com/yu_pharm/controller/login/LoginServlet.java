@@ -44,7 +44,11 @@ public class LoginServlet extends HttpServlet {
 
         if (name == null || password == null || mail == null || name.length() == 0 || mail.length() == 0 || password.length() == 0) {
             hasError = true;
-            errorString = "Required username and password!";
+			if( request.getSession().getAttribute("language").equals("en_EN")) {
+				errorString = "Required username and password!";
+			} else {
+			errorString = "Заполните поля Имя и Пароль!"; }
+
         } else {
             try (Connection conn = JDBCConnector.getConnection()) {
                 // Найти user в DB.
@@ -52,7 +56,10 @@ public class LoginServlet extends HttpServlet {
 
                 if (user == null) {
                     hasError = true;
-                    errorString = "User Name or password invalid";
+					if( request.getSession().getAttribute("language").equals("en_EN")) {
+						errorString =  "User Name or password invalid";
+					} else {
+						errorString = "Неправильное значение поля Имя или Пароль!"; }
                 }
             } catch (SQLException ex) {
                 ex.printStackTrace();

@@ -18,19 +18,19 @@
 <h3><fmt:message key="detaiOfOrder.Title"/></h3>
 <form method="post" action="/createUserOrder">
 	<label><fmt:message key="orderDetail.name"/></label><br>
-	<input name="name"/><br><br>
-	<label>Mail</label><br>
-	<input name="mail"/><br><br>
+	<input required name="name"/><br><br>
+	<label>Mail:</label><br>
+	<input required name="mail"/><br><br>
 	<label><fmt:message key="orderDetail.Phone"/></label><br>
-	<input name="phone"/><br><br>
+	<input required name="phone" pattern="[0-9]{,15}"/><br><br>
 	<label><fmt:message key="orderDetail.Address"/></label><br>
-	<input name="address"/><br><br>
+	<input required name="address"/><br><br>
 	<label><fmt:message key="orderDetail.Payment"/></label><br>
-	<input type="radio" name="payment" value="0"/> <fmt:message key="orderDetail.Payment.Card.Now"/>
+	<input required type="radio" name="payment" value="0"/> <fmt:message key="orderDetail.Payment.Card.Now"/>
 	<br>
-	<input type="radio" name="payment" value="1"/> <fmt:message key="orderDetail.Payment.Card.Leter"/>
+	<input required  type="radio" name="payment" value="1"/> <fmt:message key="orderDetail.Payment.Card.Leter"/>
 	<br>
-	<input type="radio" name="payment" value="2"/> <fmt:message key="orderDetail.Payment.Pay.Money"/>
+	<input required type="radio" name="payment" value="2"/> <fmt:message key="orderDetail.Payment.Pay.Money"/>
 	<br>
 	<br><br>
 	<input type="submit" value=<fmt:message key="Next"/>>

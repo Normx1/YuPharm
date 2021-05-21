@@ -51,10 +51,9 @@ public class CreateUserOrder extends HttpServlet {
 				} else {
 					errorString = "Номер телефона должен содеражать только цифры!";
 				}
+				getServletContext().getRequestDispatcher(request.getContextPath() + "/buyAndBasket/detailOfOrder.jsp").forward(request, response);
+				System.out.println(errorString);
 			}
-			getServletContext().getRequestDispatcher(request.getContextPath()+"/buyAndBasket/detailOfOrder.jsp").forward(request, response);
-			System.out.println(errorString);
-
 			String address = request.getParameter("address");
 			int payment = Integer.parseInt(request.getParameter("payment"));
 			if (payment == 0) {
@@ -64,11 +63,15 @@ public class CreateUserOrder extends HttpServlet {
 						.filter(b -> bean.getIds().contains(b.id()))
 						.map(drug -> drug.id())
 						.collect(Collectors.toList());
-				int cost = (int) session.getAttribute("totalCost");
+				try {
+					double cost = (double) session.getAttribute("totalCost");
 
-				for (int i = 0; i < ids.size(); i++) {
-					Order order = new Order(ids.get(i), name, mail, phone, address, payment, cost);
-					orders.create(order);
+					for (int i = 0; i < ids.size(); i++) {
+						Order order = new Order(ids.get(i), name, mail, phone, address, payment, cost);
+						orders.create(order);
+						response.sendRedirect("/");
+					}
+				} catch (NullPointerException ex) {
 					response.sendRedirect("/");
 				}
 			}

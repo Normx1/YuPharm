@@ -53,7 +53,7 @@ public class EditOrderServlet extends HttpServlet {
 			String phone = req.getParameter("phone");
 			String address = req.getParameter("address");
 			int payment = Integer.parseInt(req.getParameter("payment"));
-			int cost = Integer.parseInt(req.getParameter("cost"));
+			double cost = Double.parseDouble(req.getParameter("cost"));
 			Order order = new Order(id, id_drug, userName, mail, phone, address, payment , cost);
 			orders.updateById(order);
 			resp.sendRedirect(req.getContextPath() + "/allOrders");

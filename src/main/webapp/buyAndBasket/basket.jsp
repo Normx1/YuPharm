@@ -30,8 +30,14 @@
 			<td>${cure.name()}</td>
 			<td>${cure.cost()} $</td>
 			<td>
-				<div align="center"> ${cure.recipe()}
-				</div>
+				<c:set var="recipe" scope="session" value="${cure.recipe()}"/>
+				<c:if test="${recipe == 1}">
+					<div align="center"><fmt:message key="recipe.Yes"/></div>
+				</c:if>
+				<c:if test="${recipe == 0}">
+					<div align="center"><fmt:message key="recipe.No"/></div>
+				</c:if>
+
 			</td>
 			<td>
 				<a href='<c:url value="drug/info?id=${cure.id()}"/>'><fmt:message key="details"/></a>
@@ -40,7 +46,7 @@
 			<td>
 				<form method="get" action='<c:url value="/remove/basket" />' style="display:inline;">
 					<input type="hidden" name="id" value="${cure.id()}">
-					<input type="submit" value=<fmt:message key="Delete"/>>
+					<input align="center" type="submit" value=<fmt:message key="Delete"/>>
 				</form>
 			</td>
 		</tr>

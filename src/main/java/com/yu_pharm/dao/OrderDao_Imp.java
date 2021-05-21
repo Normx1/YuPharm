@@ -168,7 +168,7 @@ public class OrderDao_Imp implements OrderDao {
 				preparedStatement.setString(3, order.getMail());
 				preparedStatement.setString(4, order.getPhone());
 				preparedStatement.setString(5, order.getAddress());
-				preparedStatement.setInt(6, order.getCost());
+				preparedStatement.setDouble(6, order.getCost());
 				preparedStatement.setInt(7, order.getPayment());
 				preparedStatement.setInt(8, order.getId_Order());
 
@@ -193,7 +193,7 @@ public class OrderDao_Imp implements OrderDao {
 				preparedStatement.setString(4, order.getPhone());
 				preparedStatement.setString(5, order.getAddress());
 				preparedStatement.setInt(6, order.getPayment());
-				preparedStatement.setInt(7, order.getCost());
+				preparedStatement.setDouble(7, order.getCost());
 				preparedStatement.execute();
 			}
 		} catch (Exception ex) {

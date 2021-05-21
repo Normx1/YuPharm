@@ -7,7 +7,7 @@ public class Order<T, T1> {
 	private String mail;
 	private String phone;
 	private String address;
-	private int cost;
+	private double cost;
 	private int payment;
 
 	public int getId_Order() {
@@ -58,7 +58,7 @@ public class Order<T, T1> {
 		this.address = address;
 	}
 
-	public int getCost() {
+	public double getCost() {
 		return cost;
 	}
 
@@ -75,7 +75,7 @@ public class Order<T, T1> {
 	}
 
 
-	public Order(int id_Order, T drug, T1 user, String mail, String phone, String address, int cost, int payment) {
+	public Order(int id_Order, T drug, T1 user, String mail, String phone, String address, int payment, double cost) {
 		this.id_Order = id_Order;
 		this.drug = drug;
 		this.user = user;
@@ -98,7 +98,7 @@ public class Order<T, T1> {
 		this.cost = cost;
  	}
 
-	public Order(T drug, T1 user, String mail, String phone, String address, int payment , int cost) {
+	public Order(T drug, T1 user, String mail, String phone, String address, int payment , double cost) {
 		this.drug = drug;
 		this.user = user;
 		this.mail = mail;

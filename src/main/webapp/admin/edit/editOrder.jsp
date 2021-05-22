@@ -13,12 +13,12 @@
 <body>
 <jsp:include page="../../WEB-INF/otherElements/_header.jsp"/>
 <jsp:include page="../../WEB-INF/otherElements/_menu.jsp"/>
-<h3>Edit medicine:</h3>
+<h3>Edit order:</h3>
 <form method="post" action="/order/edit">
 
 	<br><br>
 	<label>Drug</label><br>
-	<input required name="drug" value="${order.drug}"/>
+	<input required name="drugs" value="${order.drugs}"/>
 	<br><br>
 	<label>User</label><br>
 	<input required name="user" value="${order.user}"/>
@@ -39,7 +39,7 @@
 	<input required name="cost" value="${order.cost}"/>
 	<br><br>
 
-	<input type="hidden" name="id_order" value="${order.id_Order}"/>
+	<input type="hidden" name="id_order" value="${order.id}"/>
 	<input type="submit" value="Save"/>|
 	<td colspan="2">
 		<a href="/allOrders">Return</a>

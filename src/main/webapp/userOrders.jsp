@@ -25,12 +25,12 @@
 		<th>Cost</th>
 		<th>Date of order</th>
 	</tr>
-	<c:forEach var="order" items="${requestScope.order}">
+	<c:forEach var="Order" items="${requestScope.order}">
 		<tr>
-			<td>${order.id_Order}</td>
-			<td>${order.drug}</td>
-			<td>${order.count}</td>
-			<td>${order.cost}</td>
+			<td>${Order.id_Order}</td>
+			<td>${Order.drug}</td>
+			<td>${Order.count}</td>
+			<td>${Order.cost}</td>
 		</tr>
 	</c:forEach>
 </table>

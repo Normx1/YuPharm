@@ -32,20 +32,20 @@
 		<th>Cost</th>
  		<th>Action</th>
 	</tr>
-	<c:forEach var="order" items="${requestScope.order}">
+	<c:forEach var="Order" items="${requestScope.order}">
 		<tr>
-			<td>${order.id_Order}</td>
-			<td>${order.drug}</td>
-			<td>${order.user}</td>
-			<td>${order.mail}</td>
-			<td>${order.phone}</td>
-			<td>${order.address}</td>
-			<td>${order.cost}</td>
-			<td>${order.payment}</td>
+			<td>${Order.id}</td>
+			<td>${Order.drugs}</td>
+			<td>${Order.user}</td>
+			<td>${Order.mail}</td>
+			<td>${Order.phone}</td>
+			<td>${Order.address}</td>
+			<td>${Order.cost}</td>
+			<td>${Order.payment}</td>
 	 			 			<td>
-				<a href='<c:url value="order/edit?id=${order.id_Order}" />'>Edit</a> |
+				<a href='<c:url value="order/edit?id=${Order.id}" />'>Edit</a> |
 				<form method="post" action='<c:url value="/order/delete" />' style="display:inline;">
-					<input type="hidden" name="id_Order" value="${order.id_Order}">
+					<input type="hidden" name="id_Order" value="${Order.id}">
 					<input type="submit" value="Delete">
 				</form>
 		</tr>

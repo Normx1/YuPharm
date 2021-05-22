@@ -50,7 +50,7 @@ public class EditOrderServlet extends HttpServlet {
 		try {
 			int id = Integer.parseInt(req.getParameter("id_order"));
 			String userName = req.getParameter("user");
-  			Map<Integer, Integer> drugName = OrderDao_Imp.parseDrugs(req.getParameter("drug"));
+  			Map<Integer, Integer> drugName = OrderDao_Imp.parseDrugs(req.getParameter("drugs"));
  			String mail = req.getParameter("mail");
 			String phone = req.getParameter("phone");
 			String address = req.getParameter("address");

@@ -20,11 +20,11 @@
 		<th><fmt:message key="userBasket.Recipe"/></th>
 		<th><fmt:message key="userBasket.Address"/></th>
 	</tr>
-	<c:forEach var="order" items="${sessionScope.order.all()}">
+	<c:forEach var="Order" items="${sessionScope.order.all()}">
 		<tr>
-			<td>${order.name()}</td>
-			<td>${order.cost()}</td>
-			<td>${order.recipe()}</td>
+			<td>${Order.name()}</td>
+			<td>${Order.cost()}</td>
+			<td>${Order.recipe()}</td>
 			<td rowspan="${applicationScope.drugs.all().size()}">${sessionScope.order.address}</td>
 		</tr>
 	</c:forEach>

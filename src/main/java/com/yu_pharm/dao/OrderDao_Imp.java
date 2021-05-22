@@ -47,7 +47,7 @@ public class OrderDao_Imp implements OrderDao {
 				orderList.add(order);
 			}
 		} catch (Exception ex) {
-			System.out.println(ex);
+			ex.printStackTrace();
 		}
 		return orderList;
 	}
@@ -66,6 +66,7 @@ public class OrderDao_Imp implements OrderDao {
 		}
 		return result;
 	}
+
 
 	@Override
 	public Order getByOrderId(int orderId) {
@@ -175,7 +176,7 @@ public class OrderDao_Imp implements OrderDao {
 		try (Connection conn = JDBCConnector.getConnection()) {
 			String sql = "UPDATE orders SET drug = ?,  name = ?,  mail = ?, phone = ?, address = ?, cost = ?, payment = ?  where id_order = ? ";
 			try (PreparedStatement preparedStatement = conn.prepareStatement(sql)) {
-				preparedStatement.setString(1, formatDrugs(order.getDrugs()));
+				preparedStatement.setString(1, String.valueOf(order.getDrugs()));
 				preparedStatement.setString(2, (String) order.getUser());
 				preparedStatement.setString(3, order.getMail());
 				preparedStatement.setString(4, order.getPhone());
@@ -183,7 +184,6 @@ public class OrderDao_Imp implements OrderDao {
 				preparedStatement.setDouble(6, order.getCost());
 				preparedStatement.setString(7, order.getPayment().name());
 				preparedStatement.setInt(8, order.getId());
-
 				preparedStatement.execute();
 			}
 		} catch (Exception ex) {

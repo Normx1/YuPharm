@@ -37,7 +37,6 @@ public class BasketServlet extends HttpServlet {
 					errorString = "You haven't added any cure!";
 				} else {
 					errorString = "Вы не добавили ни одного лекарства!";
-
 				}
 				req.setAttribute("errorString", errorString);
 				getServletContext().getRequestDispatcher("/mainPage.jsp").forward(req, resp);
@@ -47,12 +46,10 @@ public class BasketServlet extends HttpServlet {
 			for (int i = 0; i < idDrugs.size(); i++) {
 				totalCost = totalCost + drugs.findById(idDrugs.get(i)).cost();
 			}
-
 			session.setAttribute("cure", drugs.all().stream()
 					.filter(b -> bean.getIds().contains(b.id()))
 					.collect(Collectors.toList()));
 			session.setAttribute("totalCost", totalCost);
-
 			getServletContext().getRequestDispatcher("/buyAndBasket/basket.jsp").forward(req, resp);
 		} catch (Exception ex) {
 			ex.printStackTrace();

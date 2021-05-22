@@ -59,18 +59,20 @@ public class CreateUserOrder extends HttpServlet {
 			}
 			String address = request.getParameter("address");
 			Payment payment = Payment.valueOf(request.getParameter("payment"));
-			if (payment.name().equals("orderDetail.Payment.Card.Now")) {
+			Map<Integer, Integer> drugID = bean.getIds().stream().collect(Collectors.toMap(v -> v, v -> 1));
+			double cost = 0;
+			cost = bean.getIds().stream().map(i -> drugs.findById(i)).mapToDouble(drug -> drug.cost()).sum();
+			Order order = new Order(drugID, name, mail, phone, address, cost, payment);
+			orders.create(order);
+			int idOfOrder = order.getId();
+			session.setAttribute("idOfOrder", idOfOrder);
+			session.setAttribute("order", order);
+			if (payment == Payment.ByCardOnline) {
 				response.sendRedirect(request.getContextPath() + "/payment");
 			} else {
-				Map<Integer, Integer> id = bean.getIds().stream().collect(Collectors.toMap(v -> v, v -> 1));
-				double cost = 0;
-				cost = bean.getIds().stream().map(i->drugs.findById(i)).mapToDouble(drug->drug.cost()).sum();
-				Order order = new Order(id, name, mail, phone, address, cost, payment);
-				orders.create(order);
- 				response.sendRedirect("/");
+				response.sendRedirect("/success");
 			}
-		} catch (
-				Exception ex) {
+		} catch (Exception ex) {
 			ex.printStackTrace();
 		}
 	}

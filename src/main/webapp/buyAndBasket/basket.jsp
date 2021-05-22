@@ -24,7 +24,7 @@
 		<th><fmt:message key="basket.Info"/></th>
 		<th><fmt:message key="Delete"/></th>
 	</tr>
-	<c:forEach var="cure" items="${sessionScope.cure}">
+	<c:forEach var="cure" items="${sessionScope.cures}">
 		<tr>
 			<td>${cure.id()}</td>
 			<td>${cure.name()}</td>

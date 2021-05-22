@@ -12,7 +12,7 @@
 <h2>Your order is successfully confirmed!</h2>
 <h3>Our operator will call you soon</h3>
 <table border="1" cellpadding="5" cellspacing="1">
-	<h3>Your order is № ${sessionScope.order.id_Order} </h3>
+	<h3>Your order is № ${sessionScope.idOfOrder} </h3>
 	<tr>
 <%--		<th>№</th>--%>
 		<th>Name</th>
@@ -20,11 +20,11 @@
 		<th><fmt:message key="userBasket.Recipe"/></th>
 		<th><fmt:message key="userBasket.Address"/></th>
 	</tr>
-	<c:forEach var="Order" items="${sessionScope.order.all()}">
+	<c:forEach var="cure" items="${applicationScope.cures}">
 		<tr>
-			<td>${Order.name()}</td>
-			<td>${Order.cost()}</td>
-			<td>${Order.recipe()}</td>
+			<td>${cure.name()}</td>
+			<td>${cure.cost()}</td>
+			<td>${cure.recipe()}</td>
 			<td rowspan="${applicationScope.drugs.all().size()}">${sessionScope.order.address}</td>
 		</tr>
 	</c:forEach>

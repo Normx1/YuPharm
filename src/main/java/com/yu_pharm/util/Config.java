@@ -1,26 +1,27 @@
 package com.yu_pharm.util;
 
+import java.io.InputStreamReader;
 import java.io.Reader;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.*;
+import java.net.URI;
+import java.util.LinkedHashMap;
+import java.util.Map;
+import java.util.Objects;
+import java.util.Properties;
 
 public class Config {
 
-	private static final Config config;
+	private static final Config config = new Config();
 
 	private final Map<String, String> configs;
 	private Properties properties = null;
 
 
-	static {
-		Map<String, String> configs = new LinkedHashMap<>();
-		configs.put("default", Objects.toString(Config.class.getResource("config"), null));
+	public Config() {
+		this(new LinkedHashMap<>());
+		configs.put("default", Objects.toString(Config.class.getClassLoader().getResource("config.properties"), null));
 		configs.put("env", System.getenv("config"));
 		configs.put("jvm", System.getProperty("config"));
-		config = new Config(configs);
 	}
-
 
 	public Config(Map<String, String> configs) {
 		this.configs = configs;
@@ -28,7 +29,12 @@ public class Config {
 
 
 	public static String get(String key) {
-		return config.load().getProperty(key);
+		return config.getValue(key);
+	}
+
+
+	public String getValue(String key) {
+		return load().getProperty(key);
 	}
 
 	private synchronized Properties load() {
@@ -37,8 +43,8 @@ public class Config {
 			for (Map.Entry<String, String> e : configs.entrySet()) {
 				try {
 					Properties props = new Properties(result);
-					Path path = Path.of(e.getValue());
-					try (Reader reader = Files.newBufferedReader(path)) {
+					URI uri = URI.create(e.getValue());
+					try (Reader reader = new InputStreamReader(uri.toURL().openStream())) {
 						props.load(reader);
 					}
 					result = props;

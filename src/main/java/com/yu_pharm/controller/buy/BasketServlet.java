@@ -46,10 +46,14 @@ public class BasketServlet extends HttpServlet {
 			for (int i = 0; i < idDrugs.size(); i++) {
 				totalCost = totalCost + drugs.findById(idDrugs.get(i)).cost();
 			}
+
 			session.setAttribute("cures", drugs.all().stream()
 					.filter(b -> bean.getIds().contains(b.id()))
 					.collect(Collectors.toList()));
+
 			session.setAttribute("totalCost", totalCost);
+
+
 			getServletContext().getRequestDispatcher("/buyAndBasket/basket.jsp").forward(req, resp);
 		} catch (Exception ex) {
 			ex.printStackTrace();

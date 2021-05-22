@@ -64,9 +64,13 @@ public class CreateUserOrder extends HttpServlet {
 			cost = bean.getIds().stream().map(i -> drugs.findById(i)).mapToDouble(drug -> drug.cost()).sum();
 			Order order = new Order(drugID, name, mail, phone, address, cost, payment);
 			orders.create(order);
-			int idOfOrder = order.getId();
+
+			int idOfOrder = orders.getByUserName(name).getId();
+			System.out.println(idOfOrder);
+
 			session.setAttribute("idOfOrder", idOfOrder);
 			session.setAttribute("order", order);
+
 			if (payment == Payment.ByCardOnline) {
 				response.sendRedirect(request.getContextPath() + "/payment");
 			} else {

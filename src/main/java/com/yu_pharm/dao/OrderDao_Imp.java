@@ -133,10 +133,10 @@ public class OrderDao_Imp implements OrderDao {
 		Order order = new Order();
 
 		try (Connection conn = JDBCConnector.getConnection();) {
-			String sql = "select * from orders where name=?";
+			String sql = "select * from orders where name=? ORDER BY id_order DESC";
 			try (PreparedStatement preparedStatement = conn.prepareStatement(sql)) {
 				preparedStatement.setString(1, userName);
-				ResultSet resultSet = preparedStatement.executeQuery();
+ 				ResultSet resultSet = preparedStatement.executeQuery();
 				if (resultSet.next()) {
 					int Order_id = resultSet.getInt(1);
 					Map<Integer, Integer> drugId = parseDrugs(resultSet.getString(2));
@@ -194,7 +194,7 @@ public class OrderDao_Imp implements OrderDao {
 	}
 
 	@Override
-	public Object create(Order order) {
+	public Object create(Order order ) {
 		try (Connection conn = JDBCConnector.getConnection()) {
 			String sql = "insert into orders (drug, name , mail, phone, address, payment, cost) values (?, ?, ?, ?, ?, ?, ?)";
 

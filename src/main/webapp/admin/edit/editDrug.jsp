@@ -29,7 +29,7 @@
 		<input required name="cost" value="${drug.cost()}"/>
 	</label>
 	<label>Count
-		<input required name="count" value="${drug.count}"/>
+		<input required name="count" value="${drug.count()}"/>
 	</label>
 	<label>Recipe:
 		<label><input type="radio" name="recipe" value="1" checked/>Yes</label>

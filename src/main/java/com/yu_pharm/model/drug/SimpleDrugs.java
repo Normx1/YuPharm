@@ -27,12 +27,13 @@ public class SimpleDrugs implements Drugs<Drug> {
 	@Override
 	public Drug create() {
 		int id = counter.getAndIncrement();
-		return drugs.put(id, new SimpleDrug(id, Map.of()));
+		Drug value = new SimpleDrug(id, new LinkedHashMap<>());
+		drugs.put(id, value);
+		return value;
 	}
 
 	@Override
 	public List<Drug> all() {
 		return new ArrayList<>(drugs.values());
 	}
-
 }

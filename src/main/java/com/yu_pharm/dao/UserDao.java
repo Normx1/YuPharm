@@ -23,7 +23,7 @@ public class UserDao implements BasicDao<User> {
 				int id = resultSet.getInt(1);
 				String name = resultSet.getString(2);
 				String mail = resultSet.getString(3);
-				int role = resultSet.getInt(4);
+				Role role = Role.valueOf(resultSet.getString(5));
 				User user = new User(id, name, mail, role);
 				userList.add(user);
 			}
@@ -47,7 +47,7 @@ public class UserDao implements BasicDao<User> {
 					String name = resultSet.getString(2);
 					String mail = resultSet.getString(3);
 					String password = resultSet.getString(4);
-					int role = resultSet.getInt(5);
+					Role role = Role.valueOf(resultSet.getString(5));
 					user = new User(id, name, mail, password, role);
 				}
 			}
@@ -82,7 +82,7 @@ public class UserDao implements BasicDao<User> {
 				preparedStatement.setString(1, user.getName());
 				preparedStatement.setString(2, user.getMail());
 				preparedStatement.setString(3, user.getPassword());
-				preparedStatement.setInt(4, user.getRole());
+				preparedStatement.setString(4, user.getRole().getKey());
 				preparedStatement.setInt(5, user.getId());
 				preparedStatement.execute();
 			}
@@ -101,7 +101,7 @@ public class UserDao implements BasicDao<User> {
 				preparedStatement.setString(1, user.getName());
 				preparedStatement.setString(2, user.getMail());
 				preparedStatement.setString(3, user.getPassword());
-				preparedStatement.setInt(4, (Integer) user.getRole());
+				preparedStatement.setString(4, user.getRole().getKey());
 				preparedStatement.execute();
 			}
 		} catch (Exception ex) {
@@ -135,7 +135,7 @@ public class UserDao implements BasicDao<User> {
 		return user;
 	}
 
-@Override
+	@Override
 	public List<User> getAllPagination(int offset, int noOfRecords) {
 		String query = "select * from table_name LIMIT " + offset + ", " + noOfRecords;
 		List<User> userList = new ArrayList<>();
@@ -147,7 +147,7 @@ public class UserDao implements BasicDao<User> {
 				int id = resultSet.getInt(1);
 				String name = resultSet.getString(2);
 				String mail = resultSet.getString(3);
-				int role = resultSet.getInt(4);
+				Role role = Role.valueOf(resultSet.getString(5));
 				User user = new User(id, name, mail, role);
 				userList.add(user);
 			}

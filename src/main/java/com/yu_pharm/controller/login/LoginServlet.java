@@ -101,7 +101,7 @@ public class LoginServlet extends HttpServlet {
             }
 
             // Redirect (Перенаправить) на страницу /userInfo.
-            response.sendRedirect(request.getContextPath() + "/userInfo");
+             response.sendRedirect(request.getContextPath() + "/userInfo");
         }
     }
 

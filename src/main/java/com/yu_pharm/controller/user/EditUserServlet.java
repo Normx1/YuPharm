@@ -1,6 +1,7 @@
 package com.yu_pharm.controller.user;
 
 import com.yu_pharm.dao.BasicDao;
+import com.yu_pharm.dao.Role;
 import com.yu_pharm.dao.UserDao;
 import com.yu_pharm.model.User;
 
@@ -40,7 +41,7 @@ public class EditUserServlet extends HttpServlet {
 			String name = request.getParameter("name");
 			String mail = request.getParameter("mail");
 			String password = request.getParameter("password");
-			int role = Integer.parseInt(request.getParameter("role"));
+			Role role =  Role.valueOf(request.getParameter("role"));
 			User user = new User(id, name, mail, password, role);
 			userBasicDao.updateById(user);
 			response.sendRedirect(request.getContextPath() + "/adminUserList");

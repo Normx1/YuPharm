@@ -1,6 +1,7 @@
 package com.yu_pharm.controller.user;
 
 import com.yu_pharm.dao.BasicDao;
+import com.yu_pharm.dao.Role;
 import com.yu_pharm.dao.UserDao;
 import com.yu_pharm.model.User;
 
@@ -26,7 +27,7 @@ public class CreateUserServlet extends HttpServlet {
 			String name = request.getParameter("name");
 			String mail = request.getParameter("mail");
 			String password = request.getParameter("password");
-			int role = 0;
+			Role role = Role.user;
 			User users = new User(name, mail,password, role);
 			userDao.create(users);
 			response.sendRedirect(request.getContextPath() + "/adminUserList");

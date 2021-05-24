@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.util.Objects;
 
-@WebFilter({"/admin/*", "/drug/create","/user/*"})
+//@WebFilter({"/admin/*", "/drug/create","/user/*"})
 public class AuthorizedFilter implements Filter {
 
 	private final BasicDao<User> userBasicDao = new UserDao();

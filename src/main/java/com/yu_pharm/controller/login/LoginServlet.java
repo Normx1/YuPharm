@@ -88,7 +88,7 @@ public class LoginServlet extends HttpServlet {
         // И перенаправить к странице userInfo.
         else {
             HttpSession session = request.getSession();
-            session.setAttribute("userName",user.getName());
+            session.setAttribute("mail",user.getMail());
             session.setAttribute("user",user);
             MyUtils.storeLoginedUser(session, user);
 

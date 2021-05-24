@@ -11,7 +11,7 @@ public interface OrderDao<T> {
 
     T getByUserId(int userId);
 
-    T getByUserName(String userName);
+    T getByUserMail(String userMail);
 
 	T deleteById(int id);
 

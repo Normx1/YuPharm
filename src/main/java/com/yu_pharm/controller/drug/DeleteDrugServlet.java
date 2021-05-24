@@ -23,6 +23,6 @@ public class DeleteDrugServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int id = Integer.parseInt(request.getParameter("id"));
 		drugs.findById(id).delete();
-		response.sendRedirect(request.getContextPath() + "/adminDrugList");
+		response.sendRedirect(request.getContextPath());
 	}
 }

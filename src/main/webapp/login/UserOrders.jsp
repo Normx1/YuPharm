@@ -14,40 +14,27 @@
 <body>
 <jsp:include page="../WEB-INF/otherElements/_header.jsp"/>
 <jsp:include page="../WEB-INF/otherElements/_menu.jsp"/>
-<h3>Orders</h3>
-<br>
-<form method="get" action='<c:url value="/admin/createOrder" />' style="display:inline;">
-	<input type="submit" value="Create New">
-</form>
+<h3> ${sessionScope.user.name} Orders</h3>
 <br><br>
 <table border="1" cellpadding="5" cellspacing="1">
 	<tr>
 		<th>ID Order</th>
 		<th>Drug</th>
-		<th>User name</th>
-		<th>Mail</th>
+ 		<th>Mail</th>
 		<th>Phone</th>
 		<th>Address</th>
 		<th>Payment</th>
 		<th>Cost</th>
-		<th>Action</th>
 	</tr>
-	<c:forEach var="Order" items="${requestScope.orders}">
+	<c:forEach var="Order" items="${requestScope.orderList}">
 		<tr>
 			<td>${Order.id}</td>
 			<td>${Order.drugs}</td>
-			<td>${Order.user}</td>
-			<td>${Order.mail}</td>
+ 			<td>${Order.mail}</td>
 			<td>${Order.phone}</td>
 			<td>${Order.address}</td>
 			<td>${Order.cost}</td>
 			<td>${Order.payment}</td>
-			<td>
-				<a href='<c:url value="/admin/order/edit?id=${Order.id}" />'>Edit</a> |
-				<form method="post" action='<c:url value="/admin/order/delete" />' style="display:inline;">
-					<input type="hidden" name="id_Order" value="${Order.id}">
-					<input type="submit" value="Delete">
-				</form>
 		</tr>
 	</c:forEach>
 </table>
@@ -62,7 +49,7 @@ The when condition does not display a link for the current page--%>
 					<td>${i}</td>
 				</c:when>
 				<c:otherwise>
-					<td><a href="/admin/allOrders?page=${i}">${i}</a></td>
+					<td><a href="/UserOrders?page=${i}">${i}</a></td>
 				</c:otherwise>
 			</c:choose>
 		</c:forEach>
@@ -72,25 +59,19 @@ The when condition does not display a link for the current page--%>
 
 <%--For displaying Previous link except for the 1st page --%>
 <c:if test="${currentPage != 1}">
-	<td><a href="/admin/allOrders?page=${currentPage - 1}">Previous</a></td>
+	<td><a href="/UserOrders?page=${currentPage - 1}">Previous</a></td>
 </c:if>
 <%--For displaying Next link --%>
 <c:if test="${currentPage lt noOfPages}">
-	<td><a href="${pageContext.request.contextPath}//admin/allOrders?page=${currentPage + 1}">Next</a></td>
+	<td><a href="${pageContext.request.contextPath}/UserOrders?page=${currentPage + 1}">Next</a></td>
 </c:if>
 <br><br>
-<td colspan="2">
-
-	<a href="${pageContext.request.contextPath}/admin/allOrders">To Admin main page</a>
-</td>
 
 <td colspan="2">
 
-	<a href="${pageContext.request.contextPath}/">Cancel</a>
+	<a href="${pageContext.request.contextPath}/userInfo"/>Return</a>
 </td>
 <br>
-
 <jsp:include page="/WEB-INF/otherElements/_footer.jsp"></jsp:include>
-
 </body>
 </html>

@@ -61,7 +61,7 @@ public class CreateUserOrder extends HttpServlet {
 		Order order = new Order(drugID, name, mail, phone, address, cost, payment);
 		orders.create(order);
 
-		int idOfOrder = orders.getByUserName(name).getId();
+		int idOfOrder = orders.getByUserMail(mail).getId();
 		System.out.println(idOfOrder);
 
 		session.setAttribute("idOfOrder", idOfOrder);

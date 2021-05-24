@@ -9,7 +9,9 @@ public enum Role {
 //	SuperAdmin
 
 	user("user"),
-	admin("admin");
+	pharmacist("pharmacist"),
+	admin("admin"),
+	superAdmin("superAdmin");
 
 	private final String key;
 

@@ -9,6 +9,7 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 public class UserDao implements BasicDao<User> {
 
@@ -23,7 +24,7 @@ public class UserDao implements BasicDao<User> {
 				int id = resultSet.getInt(1);
 				String name = resultSet.getString(2);
 				String mail = resultSet.getString(3);
-				Role role = Role.valueOf(resultSet.getString(5));
+				Set<Role> role = Role.getRoles(resultSet.getLong(5));
 				User user = new User(id, name, mail, role);
 				userList.add(user);
 			}
@@ -47,7 +48,7 @@ public class UserDao implements BasicDao<User> {
 					String name = resultSet.getString(2);
 					String mail = resultSet.getString(3);
 					String password = resultSet.getString(4);
-					Role role = Role.valueOf(resultSet.getString(5));
+					Set<Role> role = Role.getRoles(resultSet.getLong(5));
 					user = new User(id, name, mail, password, role);
 				}
 			}
@@ -82,7 +83,7 @@ public class UserDao implements BasicDao<User> {
 				preparedStatement.setString(1, user.getName());
 				preparedStatement.setString(2, user.getMail());
 				preparedStatement.setString(3, user.getPassword());
-				preparedStatement.setString(4, user.getRole().getKey());
+				preparedStatement.setLong(4, Role.getRolesValue(user.getRoles()));
 				preparedStatement.setInt(5, user.getId());
 				preparedStatement.execute();
 			}
@@ -101,7 +102,7 @@ public class UserDao implements BasicDao<User> {
 				preparedStatement.setString(1, user.getName());
 				preparedStatement.setString(2, user.getMail());
 				preparedStatement.setString(3, user.getPassword());
-				preparedStatement.setString(4, user.getRole().getKey());
+				preparedStatement.setLong(4, Role.getRolesValue(user.getRoles()));
 				preparedStatement.execute();
 			}
 		} catch (Exception ex) {
@@ -125,7 +126,7 @@ public class UserDao implements BasicDao<User> {
 					int id = resultSet.getInt(1);
 					String mail = resultSet.getString(3);
 					String password = resultSet.getString(4);
-					Role role = Role.valueOf(resultSet.getString(5));
+					Set<Role> role = Role.getRoles(resultSet.getLong(5));
 					user = new User(id, name, mail, password,role);
 				}
 			}
@@ -148,7 +149,7 @@ public class UserDao implements BasicDao<User> {
 				int id = resultSet.getInt(1);
 				String name = resultSet.getString(2);
 				String mail = resultSet.getString(3);
-				Role role = Role.valueOf(resultSet.getString(5));
+				Set<Role> role = Role.getRoles(resultSet.getLong(5));
 				User user = new User(id, name, mail, role);
 				userList.add(user);
 			}

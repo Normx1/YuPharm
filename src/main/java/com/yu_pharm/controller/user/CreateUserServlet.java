@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.Set;
 
 @WebServlet("/user/create")
 public class CreateUserServlet extends HttpServlet {
@@ -27,8 +28,8 @@ public class CreateUserServlet extends HttpServlet {
 			String name = request.getParameter("name");
 			String mail = request.getParameter("mail");
 			String password = request.getParameter("password");
-			Role role = Role.User;
-			User users = new User(name, mail,password, role);
+			Set<Role> roles = Set.of(Role.User);
+			User users = new User(name, mail,password, roles);
 			userDao.create(users);
 			response.sendRedirect(request.getContextPath() + "/adminUserList");
 		} catch (

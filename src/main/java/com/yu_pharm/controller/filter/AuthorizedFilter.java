@@ -8,10 +8,11 @@ import com.yu_pharm.model.User;
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.Objects;
 
-//@WebFilter({"/admin/*", "/drug/create","/user/*"})
+@WebFilter({"/admin/*", "/drug/create","/user/*"})
 public class AuthorizedFilter implements Filter {
 
 	private final BasicDao<User> userBasicDao = new UserDao();
@@ -24,8 +25,10 @@ public class AuthorizedFilter implements Filter {
 			throw new RuntimeException();
 		}
 
-		User user = userBasicDao.getByName((String) ((HttpServletRequest) servletRequest).getSession().getAttribute("userName"));
-		if (user.getRole() == Role.Admin) {
+		HttpSession session = ((HttpServletRequest) servletRequest).getSession();
+		User user = ((User) session.getAttribute("user"));
+		user = userBasicDao.getByName(user.getName());
+		if (user.getRoles().contains(Role.Admin)) {
 			filterChain.doFilter(servletRequest, servletResponse);
 		} else {
 			throw new RuntimeException("Not enough privileges");

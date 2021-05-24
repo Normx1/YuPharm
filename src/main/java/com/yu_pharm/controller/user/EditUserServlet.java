@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.Set;
 
 @WebServlet("/user/edit")
 public class EditUserServlet extends HttpServlet {
@@ -41,7 +42,7 @@ public class EditUserServlet extends HttpServlet {
 			String name = request.getParameter("name");
 			String mail = request.getParameter("mail");
 			String password = request.getParameter("password");
-			Role role =  Role.valueOf(request.getParameter("role"));
+			Set<Role> role = Set.of(Role.valueOf(request.getParameter("role")));
 			User user = new User(id, name, mail, password, role);
 			userBasicDao.updateById(user);
 			response.sendRedirect(request.getContextPath() + "/adminUserList");

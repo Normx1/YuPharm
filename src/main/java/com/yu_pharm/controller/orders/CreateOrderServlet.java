@@ -17,7 +17,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-@WebServlet("/createOrder")
+@WebServlet("/admin/createOrder")
 public class CreateOrderServlet extends HttpServlet {
 
 	private Drugs.Smart drugs;

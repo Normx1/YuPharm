@@ -11,7 +11,7 @@
 		|
 		<a href="${pageContext.request.contextPath}/login"><fmt:message key="_menu.Login"/></a>
 		|
-		<a href="${pageContext.request.contextPath}/AdminMainPage"><fmt:message key="_menu.Admin"/></a>
+		<a href="${pageContext.request.contextPath}/admin/AdminMainPage"><fmt:message key="_menu.Admin"/></a>
 
 		<form method="post" action="${pageContext.request.contextPath}/locale">
 			<select name="language" onchange="submit()">

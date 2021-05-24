@@ -18,7 +18,7 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@WebServlet("/adminDrugList")
+@WebServlet("/admin/adminDrugList")
 
 public class AdminDrugList extends HttpServlet {
 	private Drugs.Smart drugs;

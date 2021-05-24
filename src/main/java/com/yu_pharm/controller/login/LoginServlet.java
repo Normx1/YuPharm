@@ -77,7 +77,6 @@ public class LoginServlet extends HttpServlet {
 
             // Сохранить информацию в request attribute перед forward.
             request.setAttribute("errorString", errorString);
-            request.setAttribute("user", user);
 
             // Forward (перенаправить) к странице /WEB-INF/views/login.jsp
             RequestDispatcher dispatcher = this.getServletContext().getRequestDispatcher("/login/loginView.jsp");
@@ -89,6 +88,8 @@ public class LoginServlet extends HttpServlet {
         // И перенаправить к странице userInfo.
         else {
             HttpSession session = request.getSession();
+            session.setAttribute("userName",user.getName());
+            session.setAttribute("user",user);
             MyUtils.storeLoginedUser(session, user);
 
             // Если пользователь выбирает функцию "Remember me".

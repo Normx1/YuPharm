@@ -125,7 +125,8 @@ public class UserDao implements BasicDao<User> {
 					int id = resultSet.getInt(1);
 					String mail = resultSet.getString(3);
 					String password = resultSet.getString(4);
-					user = new User(id, name, mail, password);
+					Role role = Role.valueOf(resultSet.getString(5));
+					user = new User(id, name, mail, password,role);
 				}
 			}
 		} catch (Exception ex) {

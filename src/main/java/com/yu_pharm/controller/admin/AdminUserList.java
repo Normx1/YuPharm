@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet("/adminUserList")
+@WebServlet("/admin/adminUserList")
 public class AdminUserList extends HttpServlet {
 	BasicDao<User> userDao = new UserDao();
 

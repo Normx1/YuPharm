@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet("/allOrders")
+@WebServlet("/admin/allOrders")
 public class AllOrderServlet extends HttpServlet {
 
 	private OrderDao<Order> order;

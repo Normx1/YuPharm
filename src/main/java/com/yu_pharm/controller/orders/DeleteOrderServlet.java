@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet("/order/delete")
+@WebServlet("/admin/order/delete")
 public class DeleteOrderServlet extends HttpServlet {
 
 	private OrderDao<Order> orders;

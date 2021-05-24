@@ -13,7 +13,7 @@ import java.io.IOException;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@WebServlet("/PaginationUser")
+@WebServlet("/admin/PaginationUser")
 public class AdminUserListPagination extends HttpServlet {
 	BasicDao<User> userDao = new UserDao();
 

@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Map;
 
-@WebServlet("/order/edit")
+@WebServlet("/admin/order/edit")
 public class EditOrderServlet extends HttpServlet {
 
 	private Drugs.Smart drugs;

@@ -25,7 +25,7 @@ public class AuthorizedFilter implements Filter {
 		}
 
 		User user = userBasicDao.getByName((String) ((HttpServletRequest) servletRequest).getSession().getAttribute("userName"));
-		if (user.getRole() == Role.admin) {
+		if (user.getRole() == Role.Admin) {
 			filterChain.doFilter(servletRequest, servletResponse);
 		} else {
 			throw new RuntimeException("Not enough privileges");

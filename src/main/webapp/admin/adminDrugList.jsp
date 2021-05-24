@@ -23,24 +23,24 @@
         <th>Info</th>
         <th>Action</th>
     </tr>
-    <c:forEach var="Order" items="${requestScope.drug}">
+    <c:forEach var="drug1" items="${requestScope.drugs1}">
         <tr>
-            <td>${Order.id()}</td>
-            <td>${Order.name()}</td>
-            <td>${Order.count()}</td>
-            <td>${Order.cost()} $</td>
+            <td>${drug1.id()}</td>
+            <td>${drug1.name()}</td>
+            <td>${drug1.count()}</td>
+            <td>${drug1.cost()} $</td>
             <td>
-                <div align="center"> ${Order.recipe()}
+                <div align="center"> ${drug1.recipe()}
                 </div>
             </td>
             <td>
-                <a href='<c:url value="drug/info?id=${Order.id()}"/>'>Details</a>
+                <a href='<c:url value="/drug/info?id=${drug1.id()}"/>'>Details</a>
 
             </td>
             <td>
-                <a href='<c:url value="drug/edit?id=${Order.id()}" />'>Edit</a> |
+                <a href='<c:url value="/drug/edit?id=${drug1.id()}" />'>Edit</a> |
                 <form method="post" action='<c:url value="/drug/delete" />' style="display:inline;">
-                    <input type="hidden" name="id" value="${Order.id()}">
+                    <input type="hidden" name="id" value="${drug1.id()}">
                     <input type="submit" value="Delete">
                 </form>
         </tr>

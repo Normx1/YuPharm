@@ -35,10 +35,9 @@ public class EditDrugServlet extends HttpServlet {
 		drug.cost(Double.parseDouble(request.getParameter("cost")));
 		drug.count(Double.parseDouble(request.getParameter("count")));
 		drug.recipe(Byte.parseByte(request.getParameter("recipe")));
-		drug.mainAction(request.getParameter("main_action"));
-		drug.description(request.getParameter("description"));
-		drug.application(request.getParameter("application"));
-
+		//drug.mainAction(request.getParameter("main_action"));
+		//drug.description(request.getParameter("description"));
+		//drug.application(request.getParameter("application"));
 		response.sendRedirect(request.getContextPath() + "/adminDrugList");
 	}
 }

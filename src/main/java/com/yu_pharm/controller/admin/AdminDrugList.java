@@ -42,7 +42,7 @@ public class AdminDrugList extends HttpServlet {
 				.limit(recordsPerPage).collect(Collectors.toList());
 		request.setAttribute("noOfPages", noOfPages);
 		request.setAttribute("currentPage", page);
-		request.setAttribute("drug",Drug);
+		request.setAttribute("drugs1",Drug);
 		getServletContext().getRequestDispatcher("/admin/adminDrugList.jsp").forward(request, response);
 	}
 }

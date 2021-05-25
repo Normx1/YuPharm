@@ -1,6 +1,5 @@
 package com.yu_pharm.controller.login;
 
-import com.yu_pharm.controller.util.MyUtils;
 import com.yu_pharm.model.User;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -19,7 +18,7 @@ public class UserInfoServlet extends HttpServlet {
         HttpSession session = request.getSession();
 
         // Проверить, вошел ли пользователь в систему (login) или нет.
-        User loginedUser = MyUtils.getLoginedUser(session);
+        User loginedUser = (User) session.getAttribute("user");
 
         // Если еще не вошел в систему (login).
         if (loginedUser == null) {

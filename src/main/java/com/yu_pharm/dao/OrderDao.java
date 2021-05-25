@@ -20,4 +20,5 @@ public interface OrderDao<T> {
 
     Object create(Order order);
 
+	Order getOrderIdByMail(String mail);
 }

@@ -130,12 +130,12 @@ public class OrderDao_Imp implements OrderDao {
 
 	@Override
 	public List<Order> getByUserMail(String mail) {
- 		List<Order> orderList = new ArrayList<>();
+		List<Order> orderList = new ArrayList<>();
 		try (Connection conn = JDBCConnector.getConnection();) {
-			String sql = "select * from orders where mail=? ORDER BY id_order DESC";
+			String sql = "select * from orders where mail=? ORDER BY id_order DESC ";
 			try (PreparedStatement preparedStatement = conn.prepareStatement(sql)) {
 				preparedStatement.setString(1, mail);
- 				ResultSet resultSet = preparedStatement.executeQuery();
+				ResultSet resultSet = preparedStatement.executeQuery();
 				while (resultSet.next()) {
 					int Order_id = resultSet.getInt(1);
 					Map<Integer, Integer> drugId = parseDrugs(resultSet.getString(2));
@@ -152,7 +152,33 @@ public class OrderDao_Imp implements OrderDao {
 			ex.printStackTrace();
 			throw new RuntimeException(ex);
 		}
-		return  orderList;
+		return orderList;
+	}
+
+
+	public  Order getOrderIdByMail(String mail) {
+		Order order = new Order();
+		try (Connection conn = JDBCConnector.getConnection();) {
+			String sql = "select * from orders where mail=? ORDER BY id_order DESC ";
+			try (PreparedStatement preparedStatement = conn.prepareStatement(sql)) {
+				preparedStatement.setString(1, mail);
+				ResultSet resultSet = preparedStatement.executeQuery();
+				while (resultSet.next()) {
+					int Order_id = resultSet.getInt(1);
+					Map<Integer, Integer> drugId = parseDrugs(resultSet.getString(2));
+					String name = resultSet.getString(3);
+					String phone = resultSet.getString(5);
+					String address = resultSet.getString(6);
+					double cost = resultSet.getDouble(7);
+					Payment payment = Payment.valueOf(resultSet.getString(8));
+					order = new Order(Order_id, drugId, name, mail, phone, address, cost, payment);
+				}
+			}
+		} catch (Exception ex) {
+			ex.printStackTrace();
+			throw new RuntimeException(ex);
+		}
+		return order;
 	}
 
 	@Override
@@ -194,12 +220,12 @@ public class OrderDao_Imp implements OrderDao {
 	}
 
 	@Override
-	public Object create(Order order ) {
+	public Object create(Order order) {
 		try (Connection conn = JDBCConnector.getConnection()) {
 			String sql = "insert into orders (drug, name , mail, phone, address, payment, cost) values (?, ?, ?, ?, ?, ?, ?)";
 
 			try (PreparedStatement preparedStatement = conn.prepareStatement(sql)) {
-				preparedStatement.setString(1,  formatDrugs(order.getDrugs()));
+				preparedStatement.setString(1, formatDrugs(order.getDrugs()));
 				preparedStatement.setString(2, (String) order.getUser());
 				preparedStatement.setString(3, order.getMail());
 				preparedStatement.setString(4, order.getPhone());

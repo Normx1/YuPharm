@@ -19,9 +19,9 @@
 <h3><fmt:message key="detaiOfOrder.Title"/></h3>
 <form method="post" action="/createUserOrder">
 	<label><fmt:message key="orderDetail.name"/></label><br>
-	<input required name="name"/><br><br>
+	<input required name="name" value="${sessionScope.user.name}"/><br><br>
 	<label>Mail:</label><br>
-	<input required name="mail"/><br><br>
+	<input required name="mail", value="${sessionScope.user.mail}"/><br><br>
 	<label><fmt:message key="orderDetail.Phone"/></label><br>
 	<input required name="phone" pattern="[0-9]{,15}"/><br><br>
 	<label><fmt:message key="orderDetail.Address"/></label><br>

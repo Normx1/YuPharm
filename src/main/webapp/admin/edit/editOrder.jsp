@@ -14,7 +14,7 @@
 <jsp:include page="../../WEB-INF/otherElements/_header.jsp"/>
 <jsp:include page="../../WEB-INF/otherElements/_menu.jsp"/>
 <h3>Edit order:</h3>
-<form method="post" action="/order/edit">
+<form method="post" action="/admin/order/edit">
 
 	<br><br>
 	<label>Drug</label><br>
@@ -42,7 +42,7 @@
 	<input type="hidden" name="id_order" value="${order.id}"/>
 	<input type="submit" value="Save"/>|
 	<td colspan="2">
-		<a href="/allOrders">Return</a>
+		<a href="/admin/allOrders">Return</a>
 	</td>
 </form>
 <br><br>

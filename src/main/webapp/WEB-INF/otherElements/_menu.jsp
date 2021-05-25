@@ -14,7 +14,7 @@
 		|
 		<%@ page import="com.yu_pharm.model.Role" %>
 
-		<c:if test="${applicationScope.user.roles.contains(Role.Admin)}">
+		<c:if test="${sessionScope.user.roles.contains(Role.Admin)}">
 			<a href="${pageContext.request.contextPath}/admin/AdminMainPage"><fmt:message key="_menu.Admin"/></a>
 			|
 		</c:if>

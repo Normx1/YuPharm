@@ -23,7 +23,7 @@
 	<label>Mail:</label><br>
 	<input required name="mail", value="${sessionScope.user.mail}"/><br><br>
 	<label><fmt:message key="orderDetail.Phone"/></label><br>
-	<input required name="phone" pattern="[0-9]{,15}"/><br><br>
+	+<input required name="phone" pattern="[0-9]{,15}"/><br><br>
 	<label><fmt:message key="orderDetail.Address"/></label><br>
 	<input required name="address"/><br><br>
 	<label><fmt:message key="orderDetail.Payment"/></label><br>

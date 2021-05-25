@@ -60,7 +60,7 @@
 					<div align="center"><fmt:message key="recipe.No"/></div>
 				</c:if>
 			</td>
-			<td><a href='<c:url value="drug/info?id=${Order.id()}"/>'><fmt:message key="details"/></a></td>
+			<td><a href='<c:url value="/all/drug/info?id=${Order.id()}"/>'><fmt:message key="details"/></a></td>
 			<td>
 				<form method="post" action='<c:url value="/drugBuy"/>' style="display:inline;">
 					<input type="hidden" name="drug_id" value="${Order.id()}">

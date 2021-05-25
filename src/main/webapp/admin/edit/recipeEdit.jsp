@@ -41,5 +41,4 @@
 <jsp:include page="/WEB-INF/otherElements/_footer.jsp"></jsp:include>
 </form>
 </body>
-
 </html>

@@ -20,7 +20,7 @@
 <jsp:include page="../../WEB-INF/otherElements/_header.jsp"/>
 <jsp:include page="../../WEB-INF/otherElements/_menu.jsp"/>
 <h3>Edit medicine:</h3>
-<form method="post" action="/drug/edit">
+<form method="post" action="/all/drug/edit">
 	<input required type="hidden" name="id" value="${drug.id()}">
 	<label>Name
 		<input required name="name" value="${drug.name()}"/>

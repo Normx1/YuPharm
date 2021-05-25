@@ -34,7 +34,7 @@
                 </div>
             </td>
             <td>
-                <a href='<c:url value="/drug/info?id=${drug1.id()}"/>'>Details</a>
+                <a href='<c:url value="/all/drug/info?id=${drug1.id()}"/>'>Details</a>
 
             </td>
             <td>

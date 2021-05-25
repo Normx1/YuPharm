@@ -35,7 +35,16 @@
 	<c:forEach var="Order" items="${requestScope.orders}">
 		<tr>
 			<td>${Order.id}</td>
-			<td>${Order.drugs}</td>
+			<td>${Order.drugs}
+				<table>
+					<c:forEach var="d" items="${Order.drugs.entrySet()}">
+						<tr>
+							<td>${applicationScope.drugs.findById(d.key).name()}</td>
+							<td>${d.value}</td>
+						</tr>
+					</c:forEach>
+				</table>
+			</td>
 			<td>${Order.user}</td>
 			<td>${Order.mail}</td>
 			<td>${Order.phone}</td>

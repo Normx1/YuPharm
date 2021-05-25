@@ -18,7 +18,7 @@
 <div style=" align: left;">
 	<br>
 	<!-- User store in session with attribute: loginedUser -->
-	<fmt:message key="_menu.hi"/> <b>${loginedUser.name} </b>
+	<fmt:message key="_menu.hi"/> <b>${sessionScope.user.name} </b>
 	<br/>
 	<a href="${pageContext.request.contextPath}/basket"> <fmt:message key="_menu.Basket"/> </a>
 

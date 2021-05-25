@@ -11,6 +11,7 @@ import javax.servlet.http.*;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.Arrays;
 
 @WebServlet(urlPatterns = {"/login"})
 public class LoginServlet extends HttpServlet {
@@ -86,7 +87,6 @@ public class LoginServlet extends HttpServlet {
 			HttpSession session = request.getSession();
 			session.setAttribute("mail", user.getMail());
 			session.setAttribute("user", user);
-
 			// Если пользователь выбирает функцию "Remember me".
 			if (remember) {
 				Cookie cookie = new Cookie("user", user.getName());

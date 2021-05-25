@@ -1,7 +1,7 @@
 package com.yu_pharm.controller.user;
 
 import com.yu_pharm.dao.BasicDao;
-import com.yu_pharm.dao.Role;
+import com.yu_pharm.model.Role;
 import com.yu_pharm.dao.UserDao;
 import com.yu_pharm.model.User;
 

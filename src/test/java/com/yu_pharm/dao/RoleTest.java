@@ -1,5 +1,6 @@
 package com.yu_pharm.dao;
 
+import com.yu_pharm.model.Role;
 import org.junit.jupiter.api.Test;
 
 import java.util.EnumSet;

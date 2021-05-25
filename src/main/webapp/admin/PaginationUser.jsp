@@ -32,8 +32,8 @@
 			<td>${users.name}</td>
 			<td>${users.mail}</td>
 			<td>
-				<a href='<c:url value="user/edit?id=${users.id}" />'>Edit</a> |
-				<form method="post" action='<c:url value="user/delete" />' style="display:inline;">
+				<a href='<c:url value="/user/edit?id=${users.id}" />'>Edit</a> |
+				<form method="post" action='<c:url value="/user/delete" />' style="display:inline;">
 					<input type="hidden" name="id" value="${users.id}">
 					<input type="submit" value="Delete">
 				</form>
@@ -52,7 +52,7 @@ The when condition does not display a link for the current page--%>
 					<td>${i}</td>
 				</c:when>
 				<c:otherwise>
-					<td><a href="/PaginationUser?page=${i}">${i}</a></td>
+					<td><a href="/admin/PaginationUser?page=${i}">${i}</a></td>
 				</c:otherwise>
 			</c:choose>
 		</c:forEach>

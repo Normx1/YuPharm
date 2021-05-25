@@ -1,5 +1,6 @@
 package com.yu_pharm.dao;
 
+import com.yu_pharm.model.Role;
 import com.yu_pharm.model.User;
 import com.yu_pharm.sql.JDBCConnector;
 

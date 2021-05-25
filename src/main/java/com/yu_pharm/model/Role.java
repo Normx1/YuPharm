@@ -1,4 +1,4 @@
-package com.yu_pharm.dao;
+package com.yu_pharm.model;
 
 import java.util.EnumSet;
 import java.util.Set;

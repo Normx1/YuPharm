@@ -1,8 +1,6 @@
 package com.yu_pharm.model;
 
 
-import com.yu_pharm.dao.Role;
-
 import java.util.Set;
 
 public class User{

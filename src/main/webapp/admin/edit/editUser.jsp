@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: Сергей
@@ -22,32 +23,22 @@
 	<label>Password</label><br>
 	<input required name="password" value="${users.password}"/>
 	<br><br><br>
-	<label>Role:
-		<label>
-			<input type="radio" name="role" value="0"/>
-		</label> Viewer
-		<label>
-			<input type="radio" name="role" value="1"/>
-		</label> Customer
-		<label>
-			<input type="radio" name="role" value="2"/>
-		</label> Pharmacist
-		<label>
-			<input type="radio" name="role" value="3"/>
-		</label> Doctor
-		<label>
-			<input type="radio" name="role" value="4"/>
-		</label> Admin
-		<label>
-			<input type="radio" name="role" value="5"/>
-		</label> SuperAdmin
-	<br>
-	<input type="hidden" name="id" value="${users.id}"/>
+	<label>
+		<div>
+			<%@ page import="com.yu_pharm.model.Role" %>
+			<c:forEach var="role" items="${Role.values()}">
+				<label>
+					<input type="radio" name="role" value="${role.name()}">${role.name()}
+				</label>
+				<br>
+			</c:forEach>
+		</div>
+		<input type="hidden" name="id" value="${users.id}"/>
 	</label><br>
 
 	<input type="submit" value="Save"/>|
 	<td colspan="2">
-		<a href="/adminUserList">Return</a>
+		<a href="/admin/adminUserList">Return</a>
 	</td>
 
 </form>
